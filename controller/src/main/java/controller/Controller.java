@@ -86,6 +86,9 @@ public final class Controller implements IController {
 			case Indonesia:
 				this.model.loadHelloWorld("ID");
 				break;
+			case Kemuri:
+				this.model.loadHelloWorld("EK");
+				break;
 			default:
 				break;
 		}

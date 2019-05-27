@@ -4,6 +4,8 @@
  */
 package model;
 
+import static org.junit.Assert.fail;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -32,22 +34,26 @@ public class ModelTest {
     }
 
     @Test
-    public void testGetMessage() {
-        Assert.assertEquals("", this.model.getHelloWorld().getMessage());
+    public void testGetMap() {
+        Assert.assertNull(this.model.getMap().getName());
     }
 
     /**
      * Test method for {@link model.Model#loadHelloWorld(java.lang.String)}.
      */
     @Test
-    public void testGetMessageString() {
-        this.model.loadHelloWorld("GB");
-        Assert.assertEquals("Hello world", this.model.getHelloWorld().getMessage());
-        this.model.loadHelloWorld("FR");
-        Assert.assertEquals("Bonjour le monde", this.model.getHelloWorld().getMessage());
-        this.model.loadHelloWorld("DE");
-        Assert.assertEquals("Hallo Welt", this.model.getHelloWorld().getMessage());
-        this.model.loadHelloWorld("ID");
-        Assert.assertEquals("Salamat pagi dunia", this.model.getHelloWorld().getMessage());
+    public void testGetMapInformation() {
+        this.model.loadMap("Cellar");
+        Assert.assertEquals(1, this.model.getMap().getId());
+        this.model.loadMap("Catacombs");
+        Assert.assertEquals(22, this.model.getMap().getWidth());
+        this.model.loadMap("Cave");
+        Assert.assertEquals(40, this.model.getMap().getLength());
+        this.model.loadMap("The unknown");
+        Assert.assertEquals(1, this.model.getMap().getGoal());
+        this.model.loadMap("China Goal");
+        Assert.assertEquals("China Goal", this.model.getMap().getName());
+        this.model.loadMap("Map test");
+        Assert.assertEquals(6, this.model.getMap().getId());
     }
 }

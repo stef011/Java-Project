@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.util.Observable;
 
 import contract.IModel;
-import entity.HelloWorld;
+import entity.Map;
 
 /**
  * The Class Model.
@@ -13,57 +13,57 @@ import entity.HelloWorld;
  */
 public final class Model extends Observable implements IModel {
 
-	/** The helloWorld. */
-	private HelloWorld helloWorld;
+	/** The map. */
+	private Map map;
 
 	/**
 	 * Instantiates a new model.
 	 */
 	public Model() {
-		this.helloWorld = new HelloWorld();
+		this.map = new Map();
 	}
 
 	/**
-     * Gets the hello world.
+     * Gets the map.
      *
-     * @return the hello world
+     * @return the map
      */
 	/*
 	 * (non-Javadoc)
 	 *
 	 * @see contract.IModel#getMessage()
 	 */
-	public HelloWorld getHelloWorld() {
-		return this.helloWorld;
+	public Map getMap() {
+		return this.map;
 	}
 
 	/**
-     * Sets the hello world.
+     * Sets the map.
      *
-     * @param helloWorld
-     *            the new hello world
+     * @param map
+     *            the new map
      */
-	private void setHelloWorld(final HelloWorld helloWorld) {
-		this.helloWorld = helloWorld;
+	private void setMap(final Map map) {
+		this.map = map;
 		this.setChanged();
 		this.notifyObservers();
 	}
 
 	/**
-     * Load hello world.
+     * Load map.
      *
-     * @param code
-     *            the code
+     * @param name
+     *            the name
      */
 	/*
 	 * (non-Javadoc)
 	 *
 	 * @see contract.IModel#getMessage(java.lang.String)
 	 */
-	public void loadHelloWorld(final String code) {
+	public void loadMap(final String name) {
 		try {
-			final DAOHelloWorld daoHelloWorld = new DAOHelloWorld(DBConnection.getInstance().getConnection());
-			this.setHelloWorld(daoHelloWorld.find(code));
+			final DAOMap daoMap = new DAOMap(DBConnection.getInstance().getConnection());
+			this.setMap(daoMap.find(name));
 		} catch (final SQLException e) {
 			e.printStackTrace();
 		}

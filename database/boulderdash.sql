@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 27 mai 2019 à 10:05
+-- Généré le :  lun. 27 mai 2019 à 12:18
 -- Version du serveur :  5.7.24
 -- Version de PHP :  7.2.14
 
@@ -29,25 +29,15 @@ DELIMITER $$
 -- Procédures
 --
 DROP PROCEDURE IF EXISTS `getElementbyXY`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `getElementbyXY` ()  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getElementbyXY` (IN `id_map` INT, IN `x` INT, IN `y` INT)  BEGIN
 	SELECT map.map, location.x, location.y, element.sprite_ref, sprite
     FROM location, space, element, map
     WHERE location.x=x AND location.y=y AND location.id=space.id_location AND space.sprite_ref=element.sprite_ref AND space.id=id_map AND space.id=map.id;
 END$$
 
 DROP PROCEDURE IF EXISTS `getMap`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `getMap` ()  BEGIN
-	SELECT map.map, map.length, map.width, map.goal FROM map WHERE map.map = mapname;
-END$$
-
-DROP PROCEDURE IF EXISTS `getMapId`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `getMapId` (`mapname` VARCHAR(255))  BEGIN
-	SELECT map.id FROM map WHERE map.map = mapname;
-END$$
-
-DROP PROCEDURE IF EXISTS `getSize`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `getSize` (`mapid` INT)  BEGIN
-	SELECT length, width FROM map WHERE map.id = mapid;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getMap` (IN `mapname` VARCHAR(255))  BEGIN
+	SELECT map.id, map.map, map.length, map.width, map.goal FROM map WHERE map.map = mapname;
 END$$
 
 DROP PROCEDURE IF EXISTS `getSprite`$$

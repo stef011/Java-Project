@@ -75,7 +75,7 @@ public final class Controller implements IController {
 	public void orderPerform(final ControllerOrder controllerOrder) {
 		switch (controllerOrder) {
 			case UP:
-				this.model.getmap.getplayer.moveU();
+				this.model.getMap().getPlayer().moveUp();
 			case DOWN:
 				this.model.getmap.getplayer.moveDown();
 				break;

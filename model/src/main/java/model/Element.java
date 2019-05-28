@@ -1,5 +1,6 @@
 package model;
 
+
 public class Element implements Entity {
 	private Sprite sprite;
 	private TraversableByAlive traversableByAlive;

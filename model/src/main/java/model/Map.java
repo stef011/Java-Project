@@ -2,7 +2,9 @@ package model;
 
 import java.util.Observable;
 
-public class Map extends Observable implements Entity {
+import contract.IMap;
+
+public class Map extends Observable implements Entity, IMap {
 	
 	private int id;
 	private String name;
@@ -71,6 +73,16 @@ public class Map extends Observable implements Entity {
 	
 	public Element getOnTheMapXY(int x, int y) {
 		return this.onTheMap[x][y];
+	}
+	@Override
+	public IMap getMap() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public void loadMap(String name) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

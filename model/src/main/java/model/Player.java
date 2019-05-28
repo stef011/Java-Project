@@ -19,7 +19,7 @@ public class Player extends AliveElement {
 	private static final Sprite front = new Sprite(sprite_ref, spritePath, imageFront);
 	private static final Sprite frontWalking = new Sprite(sprite_ref, spritePath, imageFrontWalking);
 	private static final Sprite back = new Sprite(sprite_ref, spritePath, imageBack);
-	private static final Sprite backtWalking = new Sprite(sprite_ref, spritePath, imageBackWalking);
+	private static final Sprite backWalking = new Sprite(sprite_ref, spritePath, imageBackWalking);
 	private static final Sprite left = new Sprite(sprite_ref, spritePath, imageLeft);
 	private static final Sprite leftWalking = new Sprite(sprite_ref, spritePath, imageLeftWalking);
 	private static final Sprite right = new Sprite(sprite_ref, spritePath, imageRight);
@@ -31,21 +31,19 @@ public class Player extends AliveElement {
 		front.loadImage();
 		frontWalking.loadImage();
 		back.loadImage();
-		backtWalking.loadImage();
+		backWalking.loadImage();
 		left.loadImage();
 		leftWalking.loadImage();
 		right.loadImage();
 		rightWalking.loadImage();
 	}
 	
-	
-	
 	public void push() {
-		
+		// Not implemented
 	}
 	
 	public void pick() {
-		
+		// Not implemented
 	}
 
 	public int getScore() {
@@ -54,5 +52,33 @@ public class Player extends AliveElement {
 
 	public void setScore(int score) {
 		this.score = score;
+	}
+	
+	@Override
+	public void moveUp() {
+		this.setSprite(backWalking);
+		super.moveUp();
+		this.setSprite(back);
+	}
+	
+	@Override
+	public void moveDown() {
+		this.setSprite(frontWalking);
+		super.moveDown();
+		this.setSprite(front);
+	}
+	
+	@Override
+	public void moveLeft() {
+		this.setSprite(leftWalking);
+		super.moveLeft();
+		this.setSprite(left);
+	}
+	
+	@Override
+	public void moveRight() {
+		this.setSprite(rightWalking);
+		super.moveRight();
+		this.setSprite(right);
 	}
 }

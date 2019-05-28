@@ -3,6 +3,8 @@ package model;
 import java.sql.SQLException;
 import java.util.Observable;
 
+import contract.ControllerOrder;
+import contract.IMap;
 import contract.IModel;
 
 /**
@@ -10,10 +12,10 @@ import contract.IModel;
  *
  * @author Jean-Aymeric Diet
  */
-public final class Model extends Observable implements IModel {
+public final class Model extends Observable implements IModel, IMap {
 
 	/** The map. */
-	private Map map;
+	private IMap map;
 
 	/**
 	 * Instantiates a new model.
@@ -32,7 +34,7 @@ public final class Model extends Observable implements IModel {
 	 *
 	 * @see contract.IModel#getMessage()
 	 */
-	public Map getMap() {
+	public IMap getMap() {
 		return this.map;
 	}
 
@@ -81,4 +83,6 @@ public final class Model extends Observable implements IModel {
 	public Observable getObservable() {
 		return this;
 	}
+
+
 }

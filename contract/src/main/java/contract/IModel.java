@@ -2,8 +2,6 @@ package contract;
 
 import java.util.Observable;
 
-import model.Map;
-
 /**
  * The Interface IModel.
  *
@@ -16,7 +14,6 @@ public interface IModel {
 	 * 
 	 * @return the map entity
 	 */
-	Map getMap();
 
 	/**
 	 * Load the map information.
@@ -32,4 +29,6 @@ public interface IModel {
 	 * @return the observable
 	 */
 	Observable getObservable();
+
+	IMap getMap();
 }

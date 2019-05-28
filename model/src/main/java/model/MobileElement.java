@@ -1,5 +1,7 @@
 package model;
 
+import contract.ControllerOrder;
+
 public class MobileElement extends Element {
 
 	private int x;
@@ -11,6 +13,21 @@ public class MobileElement extends Element {
 		this.setX(x);
 		this.setY(y);
 		this.setMap(map);
+	}
+	
+	public Element checkBeforeMove(ControllerOrder controllerOrder) {
+		switch(controllerOrder) {
+		case UP:
+			return this.getMap().getOnTheMapXY(this.getX(), this.getY()-1);
+		case DOWN:
+			return this.getMap().getOnTheMapXY(this.getX(), this.getY()+1);
+		case LEFT:
+			return this.getMap().getOnTheMapXY(this.getX()-1, this.getY());
+		case RIGHT:
+			return this.getMap().getOnTheMapXY(this.getX()+1, this.getY());
+		default:
+			return null;
+		}
 	}
 	
 	public void moveUp() {

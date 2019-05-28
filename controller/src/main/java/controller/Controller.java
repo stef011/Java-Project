@@ -90,4 +90,7 @@ public final class Controller implements IController {
 		}
 	}
 
+	public IModel getModel() {
+		return model;
+	}
 }

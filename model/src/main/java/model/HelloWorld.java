@@ -1,4 +1,4 @@
-package entity;
+package model;
 
 /**
  * The Class HelloWorld.

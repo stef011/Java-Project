@@ -1,5 +1,7 @@
 package view;
 
+import controller.Controller;
+
 import java.awt.Graphics;
 import java.util.Observable;
 import java.util.Observer;
@@ -18,15 +20,22 @@ class ViewPanel extends JPanel implements Observer {
 	/** The Constant serialVersionUID. */
 	private static final long	serialVersionUID	= -998294702363713521L;
 
+	public Controller controller;
+
+	private Integer x, y;
+
 	/**
 	 * Instantiates a new view panel.
 	 *
 	 * @param viewFrame
 	 *          the view frame
 	 */
-	public ViewPanel(final ViewFrame viewFrame) {
+	public ViewPanel(final ViewFrame viewFrame, Controller controller) {
 		this.setViewFrame(viewFrame);
 		viewFrame.getModel().getObservable().addObserver(this);
+		this.controller = controller;
+		this.x = this.controller.getModel().getMap().getLength();
+		this.y = this.controller.getModel().getMap().getWidth();
 	}
 
 	/**
@@ -65,6 +74,6 @@ class ViewPanel extends JPanel implements Observer {
 	@Override
 	protected void paintComponent(final Graphics graphics) {
 		graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
-		graphics.drawImage(this.element.getSprite().getImage();
+
 	}
 }

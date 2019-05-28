@@ -1,10 +1,10 @@
-package entity;
+package model;
 
 /**
  * The Class Entity.
  *
  * @author Jean-Aymeric Diet
  */
-public abstract class Entity {
+public interface Entity {
 
 }

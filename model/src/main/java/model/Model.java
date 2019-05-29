@@ -4,8 +4,7 @@ import java.sql.SQLException;
 import java.util.Observable;
 
 import contract.IModel;
-import entity.HelloWorld;
-
+import entity.Map;
 /**
  * The Class Model.
  *
@@ -14,13 +13,33 @@ import entity.HelloWorld;
 public final class Model extends Observable implements IModel {
 
 	/** The helloWorld. */
-	private HelloWorld helloWorld;
+	private Map map;
+	private char elementSpriteRef[][];
 
 	/**
 	 * Instantiates a new model.
 	 */
 	public Model() {
-		this.helloWorld = new HelloWorld();
+		this.map = new Map();
+		this.loadMap("China Goal");
+		
+		elementSpriteRef = new char[this.getMap().getLength()][this.getMap().getWidth()];
+		for(int y=0; y<this.getMap().getWidth(); y++) {
+			for(int x=0; x<this.getMap().getLength(); x++) {
+				elementSpriteRef[x][y] = this.loadElementSpriteRef(this.getMap().getId(), x, y);
+			}
+		}
+		new Map(this.getMap(), elementSpriteRef);
+		
+		// Test
+		for(int y=0; y<this.getMap().getWidth(); y++) {
+			for(int x=0; x<this.getMap().getLength(); x++) {
+				System.out.print(this.getMap().getOnTheMapXY(x, y).getSprite().getSprite_ref());
+			}
+			System.out.print("\n");
+		}
+		
+		// Test
 	}
 
 	/**
@@ -33,8 +52,8 @@ public final class Model extends Observable implements IModel {
 	 *
 	 * @see contract.IModel#getMessage()
 	 */
-	public HelloWorld getHelloWorld() {
-		return this.helloWorld;
+	public Map getMap() {
+		return this.map;
 	}
 
 	/**
@@ -43,8 +62,8 @@ public final class Model extends Observable implements IModel {
      * @param helloWorld
      *            the new hello world
      */
-	private void setHelloWorld(final HelloWorld helloWorld) {
-		this.helloWorld = helloWorld;
+	private void setMap(final Map map) {
+		this.map = map;
 		this.setChanged();
 		this.notifyObservers();
 	}
@@ -60,13 +79,23 @@ public final class Model extends Observable implements IModel {
 	 *
 	 * @see contract.IModel#getMessage(java.lang.String)
 	 */
-	public void loadHelloWorld(final String code) {
+	public void loadMap(final String name) {
 		try {
-			final DAOHelloWorld daoHelloWorld = new DAOHelloWorld(DBConnection.getInstance().getConnection());
-			this.setHelloWorld(daoHelloWorld.find(code));
+			final DAOMap daoMap = new DAOMap(DBConnection.getInstance().getConnection());
+			this.setMap(daoMap.find(name));
 		} catch (final SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public char loadElementSpriteRef(int id_map, int x, int y) {
+		try {
+			final DAOElement daoElement = new DAOElement(DBConnection.getInstance().getConnection());
+			return daoElement.find(id_map, x, y);
+		} catch (final SQLException e) {
+			e.printStackTrace();
+		}
+		return '_';
 	}
 
 	/**
@@ -82,4 +111,5 @@ public final class Model extends Observable implements IModel {
 	public Observable getObservable() {
 		return this;
 	}
+
 }

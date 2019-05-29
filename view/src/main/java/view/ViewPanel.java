@@ -16,22 +16,12 @@ import javax.swing.JPanel;
 class ViewPanel extends JPanel implements Observer {
 
 	/** The view frame. */
-	private ViewFrame					viewFrame;
-
-	/** The panel */
-	private ViewPanel pane;
-
-	/** The image table for the map */
-	private Image[][] images;
+	private ViewFrame viewFrame;
 
 	/** The Image*/
-	private Image image;
-
-
-	/** Length and width.*/
-	Integer length, width;
-
-
+	private Image backgr;
+	
+	private static final int squareSize = ViewFrame.getSquaresize();
 
 	/** The Constant serialVersionUID. */
 	private static final long	serialVersionUID	= -998294702363713521L;
@@ -44,14 +34,8 @@ class ViewPanel extends JPanel implements Observer {
 	 */
 	public ViewPanel(final ViewFrame viewFrame) {
 		this.setViewFrame(viewFrame);
+		this.loadBackgr();
 		viewFrame.getModel().getObservable().addObserver(this);
-
-
-		length = 40;
-		width = 22;
-		images = new Image[length][width];
-
-		fillImages();
 	}
 
 	/**
@@ -82,50 +66,33 @@ class ViewPanel extends JPanel implements Observer {
 		this.repaint();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
-	 *//*
-	@Override
-	protected void paintComponent(final Graphics graphics) {
-		graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
-		graphics.drawString(this.getViewFrame().getModel().getHelloWorld().getMessage(), 10, 20);
-	}*/
-
 	/**
-	 * Fills the table of images.
+	 * load the Background image
 	 */
-	public void fillImages(){
-		setImage();
-		for (int y = 0; y<width; y++ ){
-			for (int x = 0; x<length; x++){
-				images[x][y] = image;
-				System.out.println(x + " Bite " + y);
-
-			}
-		}
-	}
-
-	/**
-	 * Set the default image
-	 */
-	public void setImage(){
+	public void loadBackgr(){
 		try {
-			image = ImageIO.read(new File("./sprites/settings/background.png"));
+			this.setBackgr(ImageIO.read(new File("D://Documents/eXia/Prosit/Bloc 5/Projet_UMLJava/Java-Project/sprites/settings/background.png")));
 		}
 		catch (Exception e){
 			viewFrame.printMessage("Erreur :"+ e.getMessage());
 		}
 	}
+	
+	public Image getBackgr() {
+		return this.backgr;
+	}
+	
+	public void setBackgr(Image backgr) {
+		this.backgr = backgr;
+	}
 
 	public void paintComponent(Graphics g){
-		for (int y = 0; y<22; y++){
-			for (int x = 0; x<40; x++){
-				image = images[x][y];
-				g.drawImage(image,x*16,y*16,this);
-				System.out.println(x + " Print " + y);
+		for (int y = 0; y<viewFrame.getModel().getMap().getWidth(); y++){
+			for (int x = 0; x<viewFrame.getModel().getMap().getLength(); x++){
+				g.drawImage(this.getBackgr().getScaledInstance(squareSize, squareSize, Image.SCALE_DEFAULT), x*squareSize, y*squareSize, this);
+				g.drawImage(this.getViewFrame().getModel().getMap().getOnTheMapXY(x, y).getSprite().getImage().getScaledInstance(squareSize, squareSize, Image.SCALE_DEFAULT), x*squareSize, y*squareSize, this);
 			}
 		}
+	
 	}
 }

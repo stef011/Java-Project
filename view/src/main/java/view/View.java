@@ -27,9 +27,6 @@ public final class View implements IView, Runnable {
 	/** The model. */
 	private IModel model;
 
-	/** The panel */
-	private ViewPanel pane;
-
 	/**
 	 * Instantiates a new view.
 	 *
@@ -39,7 +36,6 @@ public final class View implements IView, Runnable {
 	public View(final IModel model) {
 		this.viewFrame = new ViewFrame(model);
 		SwingUtilities.invokeLater(this);
-		this.pane = new ViewPanel(viewFrame);
 
 
 	}

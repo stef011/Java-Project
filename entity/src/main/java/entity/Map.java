@@ -40,6 +40,17 @@ public class Map extends Entity {
 			}
 		}
 	}
+	
+	public Element findOnMap(Element element) {
+		for(int y=0; y<this.getWidth(); y++) {
+			for(int x=0; x<this.getLength(); x++) {
+				if(this.getOnTheMapXY(x, y)==element) {
+					return element;
+				}
+			}
+		}
+		return null;
+	}
 
 	public int getId() {
 		return this.id;

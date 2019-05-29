@@ -1,23 +1,34 @@
 package view;
 
+import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.io.File;
 
+import javax.imageio.ImageIO;
 import javax.swing.SwingUtilities;
 
 import contract.ControllerOrder;
 import contract.IController;
 import contract.IModel;
 import contract.IView;
+import sun.awt.im.InputMethodManager;
 
 /**
  * The Class View.
  *
- * @author Jean-Aymeric Diet
+ * @author Exars 18-23 Strasbourg grp1
  */
 public final class View implements IView, Runnable {
 
+
 	/** The frame. */
 	private final ViewFrame viewFrame;
+
+	/** The model. */
+	private IModel model;
+
+	/** The panel */
+	private ViewPanel pane;
 
 	/**
 	 * Instantiates a new view.
@@ -28,6 +39,9 @@ public final class View implements IView, Runnable {
 	public View(final IModel model) {
 		this.viewFrame = new ViewFrame(model);
 		SwingUtilities.invokeLater(this);
+		this.pane = new ViewPanel(viewFrame);
+
+
 	}
 
 	/**
@@ -39,16 +53,16 @@ public final class View implements IView, Runnable {
 	 */
 	protected static ControllerOrder keyCodeToControllerOrder(final int keyCode) {
 		switch (keyCode) {
-			case KeyEvent.VK_G:
-				return ControllerOrder.English;
-			case KeyEvent.VK_F:
-				return ControllerOrder.Francais;
-			case KeyEvent.VK_D:
-				return ControllerOrder.Deutsch;
-			case KeyEvent.VK_I:
-				return ControllerOrder.Indonesia;
+			case KeyEvent.VK_UP:
+				return ControllerOrder.Up;
+			case KeyEvent.VK_DOWN:
+				return ControllerOrder.Down;
+			case KeyEvent.VK_RIGHT:
+				return ControllerOrder.Right;
+			case KeyEvent.VK_LEFT:
+				return ControllerOrder.Left;
 			default:
-				return ControllerOrder.English;
+				return null;
 		}
 	}
 
@@ -79,4 +93,6 @@ public final class View implements IView, Runnable {
 	public void setController(final IController controller) {
 		this.viewFrame.setController(controller);
 	}
+
+
 }

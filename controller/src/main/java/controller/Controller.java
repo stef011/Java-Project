@@ -74,16 +74,16 @@ public final class Controller implements IController {
 	public void orderPerform(final ControllerOrder controllerOrder) {
 		switch (controllerOrder) {
 			case Up:
-				//model.getPlayer.moveUp();
+				// move up
 				break;
 			case Down:
-				//model.getPlayer.moveDown();
-				break;
-			case Right:
-				//model.getPlayer.moveRight();
+				// move down
 				break;
 			case Left:
-				//model.getPlayer.moveLeft();
+				// move left
+				break;
+			case Right:
+				// move right
 				break;
 			default:
 				break;

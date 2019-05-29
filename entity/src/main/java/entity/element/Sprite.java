@@ -26,9 +26,11 @@ public class Sprite {
 		this.image = image;
 	}
 	
+	// "D://Documents/eXia/Prosit/Bloc 5/Projet_UMLJava/Java-Project"
+	
 	public void loadImage() {
 		try {
-			this.setImage(ImageIO.read(new File(this.getSpritePath()+this.getImageName())));
+			this.setImage(ImageIO.read(new File("D://Documents/eXia/Prosit/Bloc 5/Projet_UMLJava/Java-Project"+this.getSpritePath()+this.getImageName())));
 		} catch (IOException e) {
 			System.out.println("Error on loading file: "+this.getSpritePath()+this.getImageName());
 			e.printStackTrace();

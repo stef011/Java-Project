@@ -29,7 +29,7 @@ public final class Model extends Observable implements IModel {
 				elementSpriteRef[x][y] = this.loadElementSpriteRef(this.getMap().getId(), x, y);
 			}
 		}
-		new Map(this.getMap(), elementSpriteRef);
+		map = new Map(this.getMap(), elementSpriteRef);
 		
 		// Test
 		for(int y=0; y<this.getMap().getWidth(); y++) {
@@ -38,7 +38,6 @@ public final class Model extends Observable implements IModel {
 			}
 			System.out.print("\n");
 		}
-		
 		// Test
 	}
 

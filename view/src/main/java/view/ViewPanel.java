@@ -1,12 +1,13 @@
 package view;
 
-import controller.Controller;
-
 import java.awt.Graphics;
 import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JPanel;
+
+import contract.IController;
+import controller.Controller;
 
 /**
  * The Class ViewPanel.
@@ -20,7 +21,7 @@ class ViewPanel extends JPanel implements Observer {
 	/** The Constant serialVersionUID. */
 	private static final long	serialVersionUID	= -998294702363713521L;
 
-	public Controller controller;
+	public IController controller;
 
 	private Integer x, y;
 
@@ -30,7 +31,7 @@ class ViewPanel extends JPanel implements Observer {
 	 * @param viewFrame
 	 *          the view frame
 	 */
-	public ViewPanel(final ViewFrame viewFrame, Controller controller) {
+	public ViewPanel(final ViewFrame viewFrame, final IController controller) {
 		this.setViewFrame(viewFrame);
 		viewFrame.getModel().getObservable().addObserver(this);
 		this.controller = controller;

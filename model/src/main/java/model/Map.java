@@ -4,7 +4,7 @@ import java.util.Observable;
 
 import contract.IMap;
 
-public class Map extends Observable implements Entity, IMap {
+public class Map extends Entity implements IMap {
 	
 	private int id;
 	private String name;
@@ -59,13 +59,13 @@ public class Map extends Observable implements Entity, IMap {
 	}
 	
 	public void setMobileElementUpdated() {
-		this.setChanged();
-		this.notifyObservers();
+	//	this.setChanged();
+	//	this.notifyObservers();
 	}
 	
-	public Observable getObservable() {
-		return this;
-	}
+	//public Observable getObservable() {
+	//	return this;
+	//}
 	
 	public void setOnTheMap(Element element, int x, int y) {
 		this.onTheMap[x][y] = element;

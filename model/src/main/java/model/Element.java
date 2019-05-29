@@ -1,7 +1,7 @@
 package model;
 
 
-public class Element implements Entity {
+public class Element extends Entity {
 	private Sprite sprite;
 	private TraversableByAlive traversableByAlive;
 	private TraversableByFalling traversableByFalling;

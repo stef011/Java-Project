@@ -5,6 +5,6 @@ package model;
  *
  * @author Jean-Aymeric Diet
  */
-public interface Entity {
+public abstract class Entity {
 
 }

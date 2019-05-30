@@ -24,9 +24,15 @@ class ViewFrame extends JFrame implements KeyListener {
 	/** The controller. */
 	private IController controller;
 	
-	private static final int squareSize = 48;
-	private static final int windowLength = 1280;
-	private static final int windowWidth = 720;
+
+	private static int windowLength = 1280;
+	private static int windowWidth = 720;
+	//private static int squareSize = 80;
+	//private static int viewLength = windowLength/squareSize;
+	//private static int viewWidth = windowWidth/squareSize;
+	private static int viewLength = 16;
+	private static int viewWidth = 9;
+	private static int squareSize = windowLength/viewLength;
 	
 	/** The Constant serialVersionUID. */
 	private static final long	serialVersionUID	= -697358409737458175L;
@@ -180,5 +186,21 @@ class ViewFrame extends JFrame implements KeyListener {
 
 	public static int getSquaresize() {
 		return squareSize;
+	}
+
+	public static int getViewWidth() {
+		return ViewFrame.viewWidth;
+	}
+
+	public static void setViewWidth(int viewWidth) {
+		ViewFrame.viewWidth = viewWidth;
+	}
+	
+	public static int getViewLength() {
+		return ViewFrame.viewLength;
+	}
+
+	public static void setViewLength(int viewLength) {
+		ViewFrame.viewLength = viewLength;
 	}
 }

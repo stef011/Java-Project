@@ -22,6 +22,8 @@ class ViewPanel extends JPanel implements Observer {
 	private Image backgr;
 	
 	private static final int squareSize = ViewFrame.getSquaresize();
+	private static int viewLength = ViewFrame.getViewLength();
+	private static int viewWidth = ViewFrame.getViewWidth();
 
 	/** The Constant serialVersionUID. */
 	private static final long	serialVersionUID	= -998294702363713521L;
@@ -70,11 +72,14 @@ class ViewPanel extends JPanel implements Observer {
 	 * load the Background image
 	 */
 	public void loadBackgr(){
+		String ImagePath = "/sprites/settings/background.png";
 		try {
-			this.setBackgr(ImageIO.read(new File("D://Documents/eXia/Prosit/Bloc 5/Projet_UMLJava/Java-Project/sprites/settings/background.png")));
+			//Path p = Paths.get(".");
+			//this.setBackgr(ImageIO.read(new File(p.toAbsolutePath()+ImagePath)));
+			this.setBackgr(ImageIO.read(new File("D://Documents/eXia/Prosit/Bloc 5/Projet_UMLJava/Java-Project"+ImagePath)));
 		}
 		catch (Exception e){
-			viewFrame.printMessage("Erreur :"+ e.getMessage());
+			viewFrame.printMessage("Error: File not found \n"+ ImagePath);
 		}
 	}
 	
@@ -87,10 +92,22 @@ class ViewPanel extends JPanel implements Observer {
 	}
 
 	public void paintComponent(Graphics g){
-		for (int y = 0; y<viewFrame.getModel().getMap().getWidth(); y++){
-			for (int x = 0; x<viewFrame.getModel().getMap().getLength(); x++){
-				g.drawImage(this.getBackgr().getScaledInstance(squareSize, squareSize, Image.SCALE_DEFAULT), x*squareSize, y*squareSize, this);
-				g.drawImage(this.getViewFrame().getModel().getMap().getOnTheMapXY(x, y).getSprite().getImage().getScaledInstance(squareSize, squareSize, Image.SCALE_DEFAULT), x*squareSize, y*squareSize, this);
+		int xStart = this.getViewFrame().getModel().getMap().getPlayer().getPosition().getX()-viewLength/2;
+		int yStart = this.getViewFrame().getModel().getMap().getPlayer().getPosition().getY()-viewWidth/2;
+		int xFinish = xStart + viewLength;
+		int yFinish = yStart + viewWidth;
+		
+		System.out.println("xStart: "+xStart+" | yStart: "+yStart);
+		System.out.println("xFinish: "+xFinish+" | yFinish: "+yFinish);
+		for (int y = yStart; y<yFinish; y++){
+			for (int x = xStart; x<xFinish; x++){
+		
+		//for (int y = 0; y<viewFrame.getModel().getMap().getWidth(); y++){
+		//	for (int x = 0; x<viewFrame.getModel().getMap().getLength(); x++){
+				int xAff = x-xStart, yAff = y-yStart;
+				g.drawImage(this.getBackgr().getScaledInstance(squareSize, squareSize, Image.SCALE_DEFAULT), xAff*squareSize, yAff*squareSize, this);
+				g.drawImage(this.getViewFrame().getModel().getMap().getOnTheMapXY(x, y).getSprite().getImage().getScaledInstance(squareSize, squareSize, Image.SCALE_DEFAULT), xAff*squareSize, yAff*squareSize, this);
+
 			}
 		}
 	

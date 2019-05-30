@@ -1,7 +1,10 @@
 package entity;
 
+import java.util.ArrayList;
+
 import entity.element.Element;
 import entity.element.Position;
+import entity.element.motionlessElement.fallingElement.FallingElement;
 import entity.element.ElementFactory;
 
 
@@ -13,6 +16,9 @@ public class Map extends Entity {
 	private int width;
 	private int goal;
 	private Element onTheMap[][];
+	private Element player;
+	private ArrayList<Element> fallingElements = new ArrayList<Element>();
+	private ArrayList<Element> mobs = new ArrayList<Element>();
 	
 	public Map() {
 		
@@ -36,7 +42,20 @@ public class Map extends Entity {
 		onTheMap = new Element[this.getLength()][this.getWidth()];
 		for(int y=0; y<this.getWidth(); y++) {
 			for(int x=0; x<this.getLength(); x++) {
-				this.setOnTheMapXY(x, y, ElementFactory.selectElementFromSpriteRef(elementSpriteRef[x][y], this, new Position(x, y)));
+				if(elementSpriteRef[x][y] == '@') {
+					player = ElementFactory.createPlayer(this, new Position(x, y));
+					this.setOnTheMapXY(x, y, this.getPlayer());
+				} else if(elementSpriteRef[x][y] == 'O' || elementSpriteRef[x][y] == '^') {
+					Element fallingElement = ElementFactory.selectElementFromSpriteRef(elementSpriteRef[x][y], this, new Position(x, y));
+					fallingElements.add(fallingElement);
+					this.setOnTheMapXY(x, y, fallingElements.get(fallingElements.lastIndexOf(fallingElement)));
+				} else if(elementSpriteRef[x][y] == 'M') {
+					Element mob = ElementFactory.createMob(this, new Position(x, y));
+					mobs.add(mob);
+					this.setOnTheMapXY(x, y, mobs.get(mobs.lastIndexOf(mob)));
+				} else {
+					this.setOnTheMapXY(x, y, ElementFactory.selectElementFromSpriteRef(elementSpriteRef[x][y], this, new Position(x, y)));
+				}
 			}
 		}
 	}
@@ -98,6 +117,30 @@ public class Map extends Entity {
 
 	public void setOnTheMapXY(int x, int y, Element element) {
 		this.onTheMap[x][y] = element;
+	}
+
+	public Element getPlayer() {
+		return this.player;
+	}
+
+	public void setPlayer(Element player) {
+		this.player = player;
+	}
+
+	public ArrayList<Element> getFallingElements() {
+		return this.fallingElements;
+	}
+
+	public void setFallingElements(ArrayList<Element> fallingElements) {
+		this.fallingElements = fallingElements;
+	}
+
+	public ArrayList<Element> getMobs() {
+		return this.mobs;
+	}
+
+	public void setMobs(ArrayList<Element> mobs) {
+		this.mobs = mobs;
 	}
 
 }

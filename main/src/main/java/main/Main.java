@@ -23,7 +23,7 @@ public abstract class Main {
      *            the arguments
      */
     public static void main(final String[] args) {
-        final Model model = new Model("Cave");
+        final Model model = new Model("The Unknown");
         final View view = new View(model);
         //final Controller controller = new Controller(view, model);
         //view.setController(controller);

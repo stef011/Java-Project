@@ -94,8 +94,23 @@ class ViewPanel extends JPanel implements Observer {
 	public void paintComponent(Graphics g){
 		int xStart = this.getViewFrame().getModel().getMap().getPlayer().getPosition().getX()-viewLength/2;
 		int yStart = this.getViewFrame().getModel().getMap().getPlayer().getPosition().getY()-viewWidth/2;
+		
+		if (xStart<0) 
+			xStart = 0;
+		if (yStart <0)
+			yStart = 0;
+		
 		int xFinish = xStart + viewLength;
 		int yFinish = yStart + viewWidth;
+		
+		if (xFinish>this.getViewFrame().getModel().getMap().getLength()) { 
+			xFinish = this.getViewFrame().getModel().getMap().getLength();
+			xStart = xFinish - viewLength;
+		}
+		if (yStart <this.getViewFrame().getModel().getMap().getWidth()) {
+			yStart = this.getViewFrame().getModel().getMap().getWidth();
+			yStart = yFinish - viewWidth;
+		}
 		
 		System.out.println("xStart: "+xStart+" | yStart: "+yStart);
 		System.out.println("xFinish: "+xFinish+" | yFinish: "+yFinish);

@@ -14,5 +14,7 @@ public enum ControllerOrder {
 	/** The left direction. */
 	Left,
 	/** The right direction. */
-	Right
+	Right,
+	/** Any other key */
+	Else
 }

@@ -11,10 +11,10 @@ import contract.IView;
 public final class Controller implements IController {
 
 	/** The view. */
-	private IView		view;
+	private IView view;
 
 	/** The model. */
-	private IModel	model;
+	private IModel model;
 
 	/**
 	 * Instantiates a new controller.
@@ -31,13 +31,23 @@ public final class Controller implements IController {
 
 	/**
      * Control.
+	 * @throws InterruptedException 
      */
 	/*
 	 * (non-Javadoc)
 	 *
 	 * @see contract.IController#control()
 	 */
-	public void control() {
+	public void play() throws InterruptedException {
+		while(this.getModel().getMap().getPlayer().isAlive()) {
+			Thread.sleep(200);
+			int i = 0;
+			while(i < this.getModel().getMap().getFallingElements().size()) {
+				this.getModel().getMap().getFallingElements().get(i).fall();
+				i++;
+			}
+		}
+		this.getView().printMessage("Game Over");
 	}
 
 	/**
@@ -48,6 +58,10 @@ public final class Controller implements IController {
      */
 	private void setView(final IView pview) {
 		this.view = pview;
+	}
+	
+	private IView getView() {
+		return this.view;
 	}
 
 	/**
@@ -78,20 +92,29 @@ public final class Controller implements IController {
 	public void orderPerform(final ControllerOrder controllerOrder) {
 		switch (controllerOrder) {
 			case Up:
-				this.getModel().getMap().getPlayer().moveUp();
+				this.getModel().getMap().getPlayer().move("Up");
 				break;
 			case Down:
-				this.getModel().getMap().getPlayer().moveDown();
+				this.getModel().getMap().getPlayer().move("Down");
 				break;
 			case Left:
-				this.getModel().getMap().getPlayer().moveLeft();
+				this.getModel().getMap().getPlayer().move("Left");
 				break;
 			case Right:
-				this.getModel().getMap().getPlayer().moveRight();
+				this.getModel().getMap().getPlayer().move("Right");
+				break;
+			case Else:
+				System.out.println("Not a valid key!");
 				break;
 			default:
 				break;
 		}
+	}
+
+	@Override
+	public void control() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -58,7 +58,7 @@ public final class View implements IView, Runnable {
 			case KeyEvent.VK_LEFT:
 				return ControllerOrder.Left;
 			default:
-				return null;
+				return ControllerOrder.Else;
 		}
 	}
 
@@ -88,6 +88,10 @@ public final class View implements IView, Runnable {
 	 */
 	public void setController(final IController controller) {
 		this.viewFrame.setController(controller);
+	}
+	
+	public ViewFrame getViewFrame() {
+		return this.viewFrame;
 	}
 
 

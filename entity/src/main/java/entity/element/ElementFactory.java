@@ -23,11 +23,11 @@ public abstract class ElementFactory {
 		return new EmptySpace(map, position);
 	}
 	
-	public static Element createDiamond(Map map, Position position) {
+	public static Diamond createDiamond(Map map, Position position) {
 		return new Diamond(map, position);
 	}
 	
-	public static Element createRock(Map map, Position position) {
+	public static Rock createRock(Map map, Position position) {
 		return new Rock(map, position);
 	}
 	

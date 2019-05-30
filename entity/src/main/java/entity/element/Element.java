@@ -1,9 +1,12 @@
 package entity.element;
 
+import entity.element.Direction;
+import entity.element.aliveElement.AliveElement;
+import entity.element.motionlessElement.fallingElement.FallingElement;
 import entity.Entity;
 import entity.Map;
 
-public class Element extends Entity {
+public class Element extends Entity implements IMovement{
 	private Sprite sprite;
 	private Position position;
 	private Map map;
@@ -23,7 +26,50 @@ public class Element extends Entity {
 	public void replaceByEmptySpace() {
 		this.getMap().setOnTheMapXY(this.getPosition().getX(), this.getPosition().getY(), ElementFactory.createEmptySpace(this.getMap(), this.getPosition()));
 	}
-
+	
+	public Direction stringToDirection(String str) {
+		switch(str) {
+		case "Up":
+			return Direction.Up;
+		case "Down":
+			return Direction.Down;
+		case "Left":
+			return Direction.Left;
+		case "Right":
+			return Direction.Right;
+		default:
+			return null;
+		}
+	}
+	
+	public Element lookAtNextBlock(Direction direction) {
+		int x = this.getPosition().getX();
+		int y = this.getPosition().getY();
+		
+		switch(direction) {
+		case Up:
+			return this.getMap().getOnTheMapXY(x, y-1);
+		case Down:
+			return this.getMap().getOnTheMapXY(x, y+1);
+		case Left:
+			return this.getMap().getOnTheMapXY(x-1, y);
+		case Right:
+			return this.getMap().getOnTheMapXY(x+1, y);
+		}
+		return null;
+	}
+	
+	public AliveElement getAliveElementOnBottom() {
+		return this.getMap().getAliveOnTheMapXY(this.getPosition().getX(), this.getPosition().getY()+1);
+	}
+	
+	public TraversableByAlive checkAlivePermeability(Direction direction) {		
+		return this.lookAtNextBlock(direction).getTraversableByAlive();
+	}
+	
+	public TraversableByFalling checkFallingPermeability(Direction direction) {
+		return this.lookAtNextBlock(direction).getTraversableByFalling();
+	}
 
 	public Sprite getSprite() {
 		return this.sprite;
@@ -54,5 +100,57 @@ public class Element extends Entity {
 	}
 	public void setMap(Map map) {
 		this.map = map;
+	}
+	
+	public void moveUp() {
+		this.replaceByEmptySpace();
+		this.getPosition().setY(this.getPosition().getY()-1);
+		this.getMap().setOnTheMapXY(this.getPosition().getX(), this.getPosition().getY(), this);
+	}
+	
+	public void moveDown() {
+		this.replaceByEmptySpace();
+		this.getPosition().setY(this.getPosition().getY()+1);
+		this.getMap().setOnTheMapXY(this.getPosition().getX(), this.getPosition().getY(), this);
+	}
+	
+	public void moveLeft() {
+		this.replaceByEmptySpace();
+		this.getPosition().setX(this.getPosition().getX()-1);
+		this.getMap().setOnTheMapXY(this.getPosition().getX(), this.getPosition().getY(), this);
+	}
+	
+	public void moveRight() {
+		this.replaceByEmptySpace();
+		this.getPosition().setX(this.getPosition().getX()+1);
+		this.getMap().setOnTheMapXY(this.getPosition().getX(), this.getPosition().getY(), this);
+	}
+	
+	public void doNothing() {
+		// As expected, this method does nothing.
+	}
+
+	@Override
+	public void move(String direc) {
+		this.move(this.stringToDirection(direc));
+	}
+
+	@Override
+	public void move(Direction direction) {
+		switch(direction) {
+		case Up:
+			this.moveUp();
+			break;
+		case Down:
+			this.moveDown();
+			break;
+		case Left:
+			this.moveLeft();
+			break;
+		case Right:
+			this.moveRight();
+			break;
+		}
+		
 	}
 }

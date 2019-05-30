@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import entity.element.Element;
 import entity.element.Position;
+import entity.element.aliveElement.AliveElement;
 import entity.element.aliveElement.Player;
 import entity.element.motionlessElement.fallingElement.FallingElement;
 import entity.element.ElementFactory;
@@ -18,7 +19,7 @@ public class Map extends Entity {
 	private int goal;
 	private Element onTheMap[][];
 	private Player player;
-	private ArrayList<Element> fallingElements = new ArrayList<Element>();
+	private ArrayList<FallingElement> fallingElements = new ArrayList<FallingElement>();
 	private ArrayList<Element> mobs = new ArrayList<Element>();
 	
 	public Map() {
@@ -46,8 +47,12 @@ public class Map extends Entity {
 				if(elementSpriteRef[x][y] == '@') {
 					player = ElementFactory.createPlayer(this, new Position(x, y));
 					this.setOnTheMapXY(x, y, this.getPlayer());
-				} else if(elementSpriteRef[x][y] == 'O' || elementSpriteRef[x][y] == '^') {
-					Element fallingElement = ElementFactory.selectElementFromSpriteRef(elementSpriteRef[x][y], this, new Position(x, y));
+				} else if(elementSpriteRef[x][y] == 'O') {
+					FallingElement fallingElement = ElementFactory.createRock(this, new Position(x, y));
+					fallingElements.add(fallingElement);
+					this.setOnTheMapXY(x, y, fallingElements.get(fallingElements.lastIndexOf(fallingElement)));
+				} else if(elementSpriteRef[x][y] == '^') {
+					FallingElement fallingElement = ElementFactory.createDiamond(this, new Position(x, y));
 					fallingElements.add(fallingElement);
 					this.setOnTheMapXY(x, y, fallingElements.get(fallingElements.lastIndexOf(fallingElement)));
 				} else if(elementSpriteRef[x][y] == 'M') {
@@ -128,11 +133,11 @@ public class Map extends Entity {
 		this.player = player;
 	}
 
-	public ArrayList<Element> getFallingElements() {
+	public ArrayList<FallingElement> getFallingElements() {
 		return this.fallingElements;
 	}
 
-	public void setFallingElements(ArrayList<Element> fallingElements) {
+	public void setFallingElements(ArrayList<FallingElement> fallingElements) {
 		this.fallingElements = fallingElements;
 	}
 
@@ -142,6 +147,10 @@ public class Map extends Entity {
 
 	public void setMobs(ArrayList<Element> mobs) {
 		this.mobs = mobs;
+	}
+	
+	public AliveElement getAliveOnTheMapXY(int x, int y) {
+		return (AliveElement) onTheMap[x][y];
 	}
 
 }

@@ -19,6 +19,10 @@ public class Element extends Entity {
 	public Element() {
 
 	}
+	
+	public void replaceByEmptySpace() {
+		this.getMap().setOnTheMapXY(this.getPosition().getX(), this.getPosition().getY(), ElementFactory.createEmptySpace(this.getMap(), this.getPosition()));
+	}
 
 
 	public Sprite getSprite() {

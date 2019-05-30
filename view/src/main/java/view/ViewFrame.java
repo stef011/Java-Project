@@ -2,6 +2,7 @@ package view;
 
 import java.awt.GraphicsConfiguration;
 import java.awt.HeadlessException;
+import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -24,7 +25,7 @@ class ViewFrame extends JFrame implements KeyListener {
 	/** The controller. */
 	private IController controller;
 	
-
+	private Rectangle closeView;
 	private static int windowLength = 1280;
 	private static int windowWidth = 720;
 	//private static int squareSize = 80;
@@ -138,6 +139,7 @@ class ViewFrame extends JFrame implements KeyListener {
 	 */
 	private void buildViewFrame(final IModel model) {
 		this.setModel(model);
+		this.setCloseView(new Rectangle(this.getModel().getMap().getPlayer().getPosition().getX()-windowLength/2, this.getModel().getMap().getPlayer().getPosition().getY()-windowWidth/2, windowLength, windowWidth));
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(true);
 		this.setTitle("Boulderdash - grp 1 edition");
@@ -172,7 +174,7 @@ class ViewFrame extends JFrame implements KeyListener {
 	 * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)
 	 */
 	public void keyPressed(final KeyEvent e) {
-		//this.getController().orderPerform(View.keyCodeToControllerOrder(e.getKeyCode()));
+		this.getController().orderPerform(View.keyCodeToControllerOrder(e.getKeyCode()));
 	}
 
 	/*
@@ -202,5 +204,13 @@ class ViewFrame extends JFrame implements KeyListener {
 
 	public static void setViewLength(int viewLength) {
 		ViewFrame.viewLength = viewLength;
+	}
+
+	public Rectangle getCloseView() {
+		return this.closeView;
+	}
+
+	public void setCloseView(Rectangle closeView) {
+		this.closeView = closeView;
 	}
 }

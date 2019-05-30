@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import entity.element.Element;
 import entity.element.Position;
+import entity.element.aliveElement.Player;
 import entity.element.motionlessElement.fallingElement.FallingElement;
 import entity.element.ElementFactory;
 
@@ -16,7 +17,7 @@ public class Map extends Entity {
 	private int width;
 	private int goal;
 	private Element onTheMap[][];
-	private Element player;
+	private Player player;
 	private ArrayList<Element> fallingElements = new ArrayList<Element>();
 	private ArrayList<Element> mobs = new ArrayList<Element>();
 	
@@ -119,11 +120,11 @@ public class Map extends Entity {
 		this.onTheMap[x][y] = element;
 	}
 
-	public Element getPlayer() {
+	public Player getPlayer() {
 		return this.player;
 	}
 
-	public void setPlayer(Element player) {
+	public void setPlayer(Player player) {
 		this.player = player;
 	}
 

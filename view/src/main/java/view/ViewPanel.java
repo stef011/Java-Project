@@ -90,36 +90,29 @@ class ViewPanel extends JPanel implements Observer {
 	public void setBackgr(Image backgr) {
 		this.backgr = backgr;
 	}
+	
+	public int xStart() {
+		int xStart = this.getViewFrame().getModel().getMap().getPlayer().getPosition().getX()-viewLength/2;
+		if(xStart<=0) {xStart=0;}
+		if(xStart>=this.getViewFrame().getModel().getMap().getLength()-viewLength) {xStart=this.getViewFrame().getModel().getMap().getLength()-viewLength;}
+		return xStart;
+	}
+	
+	public int yStart() {
+		int yStart = this.getViewFrame().getModel().getMap().getPlayer().getPosition().getY()-viewWidth/2;
+		if(yStart<=0) {yStart=0;}
+		if(yStart>=this.getViewFrame().getModel().getMap().getWidth()-viewWidth) {yStart=this.getViewFrame().getModel().getMap().getWidth()-viewWidth;}
+		return yStart;
+	}
 
 	public void paintComponent(Graphics g){
-		int xStart = this.getViewFrame().getModel().getMap().getPlayer().getPosition().getX()-viewLength/2;
-		int yStart = this.getViewFrame().getModel().getMap().getPlayer().getPosition().getY()-viewWidth/2;
 		
-		if (xStart<0) 
-			xStart = 0;
-		if (yStart <0)
-			yStart = 0;
-		
-		int xFinish = xStart + viewLength;
-		int yFinish = yStart + viewWidth;
-		
-		if (xFinish>this.getViewFrame().getModel().getMap().getLength()) { 
-			xFinish = this.getViewFrame().getModel().getMap().getLength();
-			xStart = xFinish - viewLength;
-		}
-		if (yStart <this.getViewFrame().getModel().getMap().getWidth()) {
-			yStart = this.getViewFrame().getModel().getMap().getWidth();
-			yStart = yFinish - viewWidth;
-		}
-		
-		System.out.println("xStart: "+xStart+" | yStart: "+yStart);
-		System.out.println("xFinish: "+xFinish+" | yFinish: "+yFinish);
-		for (int y = yStart; y<yFinish; y++){
-			for (int x = xStart; x<xFinish; x++){
-		
-		//for (int y = 0; y<viewFrame.getModel().getMap().getWidth(); y++){
-		//	for (int x = 0; x<viewFrame.getModel().getMap().getLength(); x++){
-				int xAff = x-xStart, yAff = y-yStart;
+		for (int y = this.yStart(); y < this.yStart()+viewWidth; y++){
+			for (int x = this.xStart(); x < this.xStart()+viewLength; x++){
+
+				int xAff = x-this.xStart(), yAff = y-this.yStart();
+
+				
 				g.drawImage(this.getBackgr().getScaledInstance(squareSize, squareSize, Image.SCALE_DEFAULT), xAff*squareSize, yAff*squareSize, this);
 				g.drawImage(this.getViewFrame().getModel().getMap().getOnTheMapXY(x, y).getSprite().getImage().getScaledInstance(squareSize, squareSize, Image.SCALE_DEFAULT), xAff*squareSize, yAff*squareSize, this);
 

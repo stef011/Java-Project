@@ -31,7 +31,7 @@ public abstract class ElementFactory {
 		return new Rock(map, position);
 	}
 	
-	public static Element createPlayer(Map map, Position position) {
+	public static Player createPlayer(Map map, Position position) {
 		return new Player(map, position);
 	}
 	

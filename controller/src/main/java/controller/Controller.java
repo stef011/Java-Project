@@ -59,6 +59,10 @@ public final class Controller implements IController {
 	private void setModel(final IModel model) {
 		this.model = model;
 	}
+	
+	private IModel getModel() {
+		return this.model;
+	}
 
 	/**
      * Order perform.
@@ -74,16 +78,16 @@ public final class Controller implements IController {
 	public void orderPerform(final ControllerOrder controllerOrder) {
 		switch (controllerOrder) {
 			case Up:
-				// move up
+				this.getModel().getMap().getPlayer().moveUp();
 				break;
 			case Down:
-				// move down
+				this.getModel().getMap().getPlayer().moveDown();
 				break;
 			case Left:
-				// move left
+				this.getModel().getMap().getPlayer().moveLeft();
 				break;
 			case Right:
-				// move right
+				this.getModel().getMap().getPlayer().moveRight();
 				break;
 			default:
 				break;

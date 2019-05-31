@@ -44,21 +44,28 @@ public class Map extends Entity {
 		onTheMap = new Element[this.getLength()][this.getWidth()];
 		for(int y=0; y<this.getWidth(); y++) {
 			for(int x=0; x<this.getLength(); x++) {
-				if(elementSpriteRef[x][y] == '@') {
+				if(x==0 || y==0 || x==this.getLength()-1 || y==this.getWidth()-1) {
+					this.setOnTheMapXY(x, y, ElementFactory.createUnbreakableWall(this, new Position(x, y)));
+				
+				} else if(elementSpriteRef[x][y] == '@') {
 					player = ElementFactory.createPlayer(this, new Position(x, y));
 					this.setOnTheMapXY(x, y, this.getPlayer());
+					
 				} else if(elementSpriteRef[x][y] == 'O') {
 					FallingElement fallingElement = ElementFactory.createRock(this, new Position(x, y));
 					fallingElements.add(fallingElement);
 					this.setOnTheMapXY(x, y, fallingElements.get(fallingElements.lastIndexOf(fallingElement)));
+					
 				} else if(elementSpriteRef[x][y] == '^') {
 					FallingElement fallingElement = ElementFactory.createDiamond(this, new Position(x, y));
 					fallingElements.add(fallingElement);
 					this.setOnTheMapXY(x, y, fallingElements.get(fallingElements.lastIndexOf(fallingElement)));
+					
 				} else if(elementSpriteRef[x][y] == 'M') {
 					Element mob = ElementFactory.createMob(this, new Position(x, y));
 					mobs.add(mob);
 					this.setOnTheMapXY(x, y, mobs.get(mobs.lastIndexOf(mob)));
+					
 				} else {
 					this.setOnTheMapXY(x, y, ElementFactory.selectElementFromSpriteRef(elementSpriteRef[x][y], this, new Position(x, y)));
 				}

@@ -12,10 +12,12 @@ public class Element extends Entity implements IMovement{
 	private Map map;
 	private TraversableByAlive traversableByAlive;
 	private TraversableByFalling traversableByFalling;
+	private Breakable breakable;
 	
 	public Element(Map map, Position position) {
 		this.setPosition(position);
 		this.setMap(map);
+		this.setBreakable(Breakable.Breakable);
 	}
 	
 	
@@ -152,5 +154,15 @@ public class Element extends Entity implements IMovement{
 			break;
 		}
 		
+	}
+
+
+	public Breakable getBreakable() {
+		return this.breakable;
+	}
+
+
+	public void setBreakable(Breakable breakable) {
+		this.breakable = breakable;
 	}
 }

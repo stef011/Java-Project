@@ -27,17 +27,7 @@ public class FallingElement extends MotionlessElement {
 			}
 			break;
 		case Slippery:
-			if(this.checkFallingPermeability(Direction.Left)==TraversableByFalling.Traversable && this.lookAtNextBlock(Direction.Left).checkFallingPermeability(Direction.Down)==TraversableByFalling.Traversable) {
-				this.setFalling(true);
-				this.moveLeft();
-				this.moveDown();
-			} else if(this.checkFallingPermeability(Direction.Right)==TraversableByFalling.Traversable && this.lookAtNextBlock(Direction.Right).checkFallingPermeability(Direction.Down)==TraversableByFalling.Traversable){
-				this.setFalling(true);
-				this.moveRight();
-				this.moveDown();
-			} else {
-				this.setFalling(false);
-			}
+			this.slide();
 			break;
 		case Blocking:
 			this.setFalling(false);
@@ -52,5 +42,25 @@ public class FallingElement extends MotionlessElement {
 	public void setFalling(boolean falling) {
 		this.falling = falling;
 	}
-
+	
+	public boolean checkIfCanSlide(Direction direction) {
+		if(this.checkFallingPermeability(direction)==TraversableByFalling.Traversable && this.lookAtNextBlock(direction).checkFallingPermeability(Direction.Down)==TraversableByFalling.Traversable) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public void slide() {
+		if(this.checkIfCanSlide(Direction.Left)) {
+			this.setFalling(true);
+			this.moveLeft();
+		} else if(this.checkIfCanSlide(Direction.Right)) {
+			this.setFalling(true);
+			this.moveRight();
+		} else {
+			this.setFalling(false);
+			doNothing();
+		}
+	}
 }

@@ -27,9 +27,6 @@ class ViewFrame extends JFrame implements KeyListener {
 	
 	private static int windowLength = 1280;
 	private static int windowWidth = 720;
-	//private static int squareSize = 80;
-	//private static int viewLength = windowLength/squareSize;
-	//private static int viewWidth = windowWidth/squareSize;
 	private static int viewLength = 16;
 	private static int viewWidth = 9;
 	private static int squareSize = windowLength/viewLength;

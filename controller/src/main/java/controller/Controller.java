@@ -39,7 +39,7 @@ public final class Controller implements IController {
 	 * @see contract.IController#control()
 	 */
 	public void play() throws InterruptedException {
-		while(this.getModel().getMap().getPlayer().isAlive()) {
+		while(this.getModel().getMap().getPlayer().isAlive() && this.getModel().getMap().getPlayer().getScore()<this.getModel().getMap().getGoal()) {
 			Thread.sleep(200);
 			int i = 0;
 			while(i < this.getModel().getMap().getFallingElements().size()) {

@@ -2,6 +2,7 @@ package view;
 
 import java.awt.GraphicsConfiguration;
 import java.awt.HeadlessException;
+import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -14,15 +15,22 @@ import contract.IModel;
 /**
  * The Class ViewFrame.
  *
- * @author Jean-Aymeric Diet
+ * @author Exars 18-23 Strasbourg grp1
  */
 class ViewFrame extends JFrame implements KeyListener {
 
 	/** The model. */
-	private IModel						model;
+	private IModel model;
 
 	/** The controller. */
-	private IController				controller;
+	private IController controller;
+	
+	private static int windowLength = 1280;
+	private static int windowWidth = 720;
+	private static int viewLength = 16;
+	private static int viewWidth = 9;
+	private static int squareSize = windowLength/viewLength;
+	
 	/** The Constant serialVersionUID. */
 	private static final long	serialVersionUID	= -697358409737458175L;
 
@@ -128,10 +136,11 @@ class ViewFrame extends JFrame implements KeyListener {
 	private void buildViewFrame(final IModel model) {
 		this.setModel(model);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setResizable(false);
+		this.setResizable(true);
+		this.setTitle("Boulderdash - grp 1 edition");
 		this.addKeyListener(this);
 		this.setContentPane(new ViewPanel(this));
-		this.setSize(400 + this.getInsets().left + this.getInsets().right, 60 + this.getInsets().top + this.getInsets().bottom);
+		this.setSize(windowLength, windowWidth);
 		this.setLocationRelativeTo(null);
 	}
 
@@ -170,5 +179,25 @@ class ViewFrame extends JFrame implements KeyListener {
 	 */
 	public void keyReleased(final KeyEvent e) {
 
+	}
+
+	public static int getSquaresize() {
+		return squareSize;
+	}
+
+	public static int getViewWidth() {
+		return ViewFrame.viewWidth;
+	}
+
+	public static void setViewWidth(int viewWidth) {
+		ViewFrame.viewWidth = viewWidth;
+	}
+	
+	public static int getViewLength() {
+		return ViewFrame.viewLength;
+	}
+
+	public static void setViewLength(int viewLength) {
+		ViewFrame.viewLength = viewLength;
 	}
 }

@@ -1,0 +1,26 @@
+package entity.element.motionlessElement.fallingElement;
+
+import entity.Map;
+import entity.element.Position;
+import entity.element.Sprite;
+import entity.element.TraversableByAlive;
+import entity.element.TraversableByFalling;
+
+public class Rock extends FallingElement {
+	
+	private static final String spritePath = "/sprites/settings/";
+	private static final String imageName = "rock.png";
+	private static final char sprite_ref = 'O';
+	private static final TraversableByAlive traversableByAlive = TraversableByAlive.Pushable;
+	private static final TraversableByFalling traversableByFalling = TraversableByFalling.Slippery;
+	
+	private static final Sprite sprite = new Sprite(sprite_ref, spritePath, imageName);
+	
+	public Rock(Map map, Position position) {
+		super(map, position);
+		sprite.loadImage();
+		this.setSprite(sprite);
+		this.setTraversableByAlive(traversableByAlive);
+		this.setTraversableByFalling(traversableByFalling);
+	}
+}

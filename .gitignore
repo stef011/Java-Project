@@ -1,2 +1,16 @@
 target
 .idea
+/diagram/jpublankproject.vpp.bak_000f
+/diagram/jpublankproject.vpp.bak_001d
+/diagram/jpublankproject.vpp~48
+/diagram/jpublankproject.vpp.vbak
+/diagram/jpublankproject.vpp~49
+/diagram/jpublankproject.vux
+/diagram/jpublankproject.vux.vbak
+
+contract.iml
+controller.iml
+entity.iml
+main.iml
+model.iml
+view.iml

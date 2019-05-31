@@ -11,10 +11,10 @@ import contract.IView;
 public final class Controller implements IController {
 
 	/** The view. */
-	private IView		view;
+	private IView view;
 
 	/** The model. */
-	private IModel	model;
+	private IModel model;
 
 	/**
 	 * Instantiates a new controller.
@@ -31,14 +31,23 @@ public final class Controller implements IController {
 
 	/**
      * Control.
+	 * @throws InterruptedException 
      */
 	/*
 	 * (non-Javadoc)
 	 *
 	 * @see contract.IController#control()
 	 */
-	public void control() {
-		this.view.printMessage("Appuyer sur les touches 'E', 'F', 'D' ou 'I', pour afficher Hello world dans la langue d votre choix.");
+	public void play() throws InterruptedException {
+		while(this.getModel().getMap().getPlayer().isAlive() && this.getModel().getMap().getPlayer().getScore()<this.getModel().getMap().getGoal()) {
+			Thread.sleep(200);
+			int i = 0;
+			while(i < this.getModel().getMap().getFallingElements().size()) {
+				this.getModel().getMap().getFallingElements().get(i).fall();
+				i++;
+			}
+		}
+		this.getView().printMessage("Game Over");
 	}
 
 	/**
@@ -50,6 +59,10 @@ public final class Controller implements IController {
 	private void setView(final IView pview) {
 		this.view = pview;
 	}
+	
+	private IView getView() {
+		return this.view;
+	}
 
 	/**
 	 * Sets the model.
@@ -59,6 +72,10 @@ public final class Controller implements IController {
 	 */
 	private void setModel(final IModel model) {
 		this.model = model;
+	}
+	
+	private IModel getModel() {
+		return this.model;
 	}
 
 	/**
@@ -74,21 +91,30 @@ public final class Controller implements IController {
 	 */
 	public void orderPerform(final ControllerOrder controllerOrder) {
 		switch (controllerOrder) {
-			case English:
-				this.model.loadHelloWorld("GB");
+			case Up:
+				this.getModel().getMap().getPlayer().move("Up");
 				break;
-			case Francais:
-				this.model.loadHelloWorld("FR");
+			case Down:
+				this.getModel().getMap().getPlayer().move("Down");
 				break;
-			case Deutsch:
-				this.model.loadHelloWorld("DE");
+			case Left:
+				this.getModel().getMap().getPlayer().move("Left");
 				break;
-			case Indonesia:
-				this.model.loadHelloWorld("ID");
+			case Right:
+				this.getModel().getMap().getPlayer().move("Right");
+				break;
+			case Else:
+				System.out.println("Not a valid key!");
 				break;
 			default:
 				break;
 		}
+	}
+
+	@Override
+	public void control() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

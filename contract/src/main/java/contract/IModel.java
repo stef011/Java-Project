@@ -2,7 +2,7 @@ package contract;
 
 import java.util.Observable;
 
-import entity.HelloWorld;
+import entity.Map;
 
 /**
  * The Interface IModel.
@@ -16,7 +16,7 @@ public interface IModel {
 	 *
 	 * @return the helloworld entity
 	 */
-	HelloWorld getHelloWorld();
+	Map getMap();
 
 	/**
 	 * Load the message.
@@ -24,7 +24,9 @@ public interface IModel {
 	 * @param code
 	 *          the code
 	 */
-	void loadHelloWorld(String code);
+	void loadMap(String name);
+	
+	char loadElementSpriteRef(int id_map, int x, int y);
 
 	/**
 	 * Gets the observable.

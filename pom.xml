@@ -5,10 +5,11 @@
 	<groupId>jpublankproject</groupId>
 	<artifactId>masterpom</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>pom</packaging>
+	<packaging>pom</packaging>m
 	<name>Master POM</name>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<skipDeploy>true</skipDeploy>
 	</properties>
 	<modules>
 		<module>view</module>
@@ -78,7 +79,6 @@
 						</goals>
 						<phase>site</phase>
 						<configuration>
-                    <skipDeploy>true</skipDeploy>
 						</configuration>
 					</execution>
 				</executions>

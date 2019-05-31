@@ -1,5 +1,6 @@
 package entity.element.aliveElement;
 
+import entity.element.Breakable;
 import entity.element.Direction;
 import entity.Map;
 import entity.element.Position;
@@ -44,6 +45,7 @@ public class Player extends AliveElement {
 		right.loadImage();
 		
 		this.setScore(0);
+		this.setBreakable(Breakable.Nop);
 		this.setSprite(front);
 		this.setTraversableByAlive(traversableByAlive);
 		this.setTraversableByFalling(traversableByFalling);

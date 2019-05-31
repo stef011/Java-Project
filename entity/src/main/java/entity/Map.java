@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import entity.element.Element;
 import entity.element.Position;
 import entity.element.aliveElement.AliveElement;
+import entity.element.aliveElement.Mob;
 import entity.element.aliveElement.Player;
 import entity.element.motionlessElement.fallingElement.FallingElement;
 import entity.element.ElementFactory;
@@ -20,7 +21,7 @@ public class Map extends Entity {
 	private Element onTheMap[][];
 	private Player player;
 	private ArrayList<FallingElement> fallingElements = new ArrayList<FallingElement>();
-	private ArrayList<Element> mobs = new ArrayList<Element>();
+	private ArrayList<Mob> mobs = new ArrayList<Mob>();
 	
 	public Map() {
 		
@@ -62,7 +63,7 @@ public class Map extends Entity {
 					this.setOnTheMapXY(x, y, fallingElements.get(fallingElements.lastIndexOf(fallingElement)));
 					
 				} else if(elementSpriteRef[x][y] == 'M') {
-					Element mob = ElementFactory.createMob(this, new Position(x, y));
+					Mob mob = ElementFactory.createMob(this, new Position(x, y));
 					mobs.add(mob);
 					this.setOnTheMapXY(x, y, mobs.get(mobs.lastIndexOf(mob)));
 					
@@ -148,11 +149,11 @@ public class Map extends Entity {
 		this.fallingElements = fallingElements;
 	}
 
-	public ArrayList<Element> getMobs() {
+	public ArrayList<Mob> getMobs() {
 		return this.mobs;
 	}
 
-	public void setMobs(ArrayList<Element> mobs) {
+	public void setMobs(ArrayList<Mob> mobs) {
 		this.mobs = mobs;
 	}
 	

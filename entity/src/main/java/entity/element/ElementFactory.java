@@ -1,6 +1,7 @@
 package entity.element;
 
 import entity.Map;
+
 import entity.element.aliveElement.Mob;
 import entity.element.aliveElement.Player;
 import entity.element.motionlessElement.Dirt;
@@ -36,7 +37,7 @@ public abstract class ElementFactory {
 		return new Player(map, position);
 	}
 	
-	public static Element createMob(Map map, Position position) {
+	public static Mob createMob(Map map, Position position) {
 		return new Mob(map, position);
 	}
 	

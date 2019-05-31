@@ -46,6 +46,11 @@ public final class Controller implements IController {
 				this.getModel().getMap().getFallingElements().get(i).fall();
 				i++;
 			}
+			int j = 0;
+			while(j < this.getModel().getMap().getMobs().size()) {
+				this.getModel().getMap().getMobs().get(j).activate();
+				j++;
+			}
 		}
 		this.getView().printMessage("Game Over");
 	}

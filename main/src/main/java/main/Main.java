@@ -24,7 +24,7 @@ public abstract class Main {
      * @throws InterruptedException 
      */
     public static void main(final String[] args) throws InterruptedException {
-        final Model model = new Model("Catacombs");
+        final Model model = new Model("Cave");
         final View view = new View(model);
         final Controller controller = new Controller(view, model);
         view.setController(controller);

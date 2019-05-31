@@ -63,4 +63,10 @@ public class FallingElement extends MotionlessElement {
 			doNothing();
 		}
 	}
+	
+	@Override
+	public void replaceByDiamond() {
+		super.replaceByDiamond();
+		this.getMap().getFallingElements().remove(this);
+	}
 }

@@ -29,6 +29,14 @@ public class Element extends Entity implements IMovement{
 		this.getMap().setOnTheMapXY(this.getPosition().getX(), this.getPosition().getY(), ElementFactory.createEmptySpace(this.getMap(), this.getPosition()));
 	}
 	
+	public void replaceByDiamond() {
+		if(this.getBreakable()!=Breakable.Nop) {
+			FallingElement diamond = ElementFactory.createDiamond(this.getMap(), this.getPosition());
+			this.getMap().getFallingElements().add(diamond);
+			this.getMap().setOnTheMapXY(this.getPosition().getX(), this.getPosition().getY(), this.getMap().getFallingElements().get(this.getMap().getFallingElements().lastIndexOf(diamond)));
+		}
+	}
+	
 	public Direction stringToDirection(String str) {
 		switch(str) {
 		case "Up":

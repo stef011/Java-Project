@@ -35,9 +35,8 @@ public final class View implements IView, Runnable {
 	 */
 	public View(final IModel model) {
 		this.viewFrame = new ViewFrame(model);
+		this.setModel(model);
 		SwingUtilities.invokeLater(this);
-
-
 	}
 
 	/**
@@ -102,6 +101,8 @@ public final class View implements IView, Runnable {
         this.viewFrame.dispose();
     }
 	
+	
+	
 	public void selectNextPauseElement(int index) {
 		this.getViewFrame().selectPauseElement(index);
 	}
@@ -121,7 +122,6 @@ public final class View implements IView, Runnable {
 		return this.getViewFrame().getPauseElements().size();
 	}
 
-	@Override
 	public void performPauseActions() {
 		int i = 0;
 		while(i < this.getViewFrame().getPauseElements().size()) {
@@ -149,13 +149,75 @@ public final class View implements IView, Runnable {
 		return this.getViewFrame().getMainMenuElements().size();
 	}
 	
-	@Override
 	public void performMainMenuActions() {
 		int i = 0;
 		while(i < this.getViewFrame().getMainMenuElements().size()) {
 			this.getViewFrame().getController().performMenuRequest(this.getViewFrame().getMainMenuElements().get(i).MenuRequest());
 			i++;
 		}
+	}
+	
+	public void selectMenuElementUp() {
+		switch(this.getModel().getGameState()) {
+		case Pause:
+			if(this.indexOfPauseSelected()==0) {
+				this.selectNextPauseElement(this.sizeOfPauseElements()-1);
+			} else {
+				this.selectNextPauseElement(this.indexOfPauseSelected()-1);
+			}
+			break;
+		case Menu:
+			if(this.indexOfMainMenuSelected()==0) {
+				this.selectNextMainMenuElement(this.sizeOfMainMenuElements()-1);
+			} else {
+				this.selectNextMainMenuElement(this.indexOfMainMenuSelected()-1);
+			}
+			break;
+		default:
+			break;
+		}
+	}
+	
+	public void selectMenuElementDown() {
+		switch(this.getModel().getGameState()) {
+		case Pause:
+			if(this.indexOfPauseSelected()==this.sizeOfPauseElements()-1) {
+				this.selectNextPauseElement(0);
+			} else {
+				this.selectNextPauseElement(this.indexOfPauseSelected()+1);
+			}
+			break;
+		case Menu:
+			if(this.indexOfMainMenuSelected()==this.sizeOfMainMenuElements()-1) {
+				this.selectNextMainMenuElement(0);
+			} else {
+				this.selectNextMainMenuElement(this.indexOfMainMenuSelected()+1);
+			}
+			break;
+		default:
+			break;
+		}
+	}
+	
+	public void performMenuActions() {
+		switch(this.getModel().getGameState()) {
+		case Pause:
+			this.performPauseActions();
+			break;
+		case Menu:
+			this.performMainMenuActions();
+			break;
+		default:
+			break;
+		}
+	}
+	
+	public IModel getModel() {
+		return this.model;
+	}
+	
+	public void setModel(IModel model) {
+		this.model=model;
 	}
 
 }

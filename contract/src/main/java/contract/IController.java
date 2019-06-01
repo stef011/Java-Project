@@ -10,7 +10,7 @@ public interface IController {
 	/**
 	 * Control.
 	 */
-	public void control();
+	public void play();
 
 	/**
 	 * Order perform.

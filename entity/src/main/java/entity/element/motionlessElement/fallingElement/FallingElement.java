@@ -42,8 +42,9 @@ public class FallingElement extends MotionlessElement {
 		this.falling = falling;
 	}
 	
-	public boolean checkIfCanSlide(Direction direction) {
-		if(this.checkFallingPermeability(direction)==TraversableByFalling.Traversable && this.lookAtNextBlock(direction).checkFallingPermeability(Direction.Down)==TraversableByFalling.Traversable) {
+	public boolean checkIfCanSlide(Direction direction, Direction directionDiag) {
+		if(this.checkFallingPermeability(direction)==TraversableByFalling.Traversable 
+				&& this.checkFallingPermeability(directionDiag)==TraversableByFalling.Traversable) {
 			return true;
 		} else {
 			return false;
@@ -51,10 +52,10 @@ public class FallingElement extends MotionlessElement {
 	}
 	
 	public void slide() {
-		if(this.checkIfCanSlide(Direction.Left)) {
+		if(this.checkIfCanSlide(Direction.Left, Direction.LeftDown)) {
 			this.setFalling(true);
 			this.moveLeft();
-		} else if(this.checkIfCanSlide(Direction.Right)) {
+		} else if(this.checkIfCanSlide(Direction.Right, Direction.RightDown)) {
 			this.setFalling(true);
 			this.moveRight();
 		} else {

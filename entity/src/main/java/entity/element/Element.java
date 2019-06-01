@@ -30,9 +30,11 @@ public class Element extends Entity implements IMovement{
 	}
 	
 	public void replaceByDiamond() {
+		if(this.getBreakable()==Breakable.Breakable){
 			FallingElement diamond = ElementFactory.createDiamond(this.getMap(), this.getPosition());
 			this.getMap().getFallingElements().add(diamond);
 			this.getMap().setOnTheMapXY(this.getPosition().getX(), this.getPosition().getY(), this.getMap().getFallingElements().get(this.getMap().getFallingElements().lastIndexOf(diamond)));
+		}
 	}
 	
 	public Direction stringToDirection(String str) {
@@ -63,6 +65,14 @@ public class Element extends Entity implements IMovement{
 			return this.getMap().getOnTheMapXY(x-1, y);
 		case Right:
 			return this.getMap().getOnTheMapXY(x+1, y);
+		case RightDown:
+			return this.getMap().getOnTheMapXY(x+1, y+1);
+		case LeftDown:
+			return this.getMap().getOnTheMapXY(x-1, y+1);
+		case RightUp:
+			return this.getMap().getOnTheMapXY(x+1, y-1);
+		case LeftUp:
+			return this.getMap().getOnTheMapXY(x-1, y-1);
 		}
 		return null;
 	}

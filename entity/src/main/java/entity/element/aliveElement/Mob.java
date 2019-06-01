@@ -85,10 +85,10 @@ public class Mob extends AliveElement {
 		this.lookAtNextBlock(Direction.Left).replaceByDiamond();
 		this.lookAtNextBlock(Direction.Down).replaceByDiamond();
 		this.lookAtNextBlock(Direction.Right).replaceByDiamond();
-		this.lookAtNextBlock(Direction.Up).lookAtNextBlock(Direction.Left).replaceByDiamond();
-		this.lookAtNextBlock(Direction.Up).lookAtNextBlock(Direction.Right).replaceByDiamond();
-		this.lookAtNextBlock(Direction.Down).lookAtNextBlock(Direction.Left).replaceByDiamond();
-		this.lookAtNextBlock(Direction.Down).lookAtNextBlock(Direction.Right).replaceByDiamond();
+		this.lookAtNextBlock(Direction.RightUp).replaceByDiamond();
+		this.lookAtNextBlock(Direction.RightDown).replaceByDiamond();
+		this.lookAtNextBlock(Direction.LeftDown).replaceByDiamond();
+		this.lookAtNextBlock(Direction.LeftUp).replaceByDiamond();
 	}
 
 }

@@ -32,30 +32,23 @@ public final class Controller implements IController {
 	}
 
 	/**
-     * Control.
+     * Play the game.
 	 * @throws InterruptedException 
      */
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see contract.IController#control()
+	 * @see contract.IController#play()
 	 */
-	public void gameLoop() {
-		this.getModel().setGameState(GameState.Menu);
-	}
-	
 	public void play() {
 		this.getModel().setGameState(GameState.Menu);
-		while(this.getModel().getGameState()==GameState.Menu) {
-			
+		while(this.getModel().getGameState()==GameState.Menu) {	
 		}
+		
 		this.getModel().setGameState(GameState.Playing);
 		while(this.getModel().getMap().getPlayer().isAlive() && this.getModel().getMap().getPlayer().getScore()<this.getModel().getMap().getGoal()) {
-			try {
-				Thread.sleep(200);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+
+			try {Thread.sleep(200);} catch (InterruptedException e) {e.printStackTrace();}
 			int i = 0;
 			while(i < this.getModel().getMap().getFallingElements().size()) {
 				this.getModel().getMap().getFallingElements().get(i).fall();
@@ -66,14 +59,9 @@ public final class Controller implements IController {
 				this.getModel().getMap().getMobs().get(j).moveMobs();
 				j++;
 			}
-			
 		}
 		this.getModel().setGameState(GameState.End);
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		try {Thread.sleep(3000);} catch (InterruptedException e) {e.printStackTrace();}
 		this.getView().closeFrame();
 		
 	}
@@ -202,11 +190,4 @@ public final class Controller implements IController {
 			break;
 		}
 	}
-
-	@Override
-	public void control() {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

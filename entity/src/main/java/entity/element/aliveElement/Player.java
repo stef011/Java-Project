@@ -122,9 +122,4 @@ public class Player extends AliveElement {
 	public void setScore(int score) {
 		this.score = score;
 	}
-	
-	@Override
-	public void replaceByDiamond() {
-	}
-	
 }

@@ -21,7 +21,6 @@ class ViewPanel extends JPanel implements Observer {
 
 	/** The Image*/
 	private Image backgr;
-	private Image mainMenuBackgr;
 	
 	private static final int squareSize = ViewFrame.getSquaresize();
 	private static int viewLength = ViewFrame.getViewLength();
@@ -41,7 +40,6 @@ class ViewPanel extends JPanel implements Observer {
 	public ViewPanel(final ViewFrame viewFrame) {
 		this.setViewFrame(viewFrame);
 		this.loadBackgr();
-		this.loadMainMenuBackgr();
 		viewFrame.getModel().getObservable().addObserver(this);
 		
 		
@@ -74,22 +72,12 @@ class ViewPanel extends JPanel implements Observer {
 	public void update(final Observable arg0, final Object arg1) {
 		this.repaint();
 	}
-	
-	public void loadMainMenuBackgr(){
-		String ImagePath = "/sprites/main_menu_background/main_menu_background.png";
-		try {
-			this.setMainMenuBackgr(ImageIO.read(new File("D://Documents/eXia/Prosit/Bloc 5/Projet_UMLJava/Java-Project"+ImagePath)));
-		}
-		catch (Exception e){
-			viewFrame.printMessage("Error: File not found \n"+ ImagePath);
-		}
-	}
 
 	/**
 	 * load the Background image
 	 */
 	public void loadBackgr(){
-		String ImagePath = "/sprites/settings/background.png";
+		String ImagePath = "./sprites/settings/background.png";
 		try {
 			this.setBackgr(ImageIO.read(new File("D://Documents/eXia/Prosit/Bloc 5/Projet_UMLJava/Java-Project"+ImagePath)));
 		}
@@ -202,10 +190,12 @@ class ViewPanel extends JPanel implements Observer {
 	}
 	
 	public void menuView(Graphics g) {
-		
-		//the first drawImage is useless, but the code doesn't work when it's removed, so here it is
-		g.drawImage(this.getBackgr().getScaledInstance(squareSize, squareSize, Image.SCALE_DEFAULT), 0, 0, this);
-		g.drawImage(this.getMainMenuBackgr(), 0, 0, this);
+		for (int y = this.yStart(); y < this.yStart()+viewWidth; y++){
+			for (int x = this.xStart(); x < this.xStart()+viewLength; x++){
+				int xAff = x-this.xStart(), yAff = y-this.yStart();
+				g.drawImage(this.getBackgr().getScaledInstance(squareSize, squareSize, Image.SCALE_DEFAULT), xAff*squareSize, yAff*squareSize, this);
+			}
+		}
 		
 		int i = 0;
 		while(i < this.getViewFrame().getMainMenuElements().size()) {
@@ -226,14 +216,6 @@ class ViewPanel extends JPanel implements Observer {
 		g.drawString(this.getViewFrame().getPlay().getContent(), (ViewFrame.getWindowLength()/2)-(g.getFontMetrics(g.getFont()).stringWidth(this.getViewFrame().getPlay().getContent())/2), 300);
 		g.setColor(new Color(239, 226, 213, this.getViewFrame().getQuitGame2().getAlpha()));
 		g.drawString(this.getViewFrame().getQuitGame2().getContent(), (ViewFrame.getWindowLength()/2)-(g.getFontMetrics(g.getFont()).stringWidth(this.getViewFrame().getQuitGame2().getContent())/2), 500);
-	}
-
-	public Image getMainMenuBackgr() {
-		return this.mainMenuBackgr;
-	}
-
-	public void setMainMenuBackgr(Image mainMenuBackgr) {
-		this.mainMenuBackgr = mainMenuBackgr;
 	}
 	
 }

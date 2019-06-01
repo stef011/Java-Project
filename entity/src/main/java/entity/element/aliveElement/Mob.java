@@ -9,6 +9,7 @@ import entity.element.TraversableByFalling;
 
 public class Mob extends AliveElement {
 	
+	private boolean aggro;
 	private static final String spritePath = "/sprites/mobs/";
 	private static final String imageName = "mob.gif";
 	private static final char sprite_ref = 'M';
@@ -20,7 +21,8 @@ public class Mob extends AliveElement {
 	public Mob(Map map, Position position) {
 		super(map, position);
 		sprite.loadImage();
-		this.setSprite(sprite);	
+		this.setSprite(sprite);
+		this.setAggro(false);		
 		this.setTraversableByAlive(traversableByAlive);
 		this.setTraversableByFalling(traversableByFalling);
 	}
@@ -43,9 +45,11 @@ public class Mob extends AliveElement {
 		return lastMove;
 	}
 	
-	public void moveMobs() {
+	public void activate() {
 		Direction direction;
-		if(this.checkAlivePermeability(this.getLastMove())==TraversableByAlive.Traversable || this.checkAlivePermeability(this.getLastMove())==TraversableByAlive.Player) {
+		if(this.isAggro()) {
+			direction = this.getMap().getPlayer().getLastMove();
+		} else if(this.checkAlivePermeability(this.getLastMove())==TraversableByAlive.Traversable || this.checkAlivePermeability(this.getLastMove())==TraversableByAlive.Player) {
 			direction = this.getLastMove();
 		} else if(this.checkAlivePermeability(this.checkOnLeft(this.getLastMove()))==TraversableByAlive.Traversable || this.checkAlivePermeability(this.checkOnLeft(this.getLastMove()))==TraversableByAlive.Player) {
 			direction = this.checkOnLeft(this.getLastMove());
@@ -66,6 +70,11 @@ public class Mob extends AliveElement {
 		case Player:
 			this.getMap().getPlayer().die();
 			break;
+		case Breakable:
+		case Blocking:
+		case Pushable:
+		case Pickable:
+		case Mob:
 		default:
 			this.doNothing();
 			break;
@@ -75,8 +84,9 @@ public class Mob extends AliveElement {
 	@Override
 	public void die() {
 		super.die();
-		this.blow();
 		this.getMap().getMobs().remove(this);
+		this.blow();
+		
 	}
 	
 	public void blow() {
@@ -90,5 +100,17 @@ public class Mob extends AliveElement {
 		this.lookAtNextBlock(Direction.Down).lookAtNextBlock(Direction.Left).replaceByDiamond();
 		this.lookAtNextBlock(Direction.Down).lookAtNextBlock(Direction.Right).replaceByDiamond();
 	}
+	
+	public void takeAggro() {
+		
+	}
 
+	public boolean isAggro() {
+		return this.aggro;
+	}
+
+	public void setAggro(boolean aggro) {
+		this.aggro = aggro;
+	}
+	
 }

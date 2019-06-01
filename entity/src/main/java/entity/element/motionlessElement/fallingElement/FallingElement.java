@@ -23,6 +23,7 @@ public class FallingElement extends MotionlessElement {
 		case Alive:
 			if(this.isFalling()) {
 				this.getAliveElementOnBottom().die();
+				this.moveDown();
 			}
 			break;
 		case Slippery:
@@ -65,7 +66,7 @@ public class FallingElement extends MotionlessElement {
 	
 	@Override
 	public void replaceByDiamond() {
-		this.getMap().getFallingElements().remove(this);
 		super.replaceByDiamond();
+		this.getMap().getFallingElements().remove(this);
 	}
 }

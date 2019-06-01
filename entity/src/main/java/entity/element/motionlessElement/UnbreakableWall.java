@@ -24,8 +24,4 @@ public class UnbreakableWall extends MotionlessElement {
 		this.setTraversableByAlive(traversableByAlive);
 		this.setTraversableByFalling(traversableByFalling);
 	}
-	
-	@Override
-	public void replaceByDiamond() {
-	}
 }

@@ -113,7 +113,6 @@ public class Player extends AliveElement {
 		this.getMap().getFallingElements().remove(this.lookAtNextBlock(direction));
 		this.setScore(this.getScore()+1);
 		super.move(direction);
-		System.out.println(this.getScore()+"/"+this.getMap().getGoal());
 	}
 
 	public int getScore() {

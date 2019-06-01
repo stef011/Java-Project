@@ -3,6 +3,7 @@ package model;
 import java.sql.SQLException;
 import java.util.Observable;
 
+import contract.GameState;
 import contract.IModel;
 import entity.Map;
 /**
@@ -15,30 +16,13 @@ public final class Model extends Observable implements IModel {
 	/** The helloWorld. */
 	private Map map;
 	private char elementSpriteRef[][];
-
+	private GameState gameState;
+	
 	/**
 	 * Instantiates a new model.
 	 */
 	public Model(String MapName) {
-		this.map = new Map();
-		this.loadMap(MapName);
-		
-		elementSpriteRef = new char[this.getMap().getLength()][this.getMap().getWidth()];
-		for(int y=0; y<this.getMap().getWidth(); y++) {
-			for(int x=0; x<this.getMap().getLength(); x++) {
-				elementSpriteRef[x][y] = this.loadElementSpriteRef(this.getMap().getId(), x, y);
-			}
-		}
-		map = new Map(this.getMap(), elementSpriteRef);
-		
-		// Test
-		for(int y=0; y<this.getMap().getWidth(); y++) {
-			for(int x=0; x<this.getMap().getLength(); x++) {
-				System.out.print(this.getMap().getOnTheMapXY(x, y).getSprite().getSprite_ref());
-			}
-			System.out.print("\n");
-		}
-		// Test
+		this.buildMap(MapName);
 	}
 
 	/**
@@ -66,6 +50,7 @@ public final class Model extends Observable implements IModel {
 		this.setChanged();
 		this.notifyObservers();
 	}
+	
 
 	/**
      * Load hello world.
@@ -96,6 +81,20 @@ public final class Model extends Observable implements IModel {
 		}
 		return '_';
 	}
+	
+	public void buildMap(String mapName) {
+		this.map = new Map();
+		this.loadMap(mapName);
+		
+		elementSpriteRef = new char[this.getMap().getLength()][this.getMap().getWidth()];
+		for(int y=0; y<this.getMap().getWidth(); y++) {
+			for(int x=0; x<this.getMap().getLength(); x++) {
+				elementSpriteRef[x][y] = this.loadElementSpriteRef(this.getMap().getId(), x, y);
+			}
+		}
+		map = new Map(this.getMap(), elementSpriteRef);
+
+	}
 
 	/**
      * Gets the observable.
@@ -111,4 +110,11 @@ public final class Model extends Observable implements IModel {
 		return this;
 	}
 
+	public GameState getGameState() {
+		return this.gameState;
+	}
+
+	public void setGameState(GameState gameState) {
+		this.gameState = gameState;
+	}
 }

@@ -1,17 +1,17 @@
 package view;
 
-import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.io.File;
 
-import javax.imageio.ImageIO;
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+
 import javax.swing.SwingUtilities;
 
 import contract.ControllerOrder;
 import contract.IController;
 import contract.IModel;
 import contract.IView;
-import sun.awt.im.InputMethodManager;
+import view.menuElement.MenuElement;
+
 
 /**
  * The Class View.
@@ -26,7 +26,7 @@ public final class View implements IView, Runnable {
 
 	/** The model. */
 	private IModel model;
-
+	
 	/**
 	 * Instantiates a new view.
 	 *
@@ -57,6 +57,10 @@ public final class View implements IView, Runnable {
 				return ControllerOrder.Right;
 			case KeyEvent.VK_LEFT:
 				return ControllerOrder.Left;
+			case KeyEvent.VK_ESCAPE:
+				return ControllerOrder.Escape;
+			case KeyEvent.VK_ENTER:
+				return ControllerOrder.Enter;
 			default:
 				return ControllerOrder.Else;
 		}
@@ -93,6 +97,65 @@ public final class View implements IView, Runnable {
 	public ViewFrame getViewFrame() {
 		return this.viewFrame;
 	}
+	
+	public void closeFrame(){
+        this.viewFrame.dispose();
+    }
+	
+	public void selectNextPauseElement(int index) {
+		this.getViewFrame().selectPauseElement(index);
+	}
+	
+	public int indexOfPauseSelected() {
+		int i = 0;
+		while(i < this.getViewFrame().getPauseElements().size()) {
+			if(this.getViewFrame().getPauseElements().get(i).isSelected()) {
+				return i;
+			}
+			i++;
+		}
+		return 0;
+	}
+	
+	public int sizeOfPauseElements() {
+		return this.getViewFrame().getPauseElements().size();
+	}
 
+	@Override
+	public void performPauseActions() {
+		int i = 0;
+		while(i < this.getViewFrame().getPauseElements().size()) {
+			this.getViewFrame().getController().performMenuRequest(this.getViewFrame().getPauseElements().get(i).MenuRequest());
+			i++;
+		}
+	}
+	
+	public void selectNextMainMenuElement(int index) {
+		this.getViewFrame().selectMainMenuElement(index);
+	}
+	
+	public int indexOfMainMenuSelected() {
+		int i = 0;
+		while(i < this.getViewFrame().getMainMenuElements().size()) {
+			if(this.getViewFrame().getMainMenuElements().get(i).isSelected()) {
+				return i;
+			}
+			i++;
+		}
+		return 0;
+	}
+	
+	public int sizeOfMainMenuElements() {
+		return this.getViewFrame().getMainMenuElements().size();
+	}
+	
+	@Override
+	public void performMainMenuActions() {
+		int i = 0;
+		while(i < this.getViewFrame().getMainMenuElements().size()) {
+			this.getViewFrame().getController().performMenuRequest(this.getViewFrame().getMainMenuElements().get(i).MenuRequest());
+			i++;
+		}
+	}
 
 }

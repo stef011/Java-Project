@@ -39,6 +39,8 @@ public class Mob extends AliveElement {
 			return Direction.Right;
 		case Right:
 			return Direction.Up;
+		default:
+			break;
 		}
 		return lastMove;
 	}

@@ -168,6 +168,8 @@ public class Element extends Entity implements IMovement{
 		case Right:
 			this.moveRight();
 			break;
+		default:
+			break;
 		}
 		
 	}

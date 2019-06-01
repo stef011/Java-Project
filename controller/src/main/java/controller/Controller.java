@@ -63,7 +63,7 @@ public final class Controller implements IController {
 			}
 			int j = 0;
 			while(j < this.getModel().getMap().getMobs().size()) {
-				this.getModel().getMap().getMobs().get(j).activate();
+				this.getModel().getMap().getMobs().get(j).moveMobs();
 				j++;
 			}
 			
@@ -125,19 +125,8 @@ public final class Controller implements IController {
 					this.getModel().getMap().getPlayer().move("Up");
 					break;
 				case Pause:
-					if(this.getView().indexOfPauseSelected()==0) {
-						this.getView().selectNextPauseElement(this.getView().sizeOfPauseElements()-1);
-					} else {
-						this.getView().selectNextPauseElement(this.getView().indexOfPauseSelected()-1);
-					}
-					break;
 				case Menu:
-					if(this.getView().indexOfMainMenuSelected()==0) {
-						this.getView().selectNextMainMenuElement(this.getView().sizeOfMainMenuElements()-1);
-					} else {
-						this.getView().selectNextMainMenuElement(this.getView().indexOfMainMenuSelected()-1);
-					}
-					break;
+					this.getView().selectMenuElementUp();
 				default:
 					break;
 				}
@@ -148,45 +137,43 @@ public final class Controller implements IController {
 					this.getModel().getMap().getPlayer().move("Down");
 					break;
 				case Pause:
-					if(this.getView().indexOfPauseSelected()==this.getView().sizeOfPauseElements()-1) {
-						this.getView().selectNextPauseElement(0);
-					} else {
-						this.getView().selectNextPauseElement(this.getView().indexOfPauseSelected()+1);
-					}
-					break;
 				case Menu:
-					if(this.getView().indexOfMainMenuSelected()==this.getView().sizeOfMainMenuElements()-1) {
-						this.getView().selectNextMainMenuElement(0);
-					} else {
-						this.getView().selectNextMainMenuElement(this.getView().indexOfMainMenuSelected()+1);
-					}
+					this.getView().selectMenuElementDown();
 					break;
 				default:
 					break;
 				}
 				break;
 			case Left:
-				this.getModel().getMap().getPlayer().move("Left");
+				if(this.getModel().getGameState()==GameState.Playing) {
+					this.getModel().getMap().getPlayer().move("Left");
+				}
 				break;
 			case Right:
-				this.getModel().getMap().getPlayer().move("Right");
+				if(this.getModel().getGameState()==GameState.Playing) {
+					this.getModel().getMap().getPlayer().move("Right");
+				}
 				break;
 			case Escape:
-				if(this.getModel().getGameState()==GameState.Playing) {
+				switch(this.getModel().getGameState()) {
+				case Playing:
 					this.getModel().setGameState(GameState.Pause);
-				} else if(this.getModel().getGameState()==GameState.End) {
+					break;
+				case End:
 					this.getModel().setGameState(GameState.Menu);
-				} else if(this.getModel().getGameState()==GameState.Pause) {
+					break;
+				case Pause:
 					this.getModel().setGameState(GameState.Playing);
+					break;
+				default:
+					break;
 				}
 				break;
 			case Enter:
 				switch(this.getModel().getGameState()) {
 				case Pause:
-					this.getView().performPauseActions();
-					break;
 				case Menu:
-					this.getView().performMainMenuActions();
+					this.getView().performMenuActions();
 					break;
 				default:
 					break;

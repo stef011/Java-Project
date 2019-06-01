@@ -30,8 +30,8 @@ class ViewFrame extends JFrame implements KeyListener {
 	/** The controller. */
 	private IController controller;
 	
-	private static int windowLength = 1280;
-	private static int windowWidth = 720;
+	private static int windowLength = 1920;
+	private static int windowWidth = 1080;
 	private static int viewLength = 16;
 	private static int viewWidth = 9;
 	private static int squareSize = getWindowLength()/viewLength;
@@ -39,13 +39,13 @@ class ViewFrame extends JFrame implements KeyListener {
 	/** The Constant serialVersionUID. */
 	private static final long	serialVersionUID	= -697358409737458175L;
 	
-	private MenuElement resume = new Resume("RESUME", 80, 100);
-	private MenuElement mainMenu = new MainMenu("MAIN MENU", 80, 100);
-	private MenuElement quitGame = new QuitGame("QUIT GAME", 80, 100);
+	private MenuElement resume = new Resume("RESUME", windowWidth/8, 100);
+	private MenuElement mainMenu = new MainMenu("MAIN MENU", windowWidth/8, 100);
+	private MenuElement quitGame = new QuitGame("QUIT GAME", windowWidth/8, 100);
 	private ArrayList<MenuElement> pauseElements = new ArrayList<MenuElement>();
 	
-	private MenuElement play = new Play("PLAY", 80, 100);
-	private MenuElement quitGame2 = new QuitGame("QUIT GAME", 80, 100);
+	private MenuElement play = new Play("PLAY", windowWidth/8, 100);
+	private MenuElement quitGame2 = new QuitGame("QUIT GAME", windowWidth/8, 100);
 	private ArrayList<MenuElement> mainMenuElements = new ArrayList<MenuElement>();
 	
 	/**
@@ -150,12 +150,14 @@ class ViewFrame extends JFrame implements KeyListener {
 	private void buildViewFrame(final IModel model) {
 		this.setModel(model);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setResizable(true);
+		this.setResizable(false);
 		this.setTitle("Boulderdash - grp 1 edition");
 		this.addKeyListener(this);
 		this.setContentPane(new ViewPanel(this));
 		this.setSize(getWindowLength(), getWindowWidth());
 		this.setLocationRelativeTo(null);
+		this.requestFocus();
+		this.setUndecorated(true);
 		
 		getPauseElements().add(getResume());
 		getPauseElements().add(getMainMenu());

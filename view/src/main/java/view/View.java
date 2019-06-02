@@ -71,19 +71,19 @@ public final class View implements IView, Runnable {
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see contract.IView#printMessage(java.lang.String)
+	/**
+	 * Prints message
+	 * 
+	 * @param message
+	 * 			The message
 	 */
 	public void printMessage(final String message) {
 		this.viewFrame.printMessage(message);
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
+	 * Sets visibility on "true"
 	 *
-	 * @see java.lang.Runnable#run()
 	 */
 	public void run() {
 		this.viewFrame.setVisible(true);
@@ -98,21 +98,32 @@ public final class View implements IView, Runnable {
 	public void setController(final IController controller) {
 		this.viewFrame.setController(controller);
 	}
-	
+	/**
+	 * Gets the ViewFrame
+	 */
 	public ViewFrame getViewFrame() {
 		return this.viewFrame;
 	}
-	
+	/**
+	 * Closes the ViewFrame
+	 */
 	public void closeFrame(){
         this.viewFrame.dispose();
     }
 	
 	
-	
+	/**
+	 * Selects the element
+	 * @param index
+	 * 			The index
+	 */
 	public void selectNextPauseElement(int index) {
 		this.getViewFrame().selectPauseElement(index);
 	}
-	
+	/**
+	 * Sets the index of the selected element
+	 * @return 0
+	 */
 	public int indexOfPauseSelected() {
 		int i = 0;
 		while(i < this.getViewFrame().getPauseElements().size()) {
@@ -123,11 +134,17 @@ public final class View implements IView, Runnable {
 		}
 		return 0;
 	}
-	
+	/**
+	 * Sets the size of the element
+	 * According to what is in our array list
+	 */
 	public int sizeOfPauseElements() {
 		return this.getViewFrame().getPauseElements().size();
 	}
-
+	/**
+	 * Allows the player to pause the game
+	 * 
+	 */
 	public void performPauseActions() {
 		int i = 0;
 		while(i < this.getViewFrame().getPauseElements().size()) {
@@ -135,11 +152,20 @@ public final class View implements IView, Runnable {
 			i++;
 		}
 	}
-	
+	/**
+	 * Selects the main menue element
+	 * 
+	 * @param index
+	 *		The index
+	 */
 	public void selectNextMainMenuElement(int index) {
 		this.getViewFrame().selectMainMenuElement(index);
 	}
-	
+	/**
+	 * Sets the index of the main menu
+	 * 
+	 * @return 0
+	 */
 	public int indexOfMainMenuSelected() {
 		int i = 0;
 		while(i < this.getViewFrame().getMainMenuElements().size()) {
@@ -150,11 +176,18 @@ public final class View implements IView, Runnable {
 		}
 		return 0;
 	}
-	
+	/**
+	 * Sets the size of main menue elements
+	 * 
+	 * Gets the size from the ArrayList <MenuElement>
+	 */
 	public int sizeOfMainMenuElements() {
 		return this.getViewFrame().getMainMenuElements().size();
 	}
-	
+	/**
+	 * Allows the player to perform a menu request
+	 * 
+	 */
 	public void performMainMenuActions() {
 		int i = 0;
 		while(i < this.getViewFrame().getMainMenuElements().size()) {
@@ -162,7 +195,9 @@ public final class View implements IView, Runnable {
 			i++;
 		}
 	}
-	
+	/**
+	 * Sets the menu elements up
+	 */
 	public void selectMenuElementUp() {
 		switch(this.getModel().getGameState()) {
 		case Pause:
@@ -183,7 +218,10 @@ public final class View implements IView, Runnable {
 			break;
 		}
 	}
-	
+	/**
+	 * Sets the menu elements down
+	 * 
+	 */
 	public void selectMenuElementDown() {
 		switch(this.getModel().getGameState()) {
 		case Pause:
@@ -204,7 +242,9 @@ public final class View implements IView, Runnable {
 			break;
 		}
 	}
-	
+	/**
+	 * Executes the menu method according to the state of GameState from the class model model
+	 */
 	public void performMenuActions() {
 		switch(this.getModel().getGameState()) {
 		case Pause:

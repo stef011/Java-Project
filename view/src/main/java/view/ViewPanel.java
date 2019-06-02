@@ -18,9 +18,9 @@ class ViewPanel extends JPanel implements Observer {
 
 	/** The view frame. */
 	private ViewFrame viewFrame;
-
-	/** The Image*/
+	/** The Background image */
 	private Image backgr;
+	/** The Main Menu Background image */
 	private Image mainMenuBackgr;
 	
 	private static int squareSize = ViewFrame.getSquaresize();
@@ -29,8 +29,6 @@ class ViewPanel extends JPanel implements Observer {
 
 	/** The Constant serialVersionUID. */
 	private static final long	serialVersionUID	= -998294702363713521L;
-	
-	
 	
 	/**
 	 * Instantiates a new view panel.
@@ -43,8 +41,6 @@ class ViewPanel extends JPanel implements Observer {
 		this.loadBackgr();
 		this.loadMainMenuBackgr();
 		viewFrame.getModel().getObservable().addObserver(this);
-		
-		
 	}
 
 	/**
@@ -67,15 +63,16 @@ class ViewPanel extends JPanel implements Observer {
 	}
 
 	/**
-	 * Updates.
+	 * Repaint the Panel when the Observer gets an update.
 	 * 
 	 * @param Observable arg0, Object arg1
 	 */
 	public void update(final Observable arg0, final Object arg1) {
 		this.repaint();
 	}
+	
 	/**
-	 * Loads the menu background.
+	 * Loads the main Menu Background image.
 	 */
 	public void loadMainMenuBackgr(){
 		/**Sets the image path for background. */
@@ -91,7 +88,7 @@ class ViewPanel extends JPanel implements Observer {
 	}
 
 	/**
-	 * load the Background image
+	 * Loads the Background image.
 	 */
 	public void loadBackgr(){
 		String ImagePath = "sprites/settings/background.png";
@@ -102,24 +99,27 @@ class ViewPanel extends JPanel implements Observer {
 			viewFrame.printMessage("Error: File not found \n"+ ImagePath);
 		}
 	}
+	
 	/**
-	 * Gets the Image backgr.
+	 * Gets the Background image.
 	 * 
-	 * @return this.backgr
+	 * @return backgr
 	 */
 	public Image getBackgr() {
 		return this.backgr;
 	}
+	
 	/**
-	 * Sets the Image backgr.
+	 * Sets the Image Background image.
 	 * 
 	 * @param backgr
 	 */
 	public void setBackgr(Image backgr) {
 		this.backgr = backgr;
 	}
+	
 	/**
-	 * Sets the start view for X axis.
+	 * Calculates the x on the map where the View musts start generating.
 	 * 
 	 * @return xStart
 	 */
@@ -129,8 +129,9 @@ class ViewPanel extends JPanel implements Observer {
 		if(xStart>=this.getViewFrame().getModel().getMap().getLength()-viewLength) {xStart=this.getViewFrame().getModel().getMap().getLength()-viewLength;}
 		return xStart;
 	}
+	
 	/**
-	 * Sets the start view for Y axis.
+	 * Calculates the x on the map where the View musts start generating.
 	 * 
 	 * @return yStart
 	 */
@@ -140,8 +141,9 @@ class ViewPanel extends JPanel implements Observer {
 		if(yStart>=this.getViewFrame().getModel().getMap().getWidth()-viewWidth) {yStart=this.getViewFrame().getModel().getMap().getWidth()-viewWidth;}
 		return yStart;
 	}
+	
 	/**
-	 * creates the paintComponent g.
+	 * Paint the Components of the Panel.
 	 * 
 	 */
 	public void paintComponent(Graphics g){
@@ -164,8 +166,9 @@ class ViewPanel extends JPanel implements Observer {
 			break;
 		}	
 	}
+	
 	/**
-	 * Displays the start position of the view g.
+	 * Displays the view of the game.
 	 * 
 	 * @param g
 	 */
@@ -180,8 +183,9 @@ class ViewPanel extends JPanel implements Observer {
 		}
 		this.showGameInfo((Graphics2D) g);
 	}
+	
 	/** 
-	 * Sets g2.
+	 * Shows the in-game info (Diamond counter and the Map currently played)
 	 * 
 	 * @param g2
 	 */
@@ -195,8 +199,9 @@ class ViewPanel extends JPanel implements Observer {
 		g2.drawString("DIAMONDS: "+this.getViewFrame().getModel().getMap().getPlayer().getScore()+" / "+this.getViewFrame().getModel().getMap().getGoal(), 20, ViewFrame.getWindowWidth()-30);
 		g2.drawString("Map: "+this.getViewFrame().getModel().getMap().getName(), ViewFrame.getWindowLength()-g2.getFontMetrics(g2.getFont()).stringWidth("Map: XXXXXXXXXXX")-30, 70);
 	}
+	
 	/**
-	 * Sets the end view g.
+	 * Displays the view of the end of the game.
 	 * 
 	 * @param g
 	 */
@@ -208,10 +213,10 @@ class ViewPanel extends JPanel implements Observer {
 		g.setFont(new Font("STENCIL", Font.BOLD, 240));
 		g.setColor(new Color(239, 226, 213, 200));
 		g.drawString("Game Over", (ViewFrame.getWindowLength()/2)-g.getFontMetrics(g.getFont()).stringWidth("Game Over")/2, (ViewFrame.getWindowWidth()/2)+80);
-
 	}
+	
 	/**
-	 * Pauses the view g
+	 * Displays the view of the pause.
 	 * 
 	 * @param g
 	 */
@@ -244,8 +249,9 @@ class ViewPanel extends JPanel implements Observer {
 		g.setColor(new Color(239, 226, 213, this.getViewFrame().getQuitGame().getAlpha()));
 		g.drawString(this.getViewFrame().getQuitGame().getContent(), (ViewFrame.getWindowLength()/2)-(g.getFontMetrics(g.getFont()).stringWidth(this.getViewFrame().getQuitGame().getContent())/2), 950);
 	}
+	
 	/**
-	 * Displays menu in the view g.
+	 * Displays the view of the Main Menu.
 	 * 
 	 * @param g
 	 */
@@ -277,6 +283,7 @@ class ViewPanel extends JPanel implements Observer {
 		g.setColor(new Color(239, 226, 213, this.getViewFrame().getQuitGame2().getAlpha()));
 		g.drawString(this.getViewFrame().getQuitGame2().getContent(), (ViewFrame.getWindowLength()/2)-(g.getFontMetrics(g.getFont()).stringWidth(this.getViewFrame().getQuitGame2().getContent())/2), 900);
 	}
+	
 	/**
 	 * Gets the image of the main menu background.
 	 * 
@@ -285,6 +292,7 @@ class ViewPanel extends JPanel implements Observer {
 	public Image getMainMenuBackgr() {
 		return this.mainMenuBackgr;
 	}
+	
 	/**
 	 * Sets the image of the main menu background.
 	 * 

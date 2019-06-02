@@ -72,7 +72,7 @@ public final class View implements IView, Runnable {
 	}
 
 	/**
-	 * Prints message
+	 * Prints message.
 	 * 
 	 * @param message
 	 * 			The message
@@ -82,7 +82,7 @@ public final class View implements IView, Runnable {
 	}
 
 	/**
-	 * Sets visibility on "true"
+	 * Makes the Frame visible.
 	 *
 	 */
 	public void run() {
@@ -98,31 +98,34 @@ public final class View implements IView, Runnable {
 	public void setController(final IController controller) {
 		this.viewFrame.setController(controller);
 	}
+	
 	/**
-	 * Gets the ViewFrame
+	 * Gets the ViewFrame.
+	 * @return viewFrame
 	 */
 	public ViewFrame getViewFrame() {
 		return this.viewFrame;
 	}
+	
 	/**
-	 * Closes the ViewFrame
+	 * Closes the Frame.
 	 */
 	public void closeFrame(){
         this.viewFrame.dispose();
     }
 	
-	
 	/**
-	 * Selects the element
+	 * Selects the Pause Element according to the index.
 	 * @param index
 	 * 			The index
 	 */
 	public void selectNextPauseElement(int index) {
 		this.getViewFrame().selectPauseElement(index);
 	}
+	
 	/**
-	 * Sets the index of the selected element
-	 * @return 0
+	 * Returns the index of the Pause element currently selected.
+	 * @return index
 	 */
 	public int indexOfPauseSelected() {
 		int i = 0;
@@ -134,15 +137,17 @@ public final class View implements IView, Runnable {
 		}
 		return 0;
 	}
+	
 	/**
-	 * Sets the size of the element
-	 * According to what is in our array list
+	 * Gets the size of the ArrayList of the Elements in the Pause menu.
+	 * @return size
 	 */
 	public int sizeOfPauseElements() {
 		return this.getViewFrame().getPauseElements().size();
 	}
+	
 	/**
-	 * Allows the player to pause the game
+	 * Performs the Action specified for each Pause menu Element selected.
 	 * 
 	 */
 	public void performPauseActions() {
@@ -152,19 +157,20 @@ public final class View implements IView, Runnable {
 			i++;
 		}
 	}
+	
 	/**
-	 * Selects the main menue element
-	 * 
+	 * Selects the Main Menu Element according to the index.
 	 * @param index
-	 *		The index
+	 * 			The index
 	 */
 	public void selectNextMainMenuElement(int index) {
 		this.getViewFrame().selectMainMenuElement(index);
 	}
+	
 	/**
-	 * Sets the index of the main menu
+	 * Returns the index of the Main menu element currently selected.
 	 * 
-	 * @return 0
+	 * @return index
 	 */
 	public int indexOfMainMenuSelected() {
 		int i = 0;
@@ -176,16 +182,16 @@ public final class View implements IView, Runnable {
 		}
 		return 0;
 	}
+	
 	/**
-	 * Sets the size of main menue elements
-	 * 
-	 * Gets the size from the ArrayList <MenuElement>
+	 * Gets the size of the ArrayList of the Elements in the Main menu.
+	 * @return size
 	 */
 	public int sizeOfMainMenuElements() {
 		return this.getViewFrame().getMainMenuElements().size();
 	}
 	/**
-	 * Allows the player to perform a menu request
+	 * Performs the Action specified for each Main menu Element selected.
 	 * 
 	 */
 	public void performMainMenuActions() {
@@ -195,8 +201,9 @@ public final class View implements IView, Runnable {
 			i++;
 		}
 	}
+	
 	/**
-	 * Sets the menu elements up
+	 * Selects the Menu Element on top of the Menu Element currently selected.
 	 */
 	public void selectMenuElementUp() {
 		switch(this.getModel().getGameState()) {
@@ -219,7 +226,7 @@ public final class View implements IView, Runnable {
 		}
 	}
 	/**
-	 * Sets the menu elements down
+	 * Selects the Menu Element on bottom of the Menu Element currently selected.
 	 * 
 	 */
 	public void selectMenuElementDown() {
@@ -242,8 +249,9 @@ public final class View implements IView, Runnable {
 			break;
 		}
 	}
+	
 	/**
-	 * Executes the menu method according to the state of GameState from the class model model
+	 * Performs the Action of the menus, depending on the current GameState.
 	 */
 	public void performMenuActions() {
 		switch(this.getModel().getGameState()) {
@@ -258,10 +266,20 @@ public final class View implements IView, Runnable {
 		}
 	}
 	
+	/**
+	 * Gets the Model.
+	 * @return model
+	 */
 	public IModel getModel() {
 		return this.model;
 	}
 	
+	/**
+	 * Sets the model.
+	 *
+	 * @param model
+	 *          the new model
+	 */
 	public void setModel(IModel model) {
 		this.model=model;
 	}

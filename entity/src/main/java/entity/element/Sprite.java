@@ -33,7 +33,7 @@ public class Sprite {
 		try {
 			this.setImage(ImageIO.read(new File(absolutePath+this.getSpritePath()+this.getImageName())));
 		} catch (IOException e) {
-			System.out.println("https://stackoverflow.com/search?q="+e.getMessage());
+			e.printStackTrace();
 		}
 	}
 

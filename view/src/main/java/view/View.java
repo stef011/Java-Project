@@ -36,6 +36,14 @@ public final class View implements IView, Runnable {
 		this.setModel(model);
 		SwingUtilities.invokeLater(this);
 	}
+	
+	/**
+	 * Instantiates a new view.
+	 *
+	 */
+	public View() {
+		this.viewFrame = new ViewFrame();
+	}
 
 	/**
 	 * Key code to controller order.

@@ -12,17 +12,17 @@ import org.junit.Test;
 import entity.Map;
 import entity.element.Direction;
 import entity.element.Position;
-import entity.element.motionlessElement.fallingElement.Diamond;
+import entity.element.motionlessElement.EmptySpace;
 
-public class MobTest {
-	private Mob mob;
+public class AliveElementTest {
+	private AliveElement aliveElement;
 	private Map map;
 	private char elementSpriteRef[][]={
 			{'#','#','#','#'},
 			{'#','O','X','#'},
 			{'#','^','M','#'},
 			{'@','#','#','#'} };
-	
+
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
@@ -34,7 +34,7 @@ public class MobTest {
 	@Before
 	public void setUp() throws Exception {
 		this.map = new Map(new Map(3, "Cave", 4, 4, 18), elementSpriteRef);
-		this.mob = new Mob(this.map, new Position(2, 2));
+		this.aliveElement = new AliveElement(map, new Position(2, 2));
 	}
 
 	@After
@@ -42,22 +42,23 @@ public class MobTest {
 	}
 
 	@Test
-	public void testCheckOnLeft() {
-		Direction expected = Direction.Right;
-		assertEquals(expected, this.mob.checkOnLeft(Direction.Down));
-	}
-	
-	@Test
-	public void testBlow() {
-		this.mob.blow();
-		Assert.assertTrue(this.map.getOnTheMapXY(this.mob.getPosition().getX(), this.mob.getPosition().getY()) instanceof Diamond);
+	public void testIsAlive() {
+		Assert.assertTrue(this.aliveElement.isAlive());
 	}
 	
 	@Test
 	public void testDie() {
-		this.mob.die();
-		Assert.assertFalse(this.mob.isAlive());
-		Assert.assertTrue(this.map.getOnTheMapXY(this.mob.getPosition().getX(), this.mob.getPosition().getY()) instanceof Diamond);
+		this.aliveElement.die();
+		int x = this.aliveElement.getPosition().getX();
+		int y = this.aliveElement.getPosition().getY();
+		Assert.assertFalse(this.aliveElement.isAlive());
+		Assert.assertTrue(this.map.getOnTheMapXY(x, y) instanceof EmptySpace);
+	}
+	
+	@Test
+	public void testSetGetLastMove() {
+		this.aliveElement.setLastMove(Direction.Up);
+		Assert.assertTrue(this.aliveElement.getLastMove()==Direction.Up);
 	}
 
 }

@@ -4,7 +4,7 @@ import entity.Map;
 import entity.element.Element;
 import entity.element.Position;
 
-public class MotionlessElement extends Element {
+public abstract class MotionlessElement extends Element {
 	public MotionlessElement(Map map, Position position){
 		super(map, position);
 	}

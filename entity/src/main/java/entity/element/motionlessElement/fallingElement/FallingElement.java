@@ -9,6 +9,8 @@ import entity.element.motionlessElement.MotionlessElement;
 public class FallingElement extends MotionlessElement {
 	
 	private boolean falling;
+	
+	
 	public FallingElement(Map map, Position position) {
 		super(map, position);
 		this.setFalling(false);
@@ -60,7 +62,6 @@ public class FallingElement extends MotionlessElement {
 			this.moveRight();
 		} else {
 			this.setFalling(false);
-			doNothing();
 		}
 	}
 	

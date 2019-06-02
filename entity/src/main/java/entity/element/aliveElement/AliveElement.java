@@ -19,32 +19,6 @@ public class AliveElement extends Element {
 		
 	}
 	
-	@Override
-	public void moveUp() {
-		super.moveUp();
-	}
-	
-	@Override
-	public void moveDown() {
-		super.moveDown();
-	}
-	
-	@Override
-	public void moveLeft() {
-		super.moveLeft();
-	}
-	
-	@Override
-	public void moveRight() {
-		super.moveRight();
-	}
-
-	@Override
-	public void move(Direction direction) {
-		this.setLastMove(direction);
-		super.move(direction);
-	}
-	
 	public void die() {
 		this.setAlive(false);
 		this.replaceByEmptySpace();

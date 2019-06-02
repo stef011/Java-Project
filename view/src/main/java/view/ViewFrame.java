@@ -34,7 +34,7 @@ class ViewFrame extends JFrame implements KeyListener {
 	private static int windowWidth = 1080;
 	private static int viewLength = 16;
 	private static int viewWidth = 9;
-	private static int squareSize = getWindowLength()/viewLength;
+	private static int squareSize = windowLength/viewLength;
 	
 	/** The Constant serialVersionUID. */
 	private static final long	serialVersionUID	= -697358409737458175L;

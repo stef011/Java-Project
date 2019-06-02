@@ -22,7 +22,16 @@ public final class Model extends Observable implements IModel {
 	 * Instantiates a new model.
 	 */
 	public Model(String MapName) {
-		this.buildMap(MapName);
+		this.map = new Map();
+		this.loadMap(MapName);
+		
+		elementSpriteRef = new char[this.getMap().getLength()][this.getMap().getWidth()];
+		for(int y=0; y<this.getMap().getWidth(); y++) {
+			for(int x=0; x<this.getMap().getLength(); x++) {
+				elementSpriteRef[x][y] = this.loadElementSpriteRef(this.getMap().getId(), x, y);
+			}
+		}
+		map = new Map(this.getMap(), elementSpriteRef);
 	}
 
 	/**
@@ -80,20 +89,6 @@ public final class Model extends Observable implements IModel {
 			e.printStackTrace();
 		}
 		return '_';
-	}
-	
-	public void buildMap(String mapName) {
-		this.map = new Map();
-		this.loadMap(mapName);
-		
-		elementSpriteRef = new char[this.getMap().getLength()][this.getMap().getWidth()];
-		for(int y=0; y<this.getMap().getWidth(); y++) {
-			for(int x=0; x<this.getMap().getLength(); x++) {
-				elementSpriteRef[x][y] = this.loadElementSpriteRef(this.getMap().getId(), x, y);
-			}
-		}
-		map = new Map(this.getMap(), elementSpriteRef);
-
 	}
 
 	/**

@@ -23,7 +23,7 @@ class ViewPanel extends JPanel implements Observer {
 	private Image backgr;
 	private Image mainMenuBackgr;
 	
-	private static final int squareSize = ViewFrame.getSquaresize();
+	private static int squareSize = ViewFrame.getSquaresize();
 	private static int viewLength = ViewFrame.getViewLength();
 	private static int viewWidth = ViewFrame.getViewWidth();
 

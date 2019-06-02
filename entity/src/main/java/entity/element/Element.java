@@ -6,7 +6,7 @@ import entity.element.motionlessElement.fallingElement.FallingElement;
 import entity.Entity;
 import entity.Map;
 
-public class Element extends Entity implements IMovement{
+public class Element extends Entity {
 	private Sprite sprite;
 	private Position position;
 	private Map map;
@@ -144,16 +144,12 @@ public class Element extends Entity implements IMovement{
 		this.getMap().setOnTheMapXY(this.getPosition().getX(), this.getPosition().getY(), this);
 	}
 	
-	public void doNothing() {
-		// As expected, this method does nothing.
+
+	public void move(String direction) {
+		this.move(this.stringToDirection(direction));
 	}
 
-	@Override
-	public void move(String direc) {
-		this.move(this.stringToDirection(direc));
-	}
 
-	@Override
 	public void move(Direction direction) {
 		switch(direction) {
 		case Up:
@@ -174,11 +170,9 @@ public class Element extends Entity implements IMovement{
 		
 	}
 
-
 	public Breakable getBreakable() {
 		return this.breakable;
 	}
-
 
 	public void setBreakable(Breakable breakable) {
 		this.breakable = breakable;

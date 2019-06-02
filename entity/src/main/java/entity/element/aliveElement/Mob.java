@@ -63,13 +63,13 @@ public class Mob extends AliveElement {
 	public void move(Direction direction) {
 		switch(this.checkAlivePermeability(direction)) {
 		case Traversable:
+			this.setLastMove(direction);
 			super.move(direction);
 			break;
 		case Player:
 			this.getMap().getPlayer().die();
 			break;
 		default:
-			this.doNothing();
 			break;
 		}
 	}

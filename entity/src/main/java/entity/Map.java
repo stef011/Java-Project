@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import entity.element.Element;
 import entity.element.Position;
 import entity.element.aliveElement.AliveElement;
+import entity.element.aliveElement.Mob;
 import entity.element.aliveElement.Player;
 import entity.element.motionlessElement.fallingElement.FallingElement;
 import entity.element.ElementFactory;
@@ -20,7 +21,7 @@ public class Map extends Entity {
 	private Element onTheMap[][];
 	private Player player;
 	private ArrayList<FallingElement> fallingElements = new ArrayList<FallingElement>();
-	private ArrayList<Element> mobs = new ArrayList<Element>();
+	private ArrayList<Mob> mobs = new ArrayList<Mob>();
 	
 	public Map() {
 		
@@ -44,37 +45,33 @@ public class Map extends Entity {
 		onTheMap = new Element[this.getLength()][this.getWidth()];
 		for(int y=0; y<this.getWidth(); y++) {
 			for(int x=0; x<this.getLength(); x++) {
-				if(elementSpriteRef[x][y] == '@') {
+				if(x==0 || y==0 || x==this.getLength()-1 || y==this.getWidth()-1) {
+					this.setOnTheMapXY(x, y, ElementFactory.createUnbreakableWall(this, new Position(x, y)));
+				
+				} else if(elementSpriteRef[x][y] == '@') {
 					player = ElementFactory.createPlayer(this, new Position(x, y));
 					this.setOnTheMapXY(x, y, this.getPlayer());
+					
 				} else if(elementSpriteRef[x][y] == 'O') {
 					FallingElement fallingElement = ElementFactory.createRock(this, new Position(x, y));
 					fallingElements.add(fallingElement);
 					this.setOnTheMapXY(x, y, fallingElements.get(fallingElements.lastIndexOf(fallingElement)));
+					
 				} else if(elementSpriteRef[x][y] == '^') {
 					FallingElement fallingElement = ElementFactory.createDiamond(this, new Position(x, y));
 					fallingElements.add(fallingElement);
 					this.setOnTheMapXY(x, y, fallingElements.get(fallingElements.lastIndexOf(fallingElement)));
+					
 				} else if(elementSpriteRef[x][y] == 'M') {
-					Element mob = ElementFactory.createMob(this, new Position(x, y));
+					Mob mob = ElementFactory.createMob(this, new Position(x, y));
 					mobs.add(mob);
 					this.setOnTheMapXY(x, y, mobs.get(mobs.lastIndexOf(mob)));
+					
 				} else {
 					this.setOnTheMapXY(x, y, ElementFactory.selectElementFromSpriteRef(elementSpriteRef[x][y], this, new Position(x, y)));
 				}
 			}
 		}
-	}
-	
-	public Element findOnMap(Element element) {
-		for(int y=0; y<this.getWidth(); y++) {
-			for(int x=0; x<this.getLength(); x++) {
-				if(this.getOnTheMapXY(x, y)==element) {
-					return element;
-				}
-			}
-		}
-		return null;
 	}
 
 	public int getId() {
@@ -141,11 +138,11 @@ public class Map extends Entity {
 		this.fallingElements = fallingElements;
 	}
 
-	public ArrayList<Element> getMobs() {
+	public ArrayList<Mob> getMobs() {
 		return this.mobs;
 	}
 
-	public void setMobs(ArrayList<Element> mobs) {
+	public void setMobs(ArrayList<Mob> mobs) {
 		this.mobs = mobs;
 	}
 	

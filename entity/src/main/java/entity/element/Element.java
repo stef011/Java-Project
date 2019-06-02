@@ -6,16 +6,18 @@ import entity.element.motionlessElement.fallingElement.FallingElement;
 import entity.Entity;
 import entity.Map;
 
-public class Element extends Entity implements IMovement{
+public class Element extends Entity {
 	private Sprite sprite;
 	private Position position;
 	private Map map;
 	private TraversableByAlive traversableByAlive;
 	private TraversableByFalling traversableByFalling;
+	private Breakable breakable;
 	
 	public Element(Map map, Position position) {
 		this.setPosition(position);
 		this.setMap(map);
+		this.setBreakable(Breakable.Breakable);
 	}
 	
 	
@@ -25,6 +27,14 @@ public class Element extends Entity implements IMovement{
 	
 	public void replaceByEmptySpace() {
 		this.getMap().setOnTheMapXY(this.getPosition().getX(), this.getPosition().getY(), ElementFactory.createEmptySpace(this.getMap(), this.getPosition()));
+	}
+	
+	public void replaceByDiamond() {
+		if(this.getBreakable()==Breakable.Breakable){
+			FallingElement diamond = ElementFactory.createDiamond(this.getMap(), this.getPosition());
+			this.getMap().getFallingElements().add(diamond);
+			this.getMap().setOnTheMapXY(this.getPosition().getX(), this.getPosition().getY(), this.getMap().getFallingElements().get(this.getMap().getFallingElements().lastIndexOf(diamond)));
+		}
 	}
 	
 	public Direction stringToDirection(String str) {
@@ -55,6 +65,14 @@ public class Element extends Entity implements IMovement{
 			return this.getMap().getOnTheMapXY(x-1, y);
 		case Right:
 			return this.getMap().getOnTheMapXY(x+1, y);
+		case RightDown:
+			return this.getMap().getOnTheMapXY(x+1, y+1);
+		case LeftDown:
+			return this.getMap().getOnTheMapXY(x-1, y+1);
+		case RightUp:
+			return this.getMap().getOnTheMapXY(x+1, y-1);
+		case LeftUp:
+			return this.getMap().getOnTheMapXY(x-1, y-1);
 		}
 		return null;
 	}
@@ -126,16 +144,12 @@ public class Element extends Entity implements IMovement{
 		this.getMap().setOnTheMapXY(this.getPosition().getX(), this.getPosition().getY(), this);
 	}
 	
-	public void doNothing() {
-		// As expected, this method does nothing.
+
+	public void move(String direction) {
+		this.move(this.stringToDirection(direction));
 	}
 
-	@Override
-	public void move(String direc) {
-		this.move(this.stringToDirection(direc));
-	}
 
-	@Override
 	public void move(Direction direction) {
 		switch(direction) {
 		case Up:
@@ -150,7 +164,17 @@ public class Element extends Entity implements IMovement{
 		case Right:
 			this.moveRight();
 			break;
+		default:
+			break;
 		}
 		
+	}
+
+	public Breakable getBreakable() {
+		return this.breakable;
+	}
+
+	public void setBreakable(Breakable breakable) {
+		this.breakable = breakable;
 	}
 }

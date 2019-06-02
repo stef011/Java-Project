@@ -3,6 +3,7 @@ package model;
 import java.sql.SQLException;
 import java.util.Observable;
 
+import contract.GameState;
 import contract.IModel;
 import entity.Map;
 /**
@@ -15,7 +16,8 @@ public final class Model extends Observable implements IModel {
 	/** The helloWorld. */
 	private Map map;
 	private char elementSpriteRef[][];
-
+	private GameState gameState;
+	
 	/**
 	 * Instantiates a new model.
 	 */
@@ -30,15 +32,6 @@ public final class Model extends Observable implements IModel {
 			}
 		}
 		map = new Map(this.getMap(), elementSpriteRef);
-		
-		// Test
-		for(int y=0; y<this.getMap().getWidth(); y++) {
-			for(int x=0; x<this.getMap().getLength(); x++) {
-				System.out.print(this.getMap().getOnTheMapXY(x, y).getSprite().getSprite_ref());
-			}
-			System.out.print("\n");
-		}
-		// Test
 	}
 
 	/**
@@ -66,6 +59,7 @@ public final class Model extends Observable implements IModel {
 		this.setChanged();
 		this.notifyObservers();
 	}
+	
 
 	/**
      * Load hello world.
@@ -111,4 +105,11 @@ public final class Model extends Observable implements IModel {
 		return this;
 	}
 
+	public GameState getGameState() {
+		return this.gameState;
+	}
+
+	public void setGameState(GameState gameState) {
+		this.gameState = gameState;
+	}
 }

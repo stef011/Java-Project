@@ -27,7 +27,10 @@ public interface IModel {
 	void loadMap(String name);
 	
 	char loadElementSpriteRef(int id_map, int x, int y);
-
+	
+	public void setGameState(GameState gameState);
+	
+	public GameState getGameState();
 	/**
 	 * Gets the observable.
 	 *

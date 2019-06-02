@@ -32,8 +32,7 @@ public class Sprite {
 		try {
 			this.setImage(ImageIO.read(new File("D://Documents/eXia/Prosit/Bloc 5/Projet_UMLJava/Java-Project"+this.getSpritePath()+this.getImageName())));
 		} catch (IOException e) {
-			System.out.println("Error on loading file: "+this.getSpritePath()+this.getImageName());
-			e.printStackTrace();
+			System.out.println("https://stackoverflow.com/search?q="+e.getMessage());
 		}
 	}
 

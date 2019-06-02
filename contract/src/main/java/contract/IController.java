@@ -10,7 +10,7 @@ public interface IController {
 	/**
 	 * Control.
 	 */
-	public void control();
+	public void play();
 
 	/**
 	 * Order perform.
@@ -19,4 +19,6 @@ public interface IController {
 	 *          the controller order
 	 */
 	public void orderPerform(ControllerOrder controllerOrder);
+	
+	public void performMenuRequest(MenuActions menuActions);
 }

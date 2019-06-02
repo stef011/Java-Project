@@ -7,6 +7,7 @@ import entity.element.Position;
 
 public class AliveElement extends Element {
 	
+	private Direction lastMove = Direction.Left;
 	private boolean alive;
 	
 	public AliveElement(Map map, Position position) {
@@ -14,29 +15,8 @@ public class AliveElement extends Element {
 		this.setAlive(true);
 	}
 	
-	@Override
-	public void moveUp() {
-		super.moveUp();
-	}
-	
-	@Override
-	public void moveDown() {
-		super.moveDown();
-	}
-	
-	@Override
-	public void moveLeft() {
-		super.moveLeft();
-	}
-	
-	@Override
-	public void moveRight() {
-		super.moveRight();
-	}
-
-	@Override
-	public void move(Direction direction) {
-		super.move(direction);
+	public AliveElement() {
+		
 	}
 	
 	public void die() {
@@ -50,5 +30,13 @@ public class AliveElement extends Element {
 
 	public void setAlive(boolean alive) {
 		this.alive = alive;
+	}
+
+	public Direction getLastMove() {
+		return lastMove;
+	}
+
+	public void setLastMove(Direction lastMove) {
+		this.lastMove = lastMove;
 	}
 }

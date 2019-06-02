@@ -1,5 +1,7 @@
 package contract;
 
+
+
 /**
  * The Interface IView.
  *
@@ -14,6 +16,14 @@ public interface IView {
 	 *          the message
 	 */
 	void printMessage(final String message);
+	
+	public void closeFrame();
 
 	Object getViewFrame();
+
+	void performMenuActions();
+
+	public void selectMenuElementUp();
+	
+	public void selectMenuElementDown();
 }

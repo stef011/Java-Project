@@ -1,10 +1,12 @@
 package entity.element;
 
 import entity.Map;
+
 import entity.element.aliveElement.Mob;
 import entity.element.aliveElement.Player;
 import entity.element.motionlessElement.Dirt;
 import entity.element.motionlessElement.EmptySpace;
+import entity.element.motionlessElement.UnbreakableWall;
 import entity.element.motionlessElement.Wall;
 import entity.element.motionlessElement.fallingElement.Diamond;
 import entity.element.motionlessElement.fallingElement.Rock;
@@ -35,24 +37,20 @@ public abstract class ElementFactory {
 		return new Player(map, position);
 	}
 	
-	public static Element createMob(Map map, Position position) {
+	public static Mob createMob(Map map, Position position) {
 		return new Mob(map, position);
+	}
+	
+	public static Element createUnbreakableWall(Map map, Position position) {
+		return new UnbreakableWall(map, position);
 	}
 	
 	public static Element selectElementFromSpriteRef(char sprite_ref, Map map, Position position) {
 		switch(sprite_ref) {
 			case '#':
 				return createWall(map, position);
-			case '@':
-				return createPlayer(map, position);
-			case 'M':
-				return createMob(map, position);
-			case 'O':
-				return createRock(map, position);
 			case 'X':
 				return createDirt(map, position);
-			case '^':
-				return createDiamond(map, position);
 			default:
 				return createEmptySpace(map, position);
 		}

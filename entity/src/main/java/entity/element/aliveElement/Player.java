@@ -38,7 +38,7 @@ public class Player extends AliveElement {
 	private static final Sprite right = new Sprite(sprite_ref, spritePath, imageRight);
 
 	/**
-	 * The constructor
+	 * Instantiates a new Player
 	 * @param map
 	 * 				The map
 	 * @param position

@@ -16,7 +16,7 @@ public class Position {
 	private int y;
 
 	/**
-	 * The constructor
+	 * Instantiates a new position.
 	 * @param x {@see #x}
 	 * @param y {@see #y}
 	 */
@@ -26,7 +26,7 @@ public class Position {
 	}
 
 	/**
-	 * Get {@link #x}
+	 * Gets {@link #x}
 	 * @return {@link #x}
 	 */
 	public int getX() {
@@ -42,7 +42,7 @@ public class Position {
 	}
 
 	/**
-	 * Get {@link #y}
+	 * Gets {@link #y}
 	 * @return {@link #y}
 	 */
 	public int getY() {

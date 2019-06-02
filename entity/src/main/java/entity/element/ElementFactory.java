@@ -19,7 +19,7 @@ import entity.element.motionlessElement.fallingElement.Rock;
  */
 public abstract class ElementFactory {
 	/**
-	 * Creates a dirt Block
+	 * Creates a Dirt
 	 * @param map The map
 	 * @param position The position of the dirt
 	 * @return The {@link Dirt} {@link Element}.
@@ -69,7 +69,7 @@ public abstract class ElementFactory {
 	}
 
 	/**
-	 * Creates a player Element
+	 * Creates a Player
 	 * @param map The map
 	 * @param position The position of the Player.
 	 * @return The {@link Player} {@link Element}

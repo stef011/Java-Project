@@ -12,7 +12,7 @@ import entity.element.ElementFactory;
 
 /**
  * <h1>The map Class</h1>
- * Contains alle the elements.
+ * Contains all the elements.
  * @author Exars 18-23 Strasbourg grp1
  * @version 1.0
  */
@@ -46,7 +46,7 @@ public class Map extends Entity {
 	 */
 	private Player player;
 	/**
-	 * The arraylist of falling elements.
+	 * The ArrayList of falling elements.
 	 */
 	private ArrayList<FallingElement> fallingElements = new ArrayList<FallingElement>();
 	/**
@@ -58,7 +58,7 @@ public class Map extends Entity {
 	}
 
 	/**
-	 * The constructor.
+	 * Instantiates a new map.
 	 * @param id The id of the map {@see #id}
 	 * @param name The name of the map {@see #name}
 	 * @param length The length.
@@ -74,7 +74,7 @@ public class Map extends Entity {
 	}
 
 	/**
-	 * The constructor
+	 * Instantiates a new map.
 	 * @param map The map
 	 * @param elementSpriteRef The table of elements in the map.
 	 */
@@ -209,8 +209,8 @@ public class Map extends Entity {
 
 	/**
 	 * Sets the table of elements.
-	 * @param x x {@link Position}
-	 * @param y u {@link Position}
+	 * @param x The x {@link Position}
+	 * @param y The y {@link Position}
 	 * @param element The {@link Element}
 	 */
 	public void setOnTheMapXY(int x, int y, Element element) {
@@ -219,7 +219,7 @@ public class Map extends Entity {
 
 	/**
 	 * Gets the player object
-	 * @return
+	 * @return player
 	 */
 	public Player getPlayer() {
 		return this.player;
@@ -235,7 +235,7 @@ public class Map extends Entity {
 
 	/**
 	 * Get the arrayList of fallingElements.
-	 * @return The arrayList of falling elements
+	 * @return The arrayList of the falling elements
 	 */
 	public ArrayList<FallingElement> getFallingElements() {
 		return this.fallingElements;
@@ -243,7 +243,7 @@ public class Map extends Entity {
 
 	/**
 	 * Get the mobs on the map
-	 * @return A table with the mobs on the map.
+	 * @return The arrayList of the mobs on the map.
 	 */
 	public ArrayList<Mob> getMobs() {
 		return this.mobs;
@@ -251,7 +251,7 @@ public class Map extends Entity {
 
 	/**
 	 * Gets the alive elements on the map
-	 * @param x x {@link Position}
+	 * @param x {@link Position}
 	 * @param y {@link Position}
 	 * @return A table of alive elements on the map.
 	 */

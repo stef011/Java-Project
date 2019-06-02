@@ -18,7 +18,7 @@ public class FallingElement extends MotionlessElement {
 	private boolean falling;
 
 	/**
-	 * The constructor.
+	 * Instantiates a new falling element.
 	 * @param map
 	 * 					The map
 	 * @param position
@@ -30,7 +30,7 @@ public class FallingElement extends MotionlessElement {
 	}
 
 	/**
-	 * Make the element fall
+	 * Makes the element fall
 	 */
 	public void fall() {
 		switch(this.checkFallingPermeability(Direction.Down)) {

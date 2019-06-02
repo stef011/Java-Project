@@ -13,7 +13,7 @@ import entity.element.Position;
  */
 public abstract class MotionlessElement extends Element {
 	/**
-	 * The constructor
+	 * Instantiates a new MotionlessElement.
 	 * @param map
 	 * 				The map.
 	 * @param position

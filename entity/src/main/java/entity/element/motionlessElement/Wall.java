@@ -39,7 +39,7 @@ public class Wall extends MotionlessElement {
 	private static final Sprite sprite = new Sprite(sprite_ref, spritePath, imageName);
 
 	/**
-	 * The constructor
+	 * Instantiates a new Wall
 	 * @param map
 	 * 				The map.
 	 * @param position

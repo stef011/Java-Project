@@ -24,7 +24,7 @@ public class AliveElement extends Element {
 	private boolean alive;
 
 	/**
-	 * The constructor
+	 * Instantiates a new AliveElement.
 	 * @param map
 	 * 				The map
 	 * @param position
@@ -35,12 +35,15 @@ public class AliveElement extends Element {
 		this.setAlive(true);
 	}
 	
+	/**
+	 * Instantiates a new AliveElement.
+	 */
 	public AliveElement() {
 		
 	}
 
 	/**
-	 * When the entity dies.
+	 * Makes the AliveElement die.
 	 */
 	public void die() {
 		this.setAlive(false);
@@ -64,8 +67,8 @@ public class AliveElement extends Element {
 		this.alive = alive;
 	}
 
-	/**
-	 * @return the last move of the entity.
+	/**Gets the last move of the Element
+	 * @return the last move
 	 * @see #lastMove
 	 */
 	public Direction getLastMove() {

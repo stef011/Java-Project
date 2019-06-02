@@ -26,11 +26,32 @@ public interface IModel {
 	 */
 	void loadMap(String name);
 	
+	/**
+	 * Load the sprite reference of the element.
+	 *
+	 * @param id_map
+	 *          the map id
+	 * @param x
+	 *          the x
+	 * @param y
+	 *          the y
+	 */
 	char loadElementSpriteRef(int id_map, int x, int y);
 	
+	/**
+	 * Sets the game state.
+	 *
+	 * @param gameState
+	 *          the gameState
+	 */
 	public void setGameState(GameState gameState);
 	
+	/**
+	 * gets the game state.
+	 * @return the game state
+	 */
 	public GameState getGameState();
+	
 	/**
 	 * Gets the observable.
 	 *

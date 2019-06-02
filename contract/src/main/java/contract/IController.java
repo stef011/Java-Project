@@ -8,7 +8,7 @@ package contract;
 public interface IController {
 
 	/**
-	 * Control.
+	 * Play.
 	 */
 	public void play();
 
@@ -20,5 +20,11 @@ public interface IController {
 	 */
 	public void orderPerform(ControllerOrder controllerOrder);
 	
+	/**
+	 * Performs the menu request
+	 *
+	 * @param menuActions
+	 *          the action performed by the menu element.
+	 */
 	public void performMenuRequest(MenuActions menuActions);
 }

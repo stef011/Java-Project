@@ -27,7 +27,7 @@ public class Mob extends AliveElement {
 	private static final Sprite sprite = new Sprite(sprite_ref, spritePath, imageName);
 
 	/**
-	 * The constructor
+	 * Instantiates a new mob.
 	 * @param map The map
 	 * @param position The position in the map
 	 */
@@ -40,11 +40,14 @@ public class Mob extends AliveElement {
 		this.setTraversableByFalling(traversableByFalling);
 	}
 	
+	/**
+	 * Instantiates a new mob.
+	 */
 	public Mob() {
 	}
 
 	/**
-	 * The mob movements
+	 * Gives the direction on the left of the direction given.
 	 * @param lastMove
 	 * 				Last move of the mob {@link #getLastMove()}
 	 * @return The next direction of the mob
@@ -119,7 +122,7 @@ public class Mob extends AliveElement {
 	}
 
 	/**
-	 * Replace the 3 by 3 area with diamond.
+	 * Replace the 3 by 3 area by diamonds.
 	 */
 	public void blow() {
 		this.replaceByDiamond();

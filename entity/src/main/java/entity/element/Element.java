@@ -33,9 +33,9 @@ public class Element extends Entity {
 	 */
 	private TraversableByFalling traversableByFalling;
 
-	/**
+	/**Instantiates a new Element.
 	 * @param map
-	 * The constructor.
+	 * 
 	 * 				The map.
 	 * @param position
 	 * 				The position if the element.
@@ -45,7 +45,9 @@ public class Element extends Entity {
 		this.setMap(map);
 	}
 	
-	
+	/**
+	 * Instantiates a new Element.
+	 */
 	public Element() {
 	}
 
@@ -129,23 +131,23 @@ public class Element extends Entity {
 	 * Check if it can traverse the element at the direction specified.
 	 * @param direction
 	 * 					The direction
-	 * @return
+	 * @return TraversableByAlive
 	 */
 	public TraversableByAlive checkAlivePermeability(Direction direction) {		
 		return this.lookAtNextBlock(direction).getTraversableByAlive();
 	}
 
 	/**
-	 * 
-	 * @param direction
-	 * @return
+	 * Check if it can traverse the element at the direction specified.
+	 * @param direction The direction
+	 * @return TraversableByFalling
 	 */
 	public TraversableByFalling checkFallingPermeability(Direction direction) {
 		return this.lookAtNextBlock(direction).getTraversableByFalling();
 	}
 
 	/**
-	 * Get the Sprite
+	 * Gets the Sprite
 	 * @return The {@link #sprite}
 	 */
 	public Sprite getSprite() {
@@ -162,7 +164,7 @@ public class Element extends Entity {
 	}
 
 	/**
-	 * Get the position
+	 * Gets the position
 	 * @return The {@link #position}.
 	 */
 	public Position getPosition() {
@@ -170,7 +172,7 @@ public class Element extends Entity {
 	}
 
 	/**
-	 * Set the position.
+	 * Sets the position.
 	 * @param position
 	 * 					The position.
 	 */
@@ -179,7 +181,7 @@ public class Element extends Entity {
 	}
 
 	/**
-	 * Get the traversability for {@link AliveElement}.
+	 * Get the permeability for {@link AliveElement}.
 	 * @return {@link #traversableByAlive}
 	 */
 	public TraversableByAlive getTraversableByAlive() {
@@ -187,7 +189,7 @@ public class Element extends Entity {
 	}
 
 	/**
-	 * Sets the traversability for {@link AliveElement}.
+	 * Sets the permeability for {@link AliveElement}.
 	 * @param traversableByAlive
 	 * 						{@link TraversableByAlive}
 	 */
@@ -196,22 +198,23 @@ public class Element extends Entity {
 	}
 
 	/**
-	 * @return {@link #traversableByAlive}
+	 * Get the permeability for {@link FallingElement}.
+	 * @return {@link #traversableByFalling}
 	 */
 	public TraversableByFalling getTraversableByFalling() {
 		return this.traversableByFalling;
 	}
 
 	/**
-	 * Sets the traversability by {@link FallingElement}
-	 * @param traversableByFalling
+	 * Sets the permeability for {@link FallingElement}.
+	 * @return {@link #traversableByFalling}
 	 */
 	public void setTraversableByFalling(TraversableByFalling traversableByFalling) {
 		this.traversableByFalling = traversableByFalling;
 	}
 
 	/**
-	 * Get the map
+	 * Gets the map
 	 * @return The {@link #map}
 	 */
 	public Map getMap() {
@@ -273,7 +276,7 @@ public class Element extends Entity {
 	}
 
 	/**
-	 * Moves the element to the direction string provided.
+	 * Moves the element to the direction provided.
 	 * @param direction
 	 * 					The direction where the element moves.
 	 */

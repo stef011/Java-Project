@@ -30,7 +30,7 @@ public class Sprite {
 	private char sprite_ref;
 
 	/**
-	 * The Constructor
+	 * Instantiates a new Sprite.
 	 * @param sprite_ref The ref of the sprite
 	 * @param spritePath The Path of the sprite
 	 * @param imageName The Image Name
@@ -58,7 +58,7 @@ public class Sprite {
 	}
 
 	/**
-	 * Loads the image from the Sprites folder.
+	 * Loads the image from the /sprites folder.
 	 */
 	public void loadImage() {
 		String absolutePath = new File("").getAbsolutePath();

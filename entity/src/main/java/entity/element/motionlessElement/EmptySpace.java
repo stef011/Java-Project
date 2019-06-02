@@ -27,7 +27,7 @@ public class EmptySpace extends MotionlessElement {
 	private static final Sprite sprite = new Sprite(sprite_ref, spritePath, imageName);
 
 	/**
-	 * The Constructor
+	 * Instantiates a new emptySpace.
 	 * @param map
 	 * 				The map.
 	 * @param position

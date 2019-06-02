@@ -27,7 +27,7 @@ public class Rock extends FallingElement {
 	private static final Sprite sprite = new Sprite(sprite_ref, spritePath, imageName);
 
 	/**
-	 * The constructor
+	 * Instantiates a new Rock.
 	 * @param map
 	 *				The actual map.
 	 * @param position

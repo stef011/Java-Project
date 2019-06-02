@@ -24,7 +24,7 @@ public class Diamond extends FallingElement {
 	private static final Sprite sprite = new Sprite(sprite_ref, spritePath, imageName);
 
 	/**
-	 * The constructor.
+	 * Instantiates a new diamond.
 	 * @param map
 	 * 				The map
 	 * @param position

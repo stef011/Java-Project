@@ -23,19 +23,19 @@ public enum Direction {
 	 */
 	Right,
 	/**
-	 * To the right, up.
+	 * To the right, up diagonal.
 	 */
 	RightUp,
 	/**
-	 * To the right, down.
+	 * To the right, down diagonal.
 	 */
 	RightDown,
 	/**
-	 * To the left, down.
+	 * To the left, down diagonal.
 	 */
 	LeftDown,
 	/**
-	 * To the left, up.
+	 * To the left, up diagonal.
  	 */
 	LeftUp
 }

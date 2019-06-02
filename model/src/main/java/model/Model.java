@@ -54,7 +54,7 @@ public final class Model extends Observable implements IModel {
      * @param helloWorld
      *            the new hello world
      */
-	private void setMap(final Map map) {
+	public void setMap(final Map map) {
 		this.map = map;
 		this.setChanged();
 		this.notifyObservers();

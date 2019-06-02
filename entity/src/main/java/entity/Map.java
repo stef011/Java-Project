@@ -49,7 +49,7 @@ public class Map extends Entity {
 					this.setOnTheMapXY(x, y, ElementFactory.createUnbreakableWall(this, new Position(x, y)));
 				
 				} else if(elementSpriteRef[x][y] == '@') {
-					player = ElementFactory.createPlayer(this, new Position(x, y));
+					this.setPlayer(ElementFactory.createPlayer(this, new Position(x, y)));
 					this.setOnTheMapXY(x, y, this.getPlayer());
 					
 				} else if(elementSpriteRef[x][y] == 'O') {
@@ -134,18 +134,10 @@ public class Map extends Entity {
 		return this.fallingElements;
 	}
 
-	public void setFallingElements(ArrayList<FallingElement> fallingElements) {
-		this.fallingElements = fallingElements;
-	}
-
 	public ArrayList<Mob> getMobs() {
 		return this.mobs;
 	}
 
-	public void setMobs(ArrayList<Mob> mobs) {
-		this.mobs = mobs;
-	}
-	
 	public AliveElement getAliveOnTheMapXY(int x, int y) {
 		return (AliveElement) onTheMap[x][y];
 	}

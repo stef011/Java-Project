@@ -9,8 +9,11 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class DAOElementTest {
-	private DAOElement daoElement;
+import entity.Map;
+
+
+public class DAOMapTest {
+	private DAOMap daoMap;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -22,7 +25,7 @@ public class DAOElementTest {
 
 	@Before
 	public void setUp() throws Exception {
-		this.daoElement = new DAOElement(DBConnection.getInstance().getConnection());
+		this.daoMap = new DAOMap(DBConnection.getInstance().getConnection());
 	}
 
 	@After
@@ -31,8 +34,12 @@ public class DAOElementTest {
 
 	@Test
 	public void testFind() {
-		char expected = '#';
-		Assert.assertEquals(expected, this.daoElement.find(1, 0, 1));
+		Map test = this.daoMap.find("Cave");
+		Assert.assertEquals(3, test.getId());
+		Assert.assertEquals("Cave", test.getName());
+		Assert.assertEquals(40, test.getLength());
+		Assert.assertEquals(22, test.getWidth());
+		Assert.assertEquals(18, test.getGoal());
 	}
 
 }

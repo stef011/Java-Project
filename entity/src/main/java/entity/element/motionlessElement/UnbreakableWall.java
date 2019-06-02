@@ -1,7 +1,6 @@
 package entity.element.motionlessElement;
 
 import entity.Map;
-import entity.element.Breakable;
 import entity.element.Position;
 import entity.element.Sprite;
 import entity.element.TraversableByAlive;
@@ -18,10 +17,14 @@ public class UnbreakableWall extends MotionlessElement {
 	
 	public UnbreakableWall(Map map, Position position) {
 		super(map, position);
-		this.setBreakable(Breakable.Nop);
 		sprite.loadImage();
 		this.setSprite(sprite);
 		this.setTraversableByAlive(traversableByAlive);
 		this.setTraversableByFalling(traversableByFalling);
+	}
+	
+	@Override
+	public void replaceByDiamond() {
+		
 	}
 }

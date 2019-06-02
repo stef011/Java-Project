@@ -1,6 +1,5 @@
 package entity.element.aliveElement;
 
-import entity.element.Breakable;
 import entity.element.Direction;
 import entity.Map;
 import entity.element.Position;
@@ -37,7 +36,6 @@ public class Player extends AliveElement {
 		right.loadImage();
 		
 		this.setScore(0);
-		this.setBreakable(Breakable.Nop);
 		this.setSprite(front);
 		this.setTraversableByAlive(traversableByAlive);
 		this.setTraversableByFalling(traversableByFalling);
@@ -101,6 +99,12 @@ public class Player extends AliveElement {
 		this.getMap().getFallingElements().remove(this.lookAtNextBlock(direction));
 		this.setScore(this.getScore()+1);
 		super.move(direction);
+	}
+	
+	@Override
+	public void replaceByDiamond() {
+		super.replaceByDiamond();
+		this.die();
 	}
 
 	public int getScore() {

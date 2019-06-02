@@ -12,12 +12,10 @@ public class Element extends Entity {
 	private Map map;
 	private TraversableByAlive traversableByAlive;
 	private TraversableByFalling traversableByFalling;
-	private Breakable breakable;
 	
 	public Element(Map map, Position position) {
 		this.setPosition(position);
 		this.setMap(map);
-		this.setBreakable(Breakable.Breakable);
 	}
 	
 	
@@ -30,11 +28,10 @@ public class Element extends Entity {
 	}
 	
 	public void replaceByDiamond() {
-		if(this.getBreakable()==Breakable.Breakable){
-			FallingElement diamond = ElementFactory.createDiamond(this.getMap(), this.getPosition());
-			this.getMap().getFallingElements().add(diamond);
-			this.getMap().setOnTheMapXY(this.getPosition().getX(), this.getPosition().getY(), this.getMap().getFallingElements().get(this.getMap().getFallingElements().lastIndexOf(diamond)));
-		}
+		FallingElement diamond = ElementFactory.createDiamond(this.getMap(), this.getPosition());
+		this.getMap().getFallingElements().add(diamond);
+		this.getMap().setOnTheMapXY(this.getPosition().getX(), this.getPosition().getY(), this.getMap().getFallingElements().get(this.getMap().getFallingElements().lastIndexOf(diamond)));
+
 	}
 	
 	public Direction stringToDirection(String str) {
@@ -168,13 +165,5 @@ public class Element extends Entity {
 			break;
 		}
 		
-	}
-
-	public Breakable getBreakable() {
-		return this.breakable;
-	}
-
-	public void setBreakable(Breakable breakable) {
-		this.breakable = breakable;
 	}
 }

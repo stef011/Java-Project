@@ -13,8 +13,12 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import contract.GameState;
+import entity.Map;
+
 public class ModelTest {
     private Model model;
+    private Map mapForTest;
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
@@ -26,7 +30,8 @@ public class ModelTest {
 
     @Before
     public void setUp() throws Exception {
-        this.model = new Model("China Goal");
+        this.model = new Model("Cellar");
+        mapForTest = new Map();
     }
 
     @After
@@ -36,6 +41,12 @@ public class ModelTest {
     @Test
     public void testGetMap() {
         Assert.assertEquals("Cellar", this.model.getMap().getName());
+    }
+    
+    @Test
+    public void testSetMap() {
+    	this.model.setMap(this.mapForTest);
+    	Assert.assertEquals(this.mapForTest, this.model.getMap());
     }
 
     /**
@@ -61,5 +72,16 @@ public class ModelTest {
     public void testLoadElementSpriteRef() {
     	char expected = '#';
 		Assert.assertEquals(expected, this.model.loadElementSpriteRef(1, 0, 1));
+    }
+    
+    @Test
+    public void testGetGameState() {
+    	Assert.assertEquals(null, this.model.getGameState());
+    }
+    
+    @Test
+    public void testSetGameState() {
+    	this.model.setGameState(GameState.Playing);
+    	Assert.assertEquals(GameState.Playing, this.model.getGameState());
     }
 }

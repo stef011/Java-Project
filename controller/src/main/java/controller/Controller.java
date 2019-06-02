@@ -172,6 +172,12 @@ public final class Controller implements IController {
 				break;
 		}
 	}
+
+	/**
+	 * Performing the menu requests
+	 * @param menuActions
+	 * 			Actions of the menu.
+	 */
 	
 	public void performMenuRequest(MenuActions menuActions){
 		switch(menuActions) {

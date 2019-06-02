@@ -90,9 +90,9 @@ class ViewPanel extends JPanel implements Observer {
 	 * load the Background image
 	 */
 	public void loadBackgr(){
-		String ImagePath = "/sprites/settings/background.png";
+		String ImagePath = "sprites/settings/background.png";
 		try {
-			this.setBackgr(ImageIO.read(new File("D://Documents/eXia/Prosit/Bloc 5/Projet_UMLJava/Java-Project"+ImagePath)));
+			this.setBackgr(ImageIO.read(new File(ImagePath)));
 		}
 		catch (Exception e){
 			viewFrame.printMessage("Error: File not found \n"+ ImagePath);

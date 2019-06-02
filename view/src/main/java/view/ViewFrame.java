@@ -29,23 +29,32 @@ class ViewFrame extends JFrame implements KeyListener {
 
 	/** The controller. */
 	private IController controller;
-	
+	/** Sets the window length. */
 	private static int windowLength = 1920;
+	/** Sets the window width. */
 	private static int windowWidth = 1080;
+	/** Sets the view length. */
 	private static int viewLength = 16;
+	/** Sets the view width. */
 	private static int viewWidth = 9;
+	/** Sets the square size. */
 	private static int squareSize = windowLength/viewLength;
 	
 	/** The Constant serialVersionUID. */
 	private static final long	serialVersionUID	= -697358409737458175L;
-	
+	/** Sets "resume" as a new Resume(). */
 	private MenuElement resume = new Resume("RESUME", windowWidth/8, 100);
+	/** Sets "mainMenu" as a new MainMenu(). */
 	private MenuElement mainMenu = new MainMenu("MAIN MENU", windowWidth/8, 100);
+	/** Sets "quitGame" as a new QuitGame(). */
 	private MenuElement quitGame = new QuitGame("QUIT GAME", windowWidth/8, 100);
+	/** Sets the "ArrayList<MenuElement> pauseElements" as a new ArrayList<MenuElement>(). */
 	private ArrayList<MenuElement> pauseElements = new ArrayList<MenuElement>();
-	
+	/** Sets the "play" in MenuElement as a new Play(). */
 	private MenuElement play = new Play("PLAY", windowWidth/8, 100);
+	/** Sets the "quitGame2" in MenuElement as a new QuitGame2(). */
 	private MenuElement quitGame2 = new QuitGame("QUIT GAME", windowWidth/8, 100);
+	/** Sets the "ArrayList<MenuElement> mainMenuElements" as a new ArrayList<MenuElement>.*/
 	private ArrayList<MenuElement> mainMenuElements = new ArrayList<MenuElement>();
 	
 	/**

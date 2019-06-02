@@ -1,5 +1,5 @@
 /**
- * @author Jean-Aymeric DIET jadiet@cesi.fr
+ * @author Exars 18-23 Strasbourg grp1
  * @version 1.0
  */
 package main;
@@ -11,7 +11,7 @@ import view.View;
 /**
  * The Class Main.
  *
- * @author Jean-Aymeric Diet
+ * @author Exars 18-23 Strasbourg grp1
  */
 public abstract class Main {
 

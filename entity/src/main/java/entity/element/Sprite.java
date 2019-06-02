@@ -29,8 +29,9 @@ public class Sprite {
 	// "D://Documents/eXia/Prosit/Bloc 5/Projet_UMLJava/Java-Project"
 	
 	public void loadImage() {
+		String absolutePath = new File("").getAbsolutePath();
 		try {
-			this.setImage(ImageIO.read(new File("D://Documents/eXia/Prosit/Bloc 5/Projet_UMLJava/Java-Project"+this.getSpritePath()+this.getImageName())));
+			this.setImage(ImageIO.read(new File(absolutePath+this.getSpritePath()+this.getImageName())));
 		} catch (IOException e) {
 			System.out.println("https://stackoverflow.com/search?q="+e.getMessage());
 		}

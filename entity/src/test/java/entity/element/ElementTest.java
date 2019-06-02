@@ -10,6 +10,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import entity.Map;
+import entity.element.aliveElement.AliveElement;
 import entity.element.motionlessElement.EmptySpace;
 import entity.element.motionlessElement.fallingElement.Diamond;
 
@@ -18,8 +19,8 @@ public class ElementTest {
 	private Map map;
 	private char elementSpriteRef[][]={
 			{'#','#','#','#'},
-			{'#','X','O','#'},
-			{'#','^','X','#'},
+			{'#','O','X','#'},
+			{'#','^','M','#'},
 			{'@','#','#','#'} };
 	
 	@BeforeClass
@@ -33,7 +34,7 @@ public class ElementTest {
 	@Before
 	public void setUp() throws Exception {
 		this.map = new Map(new Map(3, "Cave", 4, 4, 18), elementSpriteRef);
-		this.element = new Element(this.map, new Position(2, 2));
+		this.element = new Element(this.map, new Position(2, 1));
 	}
 
 	@After
@@ -66,7 +67,65 @@ public class ElementTest {
 	
 	@Test
 	public void testLookAtNextBlock() {
-		
+		int xExpected = this.element.getPosition().getX()-1;
+		Assert.assertEquals(xExpected, this.element.lookAtNextBlock(Direction.Left).getPosition().getX());
+	}
+	
+	@Test
+	public void testgetAliveElementOnBottom() {
+		Assert.assertTrue(this.element.getAliveElementOnBottom() instanceof AliveElement);
+	}
+	
+	@Test
+	public void testCheckAlivePermeability() {
+		Assert.assertEquals(TraversableByAlive.Pushable, this.element.checkAlivePermeability(Direction.Left));
+	}
+	
+	@Test
+	public void testCheckFallingPermeability() {
+		Assert.assertEquals(TraversableByFalling.Slippery, this.element.checkFallingPermeability(Direction.Left));
+	}
+	
+	@Test
+	public void testMoveUp() {
+		int yExpected = this.element.getPosition().getY()-1;
+		this.element.moveUp();
+		Assert.assertEquals(yExpected, this.element.getPosition().getY());
+	}
+	
+	@Test
+	public void testMoveDown() {
+		int yExpected = this.element.getPosition().getY()+1;
+		this.element.moveDown();
+		Assert.assertEquals(yExpected, this.element.getPosition().getY());
+	}
+	
+	@Test
+	public void testMoveLeft() {
+		int xExpected = this.element.getPosition().getX()-1;
+		this.element.moveLeft();
+		Assert.assertEquals(xExpected, this.element.getPosition().getX());
+	}
+	
+	@Test
+	public void testMoveRight() {
+		int xExpected = this.element.getPosition().getX()+1;
+		this.element.moveRight();
+		Assert.assertEquals(xExpected, this.element.getPosition().getX());
+	}
+	
+	@Test
+	public void testMoveDir() {
+		int yExpected = this.element.getPosition().getY()+1;
+		this.element.move(Direction.Down);
+		Assert.assertEquals(yExpected, this.element.getPosition().getY());
+	}
+	
+	@Test
+	public void testMoveStr() {
+		int yExpected = this.element.getPosition().getY()+1;
+		this.element.move("Down");
+		Assert.assertEquals(yExpected, this.element.getPosition().getY());
 	}
 
 }

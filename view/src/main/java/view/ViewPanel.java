@@ -77,8 +77,9 @@ class ViewPanel extends JPanel implements Observer {
 	
 	public void loadMainMenuBackgr(){
 		String ImagePath = "/sprites/main_menu_background/main_menu_background.png";
+		String absolutePath = new File("").getAbsolutePath();
 		try {
-			this.setMainMenuBackgr(ImageIO.read(new File("D://Documents/eXia/Prosit/Bloc 5/Projet_UMLJava/Java-Project"+ImagePath)));
+			this.setMainMenuBackgr(ImageIO.read(new File(absolutePath+ImagePath)));
 		}
 		catch (Exception e){
 			viewFrame.printMessage("Error: File not found \n"+ ImagePath);

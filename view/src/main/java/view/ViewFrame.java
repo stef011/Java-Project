@@ -59,6 +59,23 @@ class ViewFrame extends JFrame implements KeyListener {
 	public ViewFrame(final IModel model) throws HeadlessException {
 		this.buildViewFrame(model);
 	}
+	
+	/**
+	 * Instantiates a new view frame.
+	 *
+	 */
+	public ViewFrame() {
+		getPauseElements().add(getResume());
+		getPauseElements().add(getMainMenu());
+		getPauseElements().add(getQuitGame());
+		
+		getResume().setSelected(true);
+		
+		getMainMenuElements().add(getPlay());
+		getMainMenuElements().add(getQuitGame2());
+		
+		getPlay().setSelected(true);
+	}
 
 	/**
 	 * Instantiates a new view frame.

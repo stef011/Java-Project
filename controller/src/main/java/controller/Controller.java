@@ -59,24 +59,26 @@ public final class Controller implements IController {
 				this.getModel().getMap().getMobs().get(j).moveMobs();
 				j++;
 			}
+			while(this.getModel().getGameState()==GameState.Pause) {	
+			}
 		}
 		this.getModel().setGameState(GameState.End);
 		try {Thread.sleep(3000);} catch (InterruptedException e) {e.printStackTrace();}
+		System.exit(0);
 		this.getView().closeFrame();
-		
 	}
 
 	/**
      * Sets the view.
      *
-     * @param pview
+     * @param view
      *            the new view
      */
-	private void setView(final IView pview) {
-		this.view = pview;
+	private void setView(final IView view) {
+		this.view = view;
 	}
 	
-	private IView getView() {
+	public IView getView() {
 		return this.view;
 	}
 
@@ -90,7 +92,7 @@ public final class Controller implements IController {
 		this.model = model;
 	}
 	
-	private IModel getModel() {
+	public IModel getModel() {
 		return this.model;
 	}
 
@@ -182,6 +184,8 @@ public final class Controller implements IController {
 	public void performMenuRequest(MenuActions menuActions){
 		switch(menuActions) {
 		case Quitgame:
+			this.getModel().getMap().getPlayer().die();
+			System.exit(0);
 			this.getView().closeFrame();
 			break;
 		case Resume:

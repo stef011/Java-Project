@@ -1,4 +1,4 @@
-package entity.element.aliveElement;
+package entity.element.motionlessElement;
 
 import static org.junit.Assert.*;
 
@@ -10,12 +10,12 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import entity.Map;
-import entity.element.Direction;
+import entity.element.Element;
 import entity.element.Position;
 import entity.element.motionlessElement.fallingElement.Diamond;
 
-public class MobTest {
-	private Mob mob;
+public class UnbreakableWallTest {
+	private Element unbreakableWall;
 	private Map map;
 	private char elementSpriteRef[][]={
 			{'#','#','#','#'},
@@ -34,7 +34,7 @@ public class MobTest {
 	@Before
 	public void setUp() throws Exception {
 		this.map = new Map(new Map(3, "Cave", 4, 4, 18), elementSpriteRef);
-		this.mob = new Mob(this.map, new Position(2, 2));
+		this.unbreakableWall = new UnbreakableWall(this.map, new Position(0, 0));
 	}
 
 	@After
@@ -42,22 +42,9 @@ public class MobTest {
 	}
 
 	@Test
-	public void testCheckOnLeft() {
-		Direction expected = Direction.Right;
-		assertEquals(expected, this.mob.checkOnLeft(Direction.Down));
-	}
-	
-	@Test
-	public void testBlow() {
-		this.mob.blow();
-		Assert.assertTrue(this.map.getOnTheMapXY(this.mob.getPosition().getX(), this.mob.getPosition().getY()) instanceof Diamond);
-	}
-	
-	@Test
-	public void testDie() {
-		this.mob.die();
-		Assert.assertFalse(this.mob.isAlive());
-		Assert.assertTrue(this.map.getOnTheMapXY(this.mob.getPosition().getX(), this.mob.getPosition().getY()) instanceof Diamond);
+	public void testReplaceByDiamond() {
+		this.unbreakableWall.replaceByDiamond();
+		Assert.assertTrue(this.map.getOnTheMapXY(this.unbreakableWall.getPosition().getX(), this.unbreakableWall.getPosition().getY()) instanceof UnbreakableWall);
 	}
 
 }

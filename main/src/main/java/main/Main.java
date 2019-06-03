@@ -23,6 +23,16 @@ public abstract class Main {
      * @throws InterruptedException 
      */
     public static void main(final String[] args) throws InterruptedException {
+    	
+    	/**
+    	 * You can enter the name of the map you want to play as a parameter of the model.
+    	 * Maps available:
+    	 * "Cellar"
+    	 * "Catacombs"
+    	 * "Cave"
+    	 * "The Unknown"
+    	 * "China Goal"
+    	 */
     	final Model model = new Model("Cave");
         final View view = new View(model);
         final Controller controller = new Controller(view, model);

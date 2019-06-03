@@ -24,20 +24,36 @@ public abstract class Main {
      */
     public static void main(final String[] args) throws InterruptedException {
     	
-    	/**
-    	 * You can enter the name of the map you want to play as a parameter of the model.
-    	 * Maps available:
-    	 * "Cellar"
-    	 * "Catacombs"
-    	 * "Cave"
-    	 * "The Unknown"
-    	 * "China Goal"
+    	/*
+    	 You can enter the name of the map you want to play as a parameter of the model.
+    	 Maps available:
+    	 "Cellar"
+    	 "Catacombs"
+    	 "Cave"
+    	 "The Unknown"
+    	 "China Goal"
     	 */
-    	final Model model = new Model("Cave");
+
+		/**
+		 * The model
+		 */
+		final Model model = new Model("Cave");
+		/**
+		 * The view
+		 */
         final View view = new View(model);
-        final Controller controller = new Controller(view, model);
+		/**
+		 * The controller.
+		 */
+		final Controller controller = new Controller(view, model);
+		/**
+		 * Sets the controller
+		 */
         view.setController(controller);
 
+		/**
+		 * Plays the game
+		 */
         controller.play();
     }
 }

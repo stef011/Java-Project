@@ -1,5 +1,5 @@
 /**
- * @author Jean-Aymeric DIET jadiet@cesi.fr
+ * @author Exars 18-23 Strasbourg grp1
  * @version 1.0
  */
 package main;
@@ -11,7 +11,7 @@ import view.View;
 /**
  * The Class Main.
  *
- * @author Jean-Aymeric Diet
+ * @author Exars 18-23 Strasbourg grp1
  */
 public abstract class Main {
 
@@ -20,14 +20,40 @@ public abstract class Main {
      *
      * @param args
      *            the arguments
-     * @throws InterruptedException 
+     * @throws InterruptedException Throws the exception if the main is interrupted
      */
     public static void main(final String[] args) throws InterruptedException {
-    	final Model model = new Model("Cave");
+    	
+    	/*
+    	 You can enter the name of the map you want to play as a parameter of the model.
+    	 Maps available:
+    	 "Cellar"
+    	 "Catacombs"
+    	 "Cave"
+    	 "The Unknown"
+    	 "China Goal"
+    	 */
+
+		/**
+		 * The model
+		 */
+		final Model model = new Model("Cave");
+		/**
+		 * The view
+		 */
         final View view = new View(model);
-        final Controller controller = new Controller(view, model);
+		/**
+		 * The controller.
+		 */
+		final Controller controller = new Controller(view, model);
+		/**
+		 * Sets the controller
+		 */
         view.setController(controller);
 
+		/**
+		 * Plays the game
+		 */
         controller.play();
     }
 }

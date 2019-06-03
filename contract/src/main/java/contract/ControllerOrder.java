@@ -17,8 +17,8 @@ public enum ControllerOrder {
 	Right,
 	/** Any other key */
 	Else, 
-	
+	/** The Escape key */
 	Escape, 
-	
+	/** The Enter key */
 	Enter
 }

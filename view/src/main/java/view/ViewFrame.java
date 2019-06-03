@@ -29,23 +29,32 @@ class ViewFrame extends JFrame implements KeyListener {
 
 	/** The controller. */
 	private IController controller;
-	
+	/** the window length. */
 	private static int windowLength = 1920;
+	/** the window width. */
 	private static int windowWidth = 1080;
+	/** the view length. */
 	private static int viewLength = 16;
+	/** the view width. */
 	private static int viewWidth = 9;
+	/** the square size. */
 	private static int squareSize = windowLength/viewLength;
 	
 	/** The Constant serialVersionUID. */
 	private static final long	serialVersionUID	= -697358409737458175L;
-	
+	/** Sets "resume" as a new Resume(). */
 	private MenuElement resume = new Resume("RESUME", windowWidth/8, 100);
+	/** Sets "mainMenu" as a new MainMenu(). */
 	private MenuElement mainMenu = new MainMenu("MAIN MENU", windowWidth/8, 100);
+	/** Sets "quitGame" as a new QuitGame(). */
 	private MenuElement quitGame = new QuitGame("QUIT GAME", windowWidth/8, 100);
+	/** Sets the "ArrayList&lt;MenuElement&gt; pauseElements" as a new ArrayList&lt;MenuElement&gt;(). */
 	private ArrayList<MenuElement> pauseElements = new ArrayList<MenuElement>();
-	
+	/** Sets the "play" in MenuElement as a new Play(). */
 	private MenuElement play = new Play("PLAY", windowWidth/8, 100);
+	/** Sets the "quitGame2" in MenuElement as a new QuitGame2(). */
 	private MenuElement quitGame2 = new QuitGame("QUIT GAME", windowWidth/8, 100);
+	/** Sets the "ArrayList&lt;MenuElement&gt; mainMenuElements" as a new ArrayList&lt;MenuElement&gt;.*/
 	private ArrayList<MenuElement> mainMenuElements = new ArrayList<MenuElement>();
 	
 	/**
@@ -58,6 +67,23 @@ class ViewFrame extends JFrame implements KeyListener {
 	 */
 	public ViewFrame(final IModel model) throws HeadlessException {
 		this.buildViewFrame(model);
+	}
+	
+	/**
+	 * Instantiates a new view frame.
+	 *
+	 */
+	public ViewFrame() {
+		getPauseElements().add(getResume());
+		getPauseElements().add(getMainMenu());
+		getPauseElements().add(getQuitGame());
+		
+		getResume().setSelected(true);
+		
+		getMainMenuElements().add(getPlay());
+		getMainMenuElements().add(getQuitGame2());
+		
+		getPlay().setSelected(true);
 	}
 
 	/**
@@ -206,7 +232,10 @@ class ViewFrame extends JFrame implements KeyListener {
 	 */
 	public void keyReleased(final KeyEvent e) {
 	}
-	
+	 /**
+	  * Selects the Pause menu Element according to the index
+	  * @param index The index
+	  */
 	public void selectPauseElement(int index) {
 		int i = 0;
 		while(i < this.getPauseElements().size()) {
@@ -215,7 +244,10 @@ class ViewFrame extends JFrame implements KeyListener {
 		}
 		this.getPauseElements().get(index).setSelected(true);
 	}
-	
+	/**
+	  * Selects the Main menu Element according to the index
+	  * @param index The index
+	  */
 	public void selectMainMenuElement(int index) {
 		int i = 0;
 		while(i < this.getMainMenuElements().size()) {
@@ -224,96 +256,182 @@ class ViewFrame extends JFrame implements KeyListener {
 		}
 		this.getMainMenuElements().get(index).setSelected(true);
 	}
-
+	
+	/**
+	 * Gets the size of the squares.
+	 * @return squareSize
+	 */
 	public static int getSquaresize() {
 		return squareSize;
 	}
-
+	
+	/**
+	 * Gets the width of the view.
+	 * @return viewWidth
+	 */
 	public static int getViewWidth() {
 		return ViewFrame.viewWidth;
 	}
-
+	
+	/**
+	 * Sets the width of the view.
+	 * @param viewWidth The width of the view
+	 */
 	public static void setViewWidth(int viewWidth) {
 		ViewFrame.viewWidth = viewWidth;
 	}
 	
+	/**
+	 * Gets the length of the view.
+	 * @return viewLength
+	 */
 	public static int getViewLength() {
 		return ViewFrame.viewLength;
 	}
-
+	
+	/**
+	 * Sets the length of the view.
+	 * @param viewLength The length of the view
+	 */
 	public static void setViewLength(int viewLength) {
 		ViewFrame.viewLength = viewLength;
 	}
-
+	
+	/**
+	 * Gets the length of the window.
+	 * @return windowLength
+	 */
 	public static int getWindowLength() {
 		return ViewFrame.windowLength;
 	}
-
+	
+	/**
+	 * Sets the length of the window.
+	 * @param windowLength The Length of the Window
+	 */
 	public static void setWindowLength(int windowLength) {
 		ViewFrame.windowLength = windowLength;
 	}
-
+	
+	/**
+	 * Gets the width of the window.
+	 * @return windowWidth
+	 */
 	public static int getWindowWidth() {
 		return ViewFrame.windowWidth;
 	}
-
+	
+	/**
+	 * Sets the width of the window.
+	 * @param windowWidth The Width of the window
+	 */
 	public static void setWindowWidth(int windowWidth) {
 		ViewFrame.windowWidth = windowWidth;
 	}
-
+	
+	/**
+	 * Gets the ArrayList of the elements of the Pause menu.
+	 * @return pauseElements
+	 */
 	public ArrayList<MenuElement> getPauseElements() {
 		return this.pauseElements;
 	}
-
+	
+	/**
+	 * Sets the ArrayList of the elements of the Pause menu.
+	 * @param pauseElements The pause element
+	 */
 	public void setPauseElements(ArrayList<MenuElement> pauseElements) {
 		this.pauseElements = pauseElements;
 	}
 	
+	/**
+	 * Gets the ArrayList of the elements of the Main menu.
+	 * @return mainMenuElements
+	 */
 	public ArrayList<MenuElement> getMainMenuElements() {
 		return this.mainMenuElements;
 	}
-
+	
+	/**
+	 * Sets the ArrayList of the elements of the Main menu.
+	 * @param mainMenuElements The main menu Element
+	 */
 	public void setMainMenuElements(ArrayList<MenuElement> mainMenuElements) {
 		this.mainMenuElements = mainMenuElements;
 	}
-
+	
+	/**
+	 * Gets the Menu element Resume.
+	 * @return resume
+	 */
 	public MenuElement getResume() {
 		return this.resume;
 	}
-
+	
+	/**
+	 * Sets the Menu element Resume.
+	 * @param resume Resume
+	 */
 	public void setResume(MenuElement resume) {
 		this.resume = resume;
 	}
 
+	/**
+	 * Gets the Menu element QuitGame.
+	 * @return quitGame
+	 */
 	public MenuElement getQuitGame() {
 		return this.quitGame;
 	}
 
+	/**
+	 * Sets the Menu element QuitGame.
+	 * @param quitGame Quit the game
+	 */
 	public void setQuitGame(MenuElement quitGame) {
 		this.quitGame = quitGame;
 	}
 
+	/**
+	 * Gets the Menu element MainMenu.
+	 * @return mainMenu
+	 */
 	public MenuElement getMainMenu() {
 		return this.mainMenu;
 	}
 
+	/**
+	 * Sets the Menu element MainMenu.
+	 * @param mainMenu The mainMenu
+	 */
 	public void setMainMenu(MenuElement mainMenu) {
 		this.mainMenu = mainMenu;
 	}
 
+	/**
+	 * Gets the Menu element Play.
+	 * @return play
+	 */
 	public MenuElement getPlay() {
 		return this.play;
 	}
 
+	/**
+	 * Sets the Menu element Play.
+	 * @param play Play
+	 */
 	public void setPlay(MenuElement play) {
 		this.play = play;
 	}
 
+	/**
+	 * Gets the Menu element QuitGame2.
+	 * @return quitGame2
+	 */
 	public MenuElement getQuitGame2() {
 		return this.quitGame2;
 	}
 
-	public void setQuitGame2(MenuElement quitGame2) {
-		this.quitGame2 = quitGame2;
-	}
+
 }

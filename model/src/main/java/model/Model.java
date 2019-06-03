@@ -13,16 +13,18 @@ import entity.Map;
  */
 public final class Model extends Observable implements IModel {
 
-	/** The helloWorld. */
+	/** The Map. */
 	private Map map;
+	/** The Table of sprite references */
 	private char elementSpriteRef[][];
+	/** The game state */
 	private GameState gameState;
 	
 	/**
 	 * Instantiates a new model.
+	 * @param MapName The name of the map
 	 */
 	public Model(String MapName) {
-		this.map = new Map();
 		this.loadMap(MapName);
 		
 		elementSpriteRef = new char[this.getMap().getLength()][this.getMap().getWidth()];
@@ -35,9 +37,9 @@ public final class Model extends Observable implements IModel {
 	}
 
 	/**
-     * Gets the hello world.
+     * Gets the map.
      *
-     * @return the hello world
+     * @return the Map
      */
 	/*
 	 * (non-Javadoc)
@@ -49,12 +51,12 @@ public final class Model extends Observable implements IModel {
 	}
 
 	/**
-     * Sets the hello world.
+     * Sets the Map.
      *
-     * @param helloWorld
-     *            the new hello world
+     * @param map
+     *            the new map
      */
-	private void setMap(final Map map) {
+	public void setMap(final Map map) {
 		this.map = map;
 		this.setChanged();
 		this.notifyObservers();
@@ -62,10 +64,10 @@ public final class Model extends Observable implements IModel {
 	
 
 	/**
-     * Load hello world.
+     * Load map.
      *
-     * @param code
-     *            the code
+     * @param name
+     *            The name of the map
      */
 	/*
 	 * (non-Javadoc)

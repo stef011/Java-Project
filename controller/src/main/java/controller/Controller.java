@@ -33,7 +33,6 @@ public final class Controller implements IController {
 
 	/**
      * Play the game.
-	 * @throws InterruptedException 
      */
 	/*
 	 * (non-Javadoc)
@@ -59,24 +58,26 @@ public final class Controller implements IController {
 				this.getModel().getMap().getMobs().get(j).moveMobs();
 				j++;
 			}
+			while(this.getModel().getGameState()==GameState.Pause) {	
+			}
 		}
 		this.getModel().setGameState(GameState.End);
 		try {Thread.sleep(3000);} catch (InterruptedException e) {e.printStackTrace();}
+		System.exit(0);
 		this.getView().closeFrame();
-		
 	}
 
 	/**
      * Sets the view.
      *
-     * @param pview
+     * @param view
      *            the new view
      */
-	private void setView(final IView pview) {
-		this.view = pview;
+	private void setView(final IView view) {
+		this.view = view;
 	}
 	
-	private IView getView() {
+	public IView getView() {
 		return this.view;
 	}
 
@@ -90,7 +91,7 @@ public final class Controller implements IController {
 		this.model = model;
 	}
 	
-	private IModel getModel() {
+	public IModel getModel() {
 		return this.model;
 	}
 
@@ -108,39 +109,18 @@ public final class Controller implements IController {
 	public void orderPerform(final ControllerOrder controllerOrder) {
 		switch (controllerOrder) {
 			case Up:
-				switch(this.getModel().getGameState()) {
-				case Playing:
-					this.getModel().getMap().getPlayer().move("Up");
-					break;
-				case Pause:
-				case Menu:
-					this.getView().selectMenuElementUp();
-				default:
-					break;
-				}
+				this.movePlayer("Up");
+				this.selectNextMenuElement();
 				break;
 			case Down:
-				switch(this.getModel().getGameState()) {
-				case Playing:
-					this.getModel().getMap().getPlayer().move("Down");
-					break;
-				case Pause:
-				case Menu:
-					this.getView().selectMenuElementDown();
-					break;
-				default:
-					break;
-				}
+				this.movePlayer("Down");
+				this.selectPreviousMenuElement();
 				break;
 			case Left:
-				if(this.getModel().getGameState()==GameState.Playing) {
-					this.getModel().getMap().getPlayer().move("Left");
-				}
+				this.movePlayer("Left");
 				break;
 			case Right:
-				if(this.getModel().getGameState()==GameState.Playing) {
-					this.getModel().getMap().getPlayer().move("Right");
-				}
+				this.movePlayer("Right");
 				break;
 			case Escape:
 				switch(this.getModel().getGameState()) {
@@ -166,28 +146,65 @@ public final class Controller implements IController {
 				default:
 					break;
 				}
-				
 				break;
 			default:
 				break;
 		}
 	}
 	
+	/**
+	 * Moves the player to the direction given in parameter.
+	 * @param direction
+	 * 			The direction where the player have to move
+	 */
+	public void movePlayer(String direction) {
+		if(this.getModel().getGameState()==GameState.Playing) {
+			this.getModel().getMap().getPlayer().move(direction);
+		}
+	}
+	
+	/**
+	 * Selects the next Menu Element.
+	 */
+	public void selectNextMenuElement() {
+		if(this.getModel().getGameState()==GameState.Pause || this.getModel().getGameState()==GameState.Menu) {
+			this.getView().selectMenuElementUp();
+		}
+	}
+	
+	/**
+	 * Selects the previous Menu Element.
+	 */
+	public void selectPreviousMenuElement() {
+		if(this.getModel().getGameState()==GameState.Pause || this.getModel().getGameState()==GameState.Menu) {
+			this.getView().selectMenuElementDown();
+		}
+	}
+
+	/**
+	 * Performing the menu requests
+	 * @param menuActions
+	 * 			Actions of the menu.
+	 */
 	public void performMenuRequest(MenuActions menuActions){
-		switch(menuActions) {
-		case Quitgame:
-			this.getView().closeFrame();
-			break;
-		case Resume:
-			this.getModel().setGameState(GameState.Playing);
-			break;
-		case Mainmenu:
-			this.getModel().setGameState(GameState.Menu);
-			break;
-		case Play:
-			this.getModel().setGameState(GameState.Playing);
-		default:
-			break;
+		if(this.getModel().getGameState() == GameState.Menu || this.getModel().getGameState() == GameState.Pause) {
+			switch(menuActions) {
+			case Quitgame:
+				this.getModel().getMap().getPlayer().die();
+				System.exit(0);
+				this.getView().closeFrame();
+				break;
+			case Resume:
+				this.getModel().setGameState(GameState.Playing);
+				break;
+			case Mainmenu:
+				this.getModel().setGameState(GameState.Menu);
+				break;
+			case Play:
+				this.getModel().setGameState(GameState.Playing);
+			default:
+				break;
+			}
 		}
 	}
 }

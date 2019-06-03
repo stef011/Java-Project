@@ -36,6 +36,14 @@ public final class View implements IView, Runnable {
 		this.setModel(model);
 		SwingUtilities.invokeLater(this);
 	}
+	
+	/**
+	 * Instantiates a new view.
+	 *
+	 */
+	public View() {
+		this.viewFrame = new ViewFrame();
+	}
 
 	/**
 	 * Key code to controller order.
@@ -44,7 +52,7 @@ public final class View implements IView, Runnable {
 	 *          the key code
 	 * @return the controller order
 	 */
-	protected static ControllerOrder keyCodeToControllerOrder(final int keyCode) {
+	public static ControllerOrder keyCodeToControllerOrder(final int keyCode) {
 		switch (keyCode) {
 			case KeyEvent.VK_UP:
 				return ControllerOrder.Up;
@@ -63,19 +71,19 @@ public final class View implements IView, Runnable {
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see contract.IView#printMessage(java.lang.String)
+	/**
+	 * Prints message.
+	 * 
+	 * @param message
+	 * 			The message
 	 */
 	public void printMessage(final String message) {
 		this.viewFrame.printMessage(message);
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
+	 * Makes the Frame visible.
 	 *
-	 * @see java.lang.Runnable#run()
 	 */
 	public void run() {
 		this.viewFrame.setVisible(true);
@@ -91,20 +99,34 @@ public final class View implements IView, Runnable {
 		this.viewFrame.setController(controller);
 	}
 	
+	/**
+	 * Gets the ViewFrame.
+	 * @return viewFrame
+	 */
 	public ViewFrame getViewFrame() {
 		return this.viewFrame;
 	}
 	
+	/**
+	 * Closes the Frame.
+	 */
 	public void closeFrame(){
         this.viewFrame.dispose();
     }
 	
-	
-	
+	/**
+	 * Selects the Pause Element according to the index.
+	 * @param index
+	 * 			The index
+	 */
 	public void selectNextPauseElement(int index) {
 		this.getViewFrame().selectPauseElement(index);
 	}
 	
+	/**
+	 * Returns the index of the Pause element currently selected.
+	 * @return index
+	 */
 	public int indexOfPauseSelected() {
 		int i = 0;
 		while(i < this.getViewFrame().getPauseElements().size()) {
@@ -116,10 +138,18 @@ public final class View implements IView, Runnable {
 		return 0;
 	}
 	
+	/**
+	 * Gets the size of the ArrayList of the Elements in the Pause menu.
+	 * @return size
+	 */
 	public int sizeOfPauseElements() {
 		return this.getViewFrame().getPauseElements().size();
 	}
-
+	
+	/**
+	 * Performs the Action specified for each Pause menu Element selected.
+	 * 
+	 */
 	public void performPauseActions() {
 		int i = 0;
 		while(i < this.getViewFrame().getPauseElements().size()) {
@@ -128,10 +158,20 @@ public final class View implements IView, Runnable {
 		}
 	}
 	
+	/**
+	 * Selects the Main Menu Element according to the index.
+	 * @param index
+	 * 			The index
+	 */
 	public void selectNextMainMenuElement(int index) {
 		this.getViewFrame().selectMainMenuElement(index);
 	}
 	
+	/**
+	 * Returns the index of the Main menu element currently selected.
+	 * 
+	 * @return index
+	 */
 	public int indexOfMainMenuSelected() {
 		int i = 0;
 		while(i < this.getViewFrame().getMainMenuElements().size()) {
@@ -143,10 +183,17 @@ public final class View implements IView, Runnable {
 		return 0;
 	}
 	
+	/**
+	 * Gets the size of the ArrayList of the Elements in the Main menu.
+	 * @return size
+	 */
 	public int sizeOfMainMenuElements() {
 		return this.getViewFrame().getMainMenuElements().size();
 	}
-	
+	/**
+	 * Performs the Action specified for each Main menu Element selected.
+	 * 
+	 */
 	public void performMainMenuActions() {
 		int i = 0;
 		while(i < this.getViewFrame().getMainMenuElements().size()) {
@@ -155,6 +202,9 @@ public final class View implements IView, Runnable {
 		}
 	}
 	
+	/**
+	 * Selects the Menu Element on top of the Menu Element currently selected.
+	 */
 	public void selectMenuElementUp() {
 		switch(this.getModel().getGameState()) {
 		case Pause:
@@ -175,7 +225,10 @@ public final class View implements IView, Runnable {
 			break;
 		}
 	}
-	
+	/**
+	 * Selects the Menu Element on bottom of the Menu Element currently selected.
+	 * 
+	 */
 	public void selectMenuElementDown() {
 		switch(this.getModel().getGameState()) {
 		case Pause:
@@ -197,6 +250,9 @@ public final class View implements IView, Runnable {
 		}
 	}
 	
+	/**
+	 * Performs the Action of the menus, depending on the current GameState.
+	 */
 	public void performMenuActions() {
 		switch(this.getModel().getGameState()) {
 		case Pause:
@@ -210,10 +266,20 @@ public final class View implements IView, Runnable {
 		}
 	}
 	
+	/**
+	 * Gets the Model.
+	 * @return model
+	 */
 	public IModel getModel() {
 		return this.model;
 	}
 	
+	/**
+	 * Sets the model.
+	 *
+	 * @param model
+	 *          the new model
+	 */
 	public void setModel(IModel model) {
 		this.model=model;
 	}

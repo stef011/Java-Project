@@ -42,6 +42,7 @@ public interface IView {
 	 * Selects the Menu Element on top of the Menu Element currently selected.
 	 */
 	public void selectMenuElementUp();
+
 	/**
 	 * Selects the Menu Element on bottom of the Menu Element currently selected.
 	 * 

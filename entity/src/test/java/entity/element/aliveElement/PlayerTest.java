@@ -17,7 +17,12 @@ import entity.element.motionlessElement.EmptySpace;
 import entity.element.motionlessElement.fallingElement.Diamond;
 import entity.element.motionlessElement.fallingElement.FallingElement;
 import entity.element.motionlessElement.fallingElement.Rock;
-
+/**
+ * The test class for the Player class.
+ * 
+ * @author Exars 18-23 Strasbourg grp1
+ *
+ */
 public class PlayerTest {
 	private Player player;
 	private FallingElement rock;
@@ -30,14 +35,30 @@ public class PlayerTest {
 			{'#','^','X','#'},
 			{'#','#','#','#'} };
 	
+	/** 
+	 * This will set up once before any of the test methods in the class.
+	 * 
+	 * @throws Exception
+	 */
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
-
+	
+	/** 
+	 * This will set up once all of the test methods in the class are done.
+	 * It is used to release the allocathon that the BeforeClass method allocates. It runs even if the BeforeClass method throws an exception.
+	 * 
+	 * @throws Exception
+	 */
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
 	}
 
+	/**
+	 * Sets up the method before each Test method.
+	 * 
+	 * @throws Exception
+	 */
 	@Before
 	public void setUp() throws Exception {
 		this.map = new Map(new Map(3, "Cave", 4, 4, 18), elementSpriteRef);
@@ -50,10 +71,20 @@ public class PlayerTest {
 		this.map.setOnTheMapXY(3, 1, this.emptySpace);
 	}
 
+	/**
+	 * Sets up after each Test method.
+	 * It is used to release the allocathon that the Before method allocates. It runs even if the Before method throws an exception.
+	 * 
+	 * @throws Exception
+	 */
+
 	@After
 	public void tearDown() throws Exception {
 	}
 
+	/**
+	 * tests the method testPush().
+	 */
 	@Test
 	public void testPush() {
 		int xExpected = this.rock.getPosition().getX()+1;
@@ -62,7 +93,10 @@ public class PlayerTest {
 		Assert.assertEquals(xExpected, this.rock.getPosition().getX());
 		Assert.assertEquals(xpExpected, this.player.getPosition().getX());
 	}
-	
+
+	/**
+	 * tests the method testPick().
+	 */
 	@Test
 	public void testPick() {
 		int expected = 1;

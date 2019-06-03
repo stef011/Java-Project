@@ -5,7 +5,7 @@
 	<groupId>jpublankproject</groupId>
 	<artifactId>masterpom</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>pom</packaging>m
+	<packaging>pom</packaging>
 	<name>Master POM</name>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

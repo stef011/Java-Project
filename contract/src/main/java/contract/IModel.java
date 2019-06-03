@@ -8,21 +8,21 @@ import entity.Map;
  * The Interface IModel.
  *
  * @author Jean-Aymeric Diet
+ * @author Exars 18-23 Strasbourg grp1
+ * @version 1.0
  */
 public interface IModel {
 
 	/**
-	 * Gets the hello world.
+	 * Gets the Map
 	 *
-	 * @return the helloworld entity
+	 * @return The Map entity.
 	 */
 	Map getMap();
 
 	/**
-	 * Load the message.
-	 *
-	 * @param code
-	 *          the code
+	 * Load the map
+	 * @param name The name of the map.
 	 */
 	void loadMap(String name);
 	

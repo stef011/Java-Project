@@ -130,6 +130,6 @@ public class ElementFactoryTest {
 		Assert.assertTrue(ElementFactory.selectElementFromSpriteRef('X', map, new Position(2, 2)) instanceof Dirt);
 		Assert.assertTrue(ElementFactory.selectElementFromSpriteRef('_', map, new Position(2, 2)) instanceof EmptySpace);
 	}
-	
-	
+
+
 }

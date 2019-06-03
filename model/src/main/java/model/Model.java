@@ -22,7 +22,6 @@ public final class Model extends Observable implements IModel {
 	 * Instantiates a new model.
 	 */
 	public Model(String MapName) {
-		this.map = new Map();
 		this.loadMap(MapName);
 		
 		elementSpriteRef = new char[this.getMap().getLength()][this.getMap().getWidth()];

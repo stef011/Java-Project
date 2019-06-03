@@ -69,7 +69,7 @@ public class MobTest {
 	}
 	
 	/**
-	 * tests the method testCheckOnLeft().
+	 * tests the method CheckOnLeft().
 	 */
 	@Test
 	public void testCheckOnLeft() {
@@ -78,7 +78,7 @@ public class MobTest {
 	}
 	
 	/**
-	 * tests the method testBlow().
+	 * tests the method Blow().
 	 */
 	@Test
 	public void testBlow() {
@@ -87,7 +87,7 @@ public class MobTest {
 	}
 	
 	/**
-	 * tests the method testDie().
+	 * tests the method Die().
 	 */
 	@Test
 	public void testDie() {

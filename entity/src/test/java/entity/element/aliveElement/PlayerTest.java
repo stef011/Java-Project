@@ -83,7 +83,7 @@ public class PlayerTest {
 	}
 
 	/**
-	 * tests the method testPush().
+	 * tests the method Push().
 	 */
 	@Test
 	public void testPush() {
@@ -95,7 +95,7 @@ public class PlayerTest {
 	}
 
 	/**
-	 * tests the method testPick().
+	 * tests the method Pick().
 	 */
 	@Test
 	public void testPick() {

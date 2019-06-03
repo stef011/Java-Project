@@ -76,7 +76,7 @@ public class MapTest {
 	}
 
 	/**
-	 * tests the method testMap().
+	 * tests the method Map().
 	 */
 	@Test
 	public void testMap() {
@@ -89,7 +89,7 @@ public class MapTest {
 	}
 
 	/**
-	 * tests the method testGetId().
+	 * tests the method GetId().
 	 */
 	@Test
 	public void testGetId() {
@@ -98,7 +98,7 @@ public class MapTest {
 	}
 
 	/**
-	 * tests the method testSetId().
+	 * tests the method SetId().
 	 */
 	@Test
 	public void testSetId() {
@@ -107,7 +107,7 @@ public class MapTest {
 	}
 
 	/**
-	 * tests the method testGetName().
+	 * tests the method GetName().
 	 */
 	@Test
 	public void testGetName() {
@@ -116,7 +116,7 @@ public class MapTest {
 	}
 
 	/**
-	 * tests the method testSetName().
+	 * tests the method SetName().
 	 */
 	@Test
 	public void testSetName() {
@@ -125,7 +125,7 @@ public class MapTest {
 	}
 
 	/**
-	 * tests the method testGetLength().
+	 * tests the method GetLength().
 	 */
 	@Test
 	public void testGetLength() {
@@ -134,7 +134,7 @@ public class MapTest {
 	}
 
 	/**
-	 * tests the method testSetLength().
+	 * tests the method SetLength().
 	 */
 	@Test
 	public void testSetLength() {
@@ -143,7 +143,7 @@ public class MapTest {
 	}
 
 	/**
-	 * tests the method testGetWidth().
+	 * tests the method GetWidth().
 	 */
 	@Test
 	public void testGetWidth() {
@@ -152,7 +152,7 @@ public class MapTest {
 	}
 
 	/**
-	 * tests the method testSetWidth().
+	 * tests the method SetWidth().
 	 */
 	@Test
 	public void testSetWidth() {
@@ -161,7 +161,7 @@ public class MapTest {
 	}
 
 	/**
-	 * tests the method testGetGoal().
+	 * tests the method GetGoal().
 	 */
 	@Test
 	public void testGetGoal() {
@@ -170,7 +170,7 @@ public class MapTest {
 	}
 
 	/**
-	 * tests the method testSetGoal().
+	 * tests the method SetGoal().
 	 */
 	@Test
 	public void testSetGoal() {
@@ -179,7 +179,7 @@ public class MapTest {
 	}
 
 	/**
-	 * tests the method testGetOnTheMapXY().
+	 * tests the method GetOnTheMapXY().
 	 */
 	@Test
 	public void testGetOnTheMapXY() {
@@ -187,7 +187,7 @@ public class MapTest {
 	}
 
 	/**
-	 * tests the method testSetOnTheMapXY().
+	 * tests the method SetOnTheMapXY().
 	 */
 	@Test
 	public void testSetOnTheMapXY() {
@@ -196,7 +196,7 @@ public class MapTest {
 	}
 
 	/**
-	 * tests the method testGetSetPlayer().
+	 * tests the method GetSetPlayer().
 	 */
 	@Test
 	public void testGetSetPlayer() {

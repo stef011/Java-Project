@@ -26,21 +26,26 @@ http://www.retrogames.cz/play_232-NES.php
 >We didn't had to recreate the whole game. We just had to implement the player, the dirt he dig, the walls, the diamonds and the monsters. The levels had to be stored in a Database. 
 
 The project follows the Maven architecture. Here's the directories organization:
-* /Doc 
-	* Contains the Javadoc
-* /contract 
+
+* **/contract**
 	*  Contains the interfaces and the enumerations of the package `contract`
-* /controller 
+* **/controller** 
 	* Contains the classes of the package `enumeration`
-* /diagram 
+* **/javadoc** 
+	* Contains the Javadoc of the project
+* **/diagram** 
 	* Contains the UML diagrams of the project
-* /entity 
+* **/entity** 
 	* Contains the classes and the enumerations of the package `entity`
-* /main 
+* **/main** 
 	* Contains the main class
-* /model 
+* **/model** 
 	* Contains the classes of the package `model`
-* /sprites 
+* **/Reports** 
+	* Contains the test reports of the project.
+* **/sprites** 
 	* Contains all the sprites used in the game
-* /view 
+* **/target/site/xref**
+	* Contains the JXR report of the project.
+* **/view** 
 	* Contains the classes of the package `view`

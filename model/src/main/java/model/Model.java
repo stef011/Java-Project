@@ -22,6 +22,7 @@ public final class Model extends Observable implements IModel {
 	
 	/**
 	 * Instantiates a new model.
+	 * @param MapName The name of the map
 	 */
 	public Model(String MapName) {
 		this.loadMap(MapName);

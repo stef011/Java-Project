@@ -20,7 +20,7 @@ public abstract class Main {
      *
      * @param args
      *            the arguments
-     * @throws InterruptedException 
+     * @throws InterruptedException Throws the exception if the main is interrupted
      */
     public static void main(final String[] args) throws InterruptedException {
     	

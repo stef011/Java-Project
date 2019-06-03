@@ -1,15 +1,9 @@
-package view.menuElement;
-
-import static org.junit.Assert.*;
-
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+package view.java.view.menuElement;
 
 import contract.MenuActions;
+import org.junit.*;
+import view.menuElement.MenuElement;
+import view.menuElement.QuitGame;
 
 public class QuitGameTest {
 	MenuElement quitGame;

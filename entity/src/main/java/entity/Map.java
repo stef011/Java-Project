@@ -59,11 +59,11 @@ public class Map extends Entity {
 
 	/**
 	 * Instantiates a new map.
-	 * @param id The id of the map {@see #id}
-	 * @param name The name of the map {@see #name}
+	 * @param id The {@link #id} of the map
+	 * @param name The {@link #name} of the map
 	 * @param length The length.
 	 * @param width The width.
-	 * @param goal The goal {@see #goal}
+	 * @param goal The {@link #goal}
 	 */
 	public Map(int id, String name, int length, int width, int goal) {
 		this.setId(id);
@@ -175,7 +175,7 @@ public class Map extends Entity {
 
 	/**
 	 * Sets the Width
-	 * @param width
+	 * @param width The width
 	 */
 	public void setWidth(int width) {
 		this.width = width;

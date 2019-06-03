@@ -58,8 +58,7 @@ class DBProperties extends Properties {
 	/**
 	 * Sets the url.
 	 *
-	 * @param url
-	 *          the new url
+	 * @param url The new url
 	 */
 	private void setUrl(final String url) {
 		this.url = url;

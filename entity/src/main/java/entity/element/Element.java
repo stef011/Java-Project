@@ -199,7 +199,7 @@ public class Element extends Entity {
 
 	/**
 	 * Get the permeability for {@link FallingElement}.
-	 * @return {@link #traversableByFalling}
+	 * @return The {@link #traversableByFalling} Element
 	 */
 	public TraversableByFalling getTraversableByFalling() {
 		return this.traversableByFalling;
@@ -207,7 +207,7 @@ public class Element extends Entity {
 
 	/**
 	 * Sets the permeability for {@link FallingElement}.
-	 * @return {@link #traversableByFalling}
+	 * @param traversableByFalling  Enum {@link TraversableByFalling}
 	 */
 	public void setTraversableByFalling(TraversableByFalling traversableByFalling) {
 		this.traversableByFalling = traversableByFalling;

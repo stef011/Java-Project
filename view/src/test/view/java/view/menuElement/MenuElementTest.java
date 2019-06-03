@@ -1,13 +1,7 @@
-package view.menuElement;
+package view.java.view.menuElement;
 
-import static org.junit.Assert.*;
-
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
+import view.menuElement.MenuElement;
 
 
 public class MenuElementTest {

@@ -72,7 +72,8 @@ class ViewPanel extends JPanel implements Observer {
 	/**
 	 * Repaint the Panel when the Observer gets an update.
 	 * 
-	 * @param Observable arg0, Object arg1
+	 * @param arg0 The observable
+	 * @param arg1 The object
 	 */
 	public void update(final Observable arg0, final Object arg1) {
 		this.repaint();
@@ -119,7 +120,7 @@ class ViewPanel extends JPanel implements Observer {
 	/**
 	 * Sets the Image Background image.
 	 * 
-	 * @param backgr
+	 * @param backgr The background
 	 */
 	public void setBackgr(Image backgr) {
 		this.backgr = backgr;
@@ -177,7 +178,7 @@ class ViewPanel extends JPanel implements Observer {
 	/**
 	 * Displays the view of the game.
 	 * 
-	 * @param g
+	 * @param g The graphics
 	 */
 	public void gameView(Graphics g) {
 		for (int y = this.yStart(); y < this.yStart()+viewWidth; y++){
@@ -194,7 +195,7 @@ class ViewPanel extends JPanel implements Observer {
 	/** 
 	 * Shows the in-game info (Diamond counter and the Map currently played)
 	 * 
-	 * @param g2
+	 * @param g2 The Graphics2D
 	 */
 	public void showGameInfo(Graphics2D g2) {
 		g2.setFont(new Font("STENCIL", Font.BOLD, 60));
@@ -210,7 +211,7 @@ class ViewPanel extends JPanel implements Observer {
 	/**
 	 * Displays the view of the end of the game.
 	 * 
-	 * @param g
+	 * @param g The Graphics
 	 */
 	public void endView(Graphics g) {
 		g.setColor(new Color(100, 100, 100, 200));
@@ -225,7 +226,7 @@ class ViewPanel extends JPanel implements Observer {
 	/**
 	 * Displays the view of the pause.
 	 * 
-	 * @param g
+	 * @param g The graphics
 	 */
 	public void pauseView(Graphics g) {
 		for (int y = this.yStart(); y < this.yStart()+viewWidth; y++){
@@ -260,7 +261,7 @@ class ViewPanel extends JPanel implements Observer {
 	/**
 	 * Displays the view of the Main Menu.
 	 * 
-	 * @param g
+	 * @param g The Graphics
 	 */
 	public void menuView(Graphics g) {
 		
@@ -303,7 +304,7 @@ class ViewPanel extends JPanel implements Observer {
 	/**
 	 * Sets the image of the main menu background.
 	 * 
-	 * @param mainMenuBackgr
+	 * @param mainMenuBackgr The main Menu Background
 	 */
 	public void setMainMenuBackgr(Image mainMenuBackgr) {
 		this.mainMenuBackgr = mainMenuBackgr;

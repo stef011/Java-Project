@@ -1,18 +1,11 @@
-package view;
-
-import static org.junit.Assert.*;
-
-import java.awt.event.KeyEvent;
-
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+package view.java.view;
 
 import contract.ControllerOrder;
 import contract.IModel;
+import org.junit.*;
+import view.View;
+
+import java.awt.event.KeyEvent;
 
 public class ViewTest {
 	private IModel model;

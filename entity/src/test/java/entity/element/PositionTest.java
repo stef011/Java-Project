@@ -19,7 +19,7 @@ public class PositionTest {
 	/** 
 	 * This will set up once before any of the test methods in the class.
 	 * 
-	 * @throws Exception
+	 * @throws Exception Every Exception
 	 */
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -28,7 +28,7 @@ public class PositionTest {
 	 * This will set up once all of the test methods in the class are done.
 	 * It is used to release the allocathon that the BeforeClass method allocates. It runs even if the BeforeClass method throws an exception.
 	 * 
-	 * @throws Exception
+	 * @throws Exception Every Exception
 	 */
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
@@ -36,7 +36,7 @@ public class PositionTest {
 	/**
 	 * Sets up the method before each Test method.
 	 * 
-	 * @throws Exception
+	 * @throws Exception Every Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
@@ -47,7 +47,7 @@ public class PositionTest {
 	 * Sets up after each Test method.
 	 * It is used to release the allocathon that the Before method allocates. It runs even if the Before method throws an exception.
 	 * 
-	 * @throws Exception
+	 * @throws Exception Every Exception
 	 */
 	@After
 	public void tearDown() throws Exception {

@@ -1,19 +1,11 @@
 package entity;
 
-import static org.junit.Assert.*;
-
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
 import entity.element.Element;
 import entity.element.Position;
 import entity.element.aliveElement.Player;
 import entity.element.motionlessElement.fallingElement.FallingElement;
 import entity.element.motionlessElement.fallingElement.Rock;
+import org.junit.*;
 
 /**
  * The test class for the Map Elements
@@ -35,7 +27,7 @@ public class MapTest {
 	/** 
 	 * This will set up once before any of the test methods in the class.
 	 * 
-	 * @throws Exception
+	 * @throws Exception Every Exception Every Exception
 	 */
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -46,7 +38,7 @@ public class MapTest {
 	 * This will set up once all of the test methods in the class are done.
 	 * It is used to release the allocathon that the BeforeClass method allocates. It runs even if the BeforeClass method throws an exception.
 	 * 
-	 * @throws Exception
+	 * @throws Exception Every Exception Every Exception
 	 */
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
@@ -55,7 +47,7 @@ public class MapTest {
 	/**
 	 * Sets up the method before each Test method.
 	 * 
-	 * @throws Exception
+	 * @throws Exception Every Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
@@ -69,7 +61,7 @@ public class MapTest {
 	 * Sets up after each Test method.
 	 * It is used to release the allocathon that the Before method allocates. It runs even if the Before method throws an execption.
 	 * 
-	 * @throws Exception
+	 * @throws Exception Every Exception
 	 */
 	@After
 	public void tearDown() throws Exception {

@@ -17,8 +17,8 @@ public class Position {
 
 	/**
 	 * Instantiates a new position.
-	 * @param x {@see #x}
-	 * @param y {@see #y}
+	 * @param x {@link #x}
+	 * @param y {@link #y}
 	 */
 	public Position(int x, int y) {
 		this.setX(x);
@@ -35,7 +35,7 @@ public class Position {
 
 	/**
 	 * Sets {@link #x}
-	 * @param x {@link #x}
+	 * @param x The {@link #x}
 	 */
 	public void setX(int x) {
 		this.x = x;

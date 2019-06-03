@@ -69,13 +69,11 @@ public class Mob extends AliveElement {
 	}
 
 	/**
-	 * <p>
 	 * Moves the mob :
 	 * <ul>
 	 *     <li>Randomly</li>
 	 *     <li>By following the player</li>
 	 * </ul>
-	 * </p>
 	 */
 	public void moveMobs() {
 		Direction direction;
@@ -94,7 +92,7 @@ public class Mob extends AliveElement {
 	/**
 	 * Check the environment of the mob to know if he can move, then moves the mob,
 	 * if it was a player on the way, kills the player.
-	 * @param direction
+	 * @param direction The {@link Direction}
 	 */
 	@Override
 	public void move(Direction direction) {

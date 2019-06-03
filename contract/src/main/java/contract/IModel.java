@@ -32,9 +32,10 @@ public interface IModel {
 	 * @param id_map
 	 *          the map id
 	 * @param x
-	 *          the x
+	 * 			the x
 	 * @param y
 	 *          the y
+	 * @return A char (the spriteRef)
 	 */
 	char loadElementSpriteRef(int id_map, int x, int y);
 	

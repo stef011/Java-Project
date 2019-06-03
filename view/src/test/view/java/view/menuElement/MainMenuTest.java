@@ -1,4 +1,4 @@
-package view.menuElement;
+package view.java.view.menuElement;
 
 import static org.junit.Assert.*;
 
@@ -10,6 +10,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import contract.MenuActions;
+import view.menuElement.MainMenu;
+import view.menuElement.MenuElement;
 
 public class MainMenuTest {
 	MenuElement mainMenu;

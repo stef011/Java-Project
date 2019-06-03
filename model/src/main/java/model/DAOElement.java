@@ -57,11 +57,11 @@ public class DAOElement extends DAOEntity<Element> {
 	}
 
 	/**
-	 * Find a specific item in the
-	 * @param id_map
-	 * @param x
-	 * @param y
-	 * @return
+	 * Find a specific item in the map
+	 * @param id_map the mapID
+	 * @param x {@link entity.element.Position}
+	 * @param y {@link entity.element.Position}
+	 * @return The {@link Element}
 	 */
 	public char find(int id_map, int x, int y) {
 		char elementSprite_ref = '_';

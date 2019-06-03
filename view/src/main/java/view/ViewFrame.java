@@ -48,13 +48,13 @@ class ViewFrame extends JFrame implements KeyListener {
 	private MenuElement mainMenu = new MainMenu("MAIN MENU", windowWidth/8, 100);
 	/** Sets "quitGame" as a new QuitGame(). */
 	private MenuElement quitGame = new QuitGame("QUIT GAME", windowWidth/8, 100);
-	/** Sets the "ArrayList<MenuElement> pauseElements" as a new ArrayList<MenuElement>(). */
+	/** Sets the "ArrayList&lt;MenuElement&gt; pauseElements" as a new ArrayList&lt;MenuElement&gt;(). */
 	private ArrayList<MenuElement> pauseElements = new ArrayList<MenuElement>();
 	/** Sets the "play" in MenuElement as a new Play(). */
 	private MenuElement play = new Play("PLAY", windowWidth/8, 100);
 	/** Sets the "quitGame2" in MenuElement as a new QuitGame2(). */
 	private MenuElement quitGame2 = new QuitGame("QUIT GAME", windowWidth/8, 100);
-	/** Sets the "ArrayList<MenuElement> mainMenuElements" as a new ArrayList<MenuElement>.*/
+	/** Sets the "ArrayList&lt;MenuElement&gt; mainMenuElements" as a new ArrayList&lt;MenuElement&gt;.*/
 	private ArrayList<MenuElement> mainMenuElements = new ArrayList<MenuElement>();
 	
 	/**
@@ -234,7 +234,7 @@ class ViewFrame extends JFrame implements KeyListener {
 	}
 	 /**
 	  * Selects the Pause menu Element according to the index
-	  * @param index
+	  * @param index The index
 	  */
 	public void selectPauseElement(int index) {
 		int i = 0;
@@ -246,7 +246,7 @@ class ViewFrame extends JFrame implements KeyListener {
 	}
 	/**
 	  * Selects the Main menu Element according to the index
-	  * @param index
+	  * @param index The index
 	  */
 	public void selectMainMenuElement(int index) {
 		int i = 0;
@@ -275,7 +275,7 @@ class ViewFrame extends JFrame implements KeyListener {
 	
 	/**
 	 * Sets the width of the view.
-	 * @param viewWidth
+	 * @param viewWidth The width of the view
 	 */
 	public static void setViewWidth(int viewWidth) {
 		ViewFrame.viewWidth = viewWidth;
@@ -291,7 +291,7 @@ class ViewFrame extends JFrame implements KeyListener {
 	
 	/**
 	 * Sets the length of the view.
-	 * @param viewLength
+	 * @param viewLength The length of the view
 	 */
 	public static void setViewLength(int viewLength) {
 		ViewFrame.viewLength = viewLength;
@@ -307,7 +307,7 @@ class ViewFrame extends JFrame implements KeyListener {
 	
 	/**
 	 * Sets the length of the window.
-	 * @param windowLength
+	 * @param windowLength The Length of the Window
 	 */
 	public static void setWindowLength(int windowLength) {
 		ViewFrame.windowLength = windowLength;
@@ -323,7 +323,7 @@ class ViewFrame extends JFrame implements KeyListener {
 	
 	/**
 	 * Sets the width of the window.
-	 * @param windowWidth
+	 * @param windowWidth The Width of the window
 	 */
 	public static void setWindowWidth(int windowWidth) {
 		ViewFrame.windowWidth = windowWidth;
@@ -339,7 +339,7 @@ class ViewFrame extends JFrame implements KeyListener {
 	
 	/**
 	 * Sets the ArrayList of the elements of the Pause menu.
-	 * @param pauseElements
+	 * @param pauseElements The pause element
 	 */
 	public void setPauseElements(ArrayList<MenuElement> pauseElements) {
 		this.pauseElements = pauseElements;
@@ -355,7 +355,7 @@ class ViewFrame extends JFrame implements KeyListener {
 	
 	/**
 	 * Sets the ArrayList of the elements of the Main menu.
-	 * @param mainMenuElements
+	 * @param mainMenuElements The main menu Element
 	 */
 	public void setMainMenuElements(ArrayList<MenuElement> mainMenuElements) {
 		this.mainMenuElements = mainMenuElements;
@@ -371,7 +371,7 @@ class ViewFrame extends JFrame implements KeyListener {
 	
 	/**
 	 * Sets the Menu element Resume.
-	 * @param resume
+	 * @param resume Resume
 	 */
 	public void setResume(MenuElement resume) {
 		this.resume = resume;
@@ -387,7 +387,7 @@ class ViewFrame extends JFrame implements KeyListener {
 
 	/**
 	 * Sets the Menu element QuitGame.
-	 * @param quitGame
+	 * @param quitGame Quit the game
 	 */
 	public void setQuitGame(MenuElement quitGame) {
 		this.quitGame = quitGame;
@@ -403,7 +403,7 @@ class ViewFrame extends JFrame implements KeyListener {
 
 	/**
 	 * Sets the Menu element MainMenu.
-	 * @param mainMenu
+	 * @param mainMenu The mainMenu
 	 */
 	public void setMainMenu(MenuElement mainMenu) {
 		this.mainMenu = mainMenu;
@@ -419,12 +419,12 @@ class ViewFrame extends JFrame implements KeyListener {
 
 	/**
 	 * Sets the Menu element Play.
-	 * @param play
+	 * @param play Play
 	 */
 	public void setPlay(MenuElement play) {
 		this.play = play;
 	}
-	
+
 	/**
 	 * Gets the Menu element QuitGame2.
 	 * @return quitGame2
@@ -432,12 +432,6 @@ class ViewFrame extends JFrame implements KeyListener {
 	public MenuElement getQuitGame2() {
 		return this.quitGame2;
 	}
-	
-	/**
-	 * Sets the Menu element QuitGame2.
-	 * @param quitGame2
-	 */
-	public void setQuitGame2(MenuElement quitGame2) {
-		this.quitGame2 = quitGame2;
-	}
+
+
 }

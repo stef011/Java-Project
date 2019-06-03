@@ -33,7 +33,6 @@ public final class Controller implements IController {
 
 	/**
      * Play the game.
-	 * @throws InterruptedException 
      */
 	/*
 	 * (non-Javadoc)

@@ -4,6 +4,8 @@ package contract;
  * The Interface IController.
  *
  * @author Jean-Aymeric Diet
+ * @author Exars 18-23 Strasbourg grp1
+ * @version 1.0
  */
 public interface IController {
 
@@ -21,7 +23,7 @@ public interface IController {
 	public void orderPerform(ControllerOrder controllerOrder);
 	
 	/**
-	 * Performs the menu request
+	 * Performs The menu request
 	 *
 	 * @param menuActions
 	 *          the action performed by the menu element.

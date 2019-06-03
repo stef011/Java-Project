@@ -6,6 +6,8 @@ package contract;
  * The Interface IView.
  *
  * @author Jean-Aymeric Diet
+ * @author Exars 18-23 Strasbourg grp1
+ * @version 1.0
  */
 public interface IView {
 

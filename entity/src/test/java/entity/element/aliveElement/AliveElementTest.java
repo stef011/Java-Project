@@ -70,7 +70,7 @@ public class AliveElementTest {
 	}
 	
 	/**
-	 * tests the method testIsAlive().
+	 * tests the method IsAlive().
 	 */
 	@Test
 	public void testIsAlive() {
@@ -78,7 +78,7 @@ public class AliveElementTest {
 	}
 	
 	/**
-	 * tests the method testDie().
+	 * tests the method Die().
 	 */
 	@Test
 	public void testDie() {
@@ -90,7 +90,7 @@ public class AliveElementTest {
 	}
 	
 	/**
-	 * tests the method testSetGetLastMove().
+	 * tests the method SetGetLastMove() and GetLastMove().
 	 */
 	@Test
 	public void testSetGetLastMove() {

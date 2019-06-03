@@ -73,7 +73,7 @@ public class FallingElementTest {
 	}
 
 	/**
-	 * tests the method testFreeFall().
+	 * tests the method fall() in case of freefall.
 	 */
 	@Test
 	public void testFreeFall() {
@@ -84,7 +84,7 @@ public class FallingElementTest {
 	}
 
 	/**
-	 * tests the method testCheckIfCanSlide().
+	 * tests the method CheckIfCanSlide().
 	 */
 	@Test
 	public void testCheckIfCanSlide() {
@@ -94,7 +94,7 @@ public class FallingElementTest {
 	}
 
 	/**
-	 *  tests the method testSlideFall.
+	 *  tests the method fall() in case of slide.
 	 */
 	@Test
 	public void testSlideFall() {

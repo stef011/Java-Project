@@ -66,63 +66,63 @@ public class ElementFactoryTest {
 	public void tearDown() throws Exception {
 	}
 	/**
-	 * tests the method testCreateDirt().
+	 * tests the method CreateDirt().
 	 */
 	@Test
 	public void testCreateDirt() {
 		Assert.assertTrue(ElementFactory.createDirt(this.map, new Position(2, 2)) instanceof Dirt);
 	}
 	/**
-	 * tests the method testCreateWall().
+	 * tests the method CreateWall().
 	 */
 	@Test
 	public void testCreateWall() {
 		Assert.assertTrue(ElementFactory.createWall(this.map, new Position(2, 2)) instanceof Wall);
 	}
 	/**
-	 * tests the method testCreateEmptySpace().
+	 * tests the method CreateEmptySpace().
 	 */
 	@Test
 	public void testCreateEmptySpace() {
 		Assert.assertTrue(ElementFactory.createEmptySpace(this.map, new Position(2, 2)) instanceof EmptySpace);
 	}
 	/**
-	 * tests the method testCreateUnbreakableWall().
+	 * tests the method CreateUnbreakableWall().
 	 */
 	@Test
 	public void testCreateUnbreakableWall() {
 		Assert.assertTrue(ElementFactory.createUnbreakableWall(this.map, new Position(2, 2)) instanceof UnbreakableWall);
 	}
 	/**
-	 * tests the method testCreateRock().
+	 * tests the method CreateRock().
 	 */
 	@Test
 	public void testCreateRock() {
 		Assert.assertTrue(ElementFactory.createRock(this.map, new Position(2, 2)) instanceof Rock);
 	}
 	/**
-	 * tests the method testCreateDiamond().
+	 * tests the method CreateDiamond().
 	 */
 	@Test
 	public void testCreateDiamond() {
 		Assert.assertTrue(ElementFactory.createDiamond(this.map, new Position(2, 2)) instanceof Diamond);
 	}
 	/**
-	 * tests the method testCreatePlayer().
+	 * tests the method CreatePlayer().
 	 */
 	@Test
 	public void testCreatePlayer() {
 		Assert.assertTrue(ElementFactory.createPlayer(this.map, new Position(2, 2)) instanceof Player);
 	}
 	/**
-	 * tests the method testCreateMob().
+	 * tests the method CreateMob().
 	 */
 	@Test
 	public void testCreateMob() {
 		Assert.assertTrue(ElementFactory.createMob(this.map, new Position(2, 2)) instanceof Mob);
 	}
 	/**
-	 * tests the method testSelectElementFromSpriteRef().
+	 * tests the method SelectElementFromSpriteRef().
 	 */
 	@Test
 	public void testSelectElementFromSpriteRef() {

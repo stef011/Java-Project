@@ -3,8 +3,7 @@ package model;
 import entity.element.Element;
 import org.junit.*;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class DAOElementTest {
 	private DAOElement daoElement;
@@ -26,12 +25,18 @@ public class DAOElementTest {
 	public void tearDown() throws Exception {
 	}
 
+	/**
+	 * Test of {@link DAOElement#find(int)}
+	 */
 	@Test
 	public void testFind() {
 		char expected = '#';
 		Assert.assertEquals(expected, this.daoElement.find(1, 0, 1));
 	}
 
+	/**
+	 * Test of {@link DAOElement#create(Element)}
+	 */
 	@Test
 	public void testCreate() {
 		// Setup
@@ -44,6 +49,9 @@ public class DAOElementTest {
 		assertTrue(result);
 	}
 
+	/**
+	 * Test of {@link DAOElement#delete(Element)}
+	 */
 	@Test
 	public void testDelete() {
 		// Setup
@@ -53,37 +61,12 @@ public class DAOElementTest {
 		final boolean result = daoElement.delete(entity);
 
 		// Verify the results
-		assertTrue(result);
+		assertFalse(result);
 	}
 
-	@Test
-	public void testFind1() {
-		// Setup
-		final int id_map = 1;
-		final int x = 0;
-		final int y = 0;
-		final char expectedResult = '#';
-
-		// Run the test
-		final char result = daoElement.find(id_map, x, y);
-
-		// Verify the results
-		assertEquals(expectedResult, result);
-	}
-
-	@Test
-	public void testFind2() {
-		// Setup
-		final int id = 0;
-		final Element expectedResult = null;
-
-		// Run the test
-		final Element result = daoElement.find(id);
-
-		// Verify the results
-		assertEquals(expectedResult, result);
-	}
-
+	/**
+	 * Test of {@link DAOElement#update(Element)}
+	 */
 	@Test
 	public void testUpdate() {
 		// Setup
@@ -93,6 +76,6 @@ public class DAOElementTest {
 		final boolean result = daoElement.update(entity);
 
 		// Verify the results
-		assertTrue(result);
+		assertFalse(result);
 	}
 }

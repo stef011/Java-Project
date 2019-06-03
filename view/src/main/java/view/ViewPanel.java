@@ -42,6 +42,13 @@ class ViewPanel extends JPanel implements Observer {
 		this.loadMainMenuBackgr();
 		viewFrame.getModel().getObservable().addObserver(this);
 	}
+	
+	/**
+	 * Instantiates a new view panel.
+	 */
+	public ViewPanel() {
+		this.setViewFrame(new ViewFrame());
+	}
 
 	/**
 	 * Gets the view frame.

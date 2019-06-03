@@ -4,17 +4,10 @@
  */
 package model;
 
-import static org.junit.Assert.fail;
-
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
 import contract.GameState;
 import entity.Map;
+import org.junit.*;
+
 
 public class ModelTest {
     private Model model;
@@ -49,9 +42,7 @@ public class ModelTest {
     	Assert.assertEquals(this.mapForTest, this.model.getMap());
     }
 
-    /**
-     * Test method for {@link model.Model#loadHelloWorld(java.lang.String)}.
-     */
+
     @Test
     public void testGetMapInformation() {
     	this.model.loadMap("Cellar");
@@ -84,4 +75,6 @@ public class ModelTest {
     	this.model.setGameState(GameState.Playing);
     	Assert.assertEquals(GameState.Playing, this.model.getGameState());
     }
+
+
 }
